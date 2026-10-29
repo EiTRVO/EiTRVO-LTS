@@ -1,0 +1,73 @@
+<!--
+  CellTemplates.xaml — 跨页面复用的单元格模板。
+
+  只放「多个页面长得完全一样」的单元格；页面独有的单元格放在各自 View 的
+  <UserControl.Resources> 里，避免这里变成一个谁都不敢改的大杂烩。
+
+  · EventLevelCell   事件表的「级别」列：图标 + 文字 + 语义色（p01 / p03 / p06 / p13 / p17）
+  · EventSourceCell  事件表的「来源」列：可选的小图标 + 文字（p01 / p03）
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ev="clr-namespace:EiTRVO.Core.Launcher.Events;assembly=EiTRVO.Core.Launcher">
+
+  <DataTemplate x:Key="EventLevelCell">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+      <TextBlock x:Name="Ico"
+                 Margin="0,0,4,0"
+                 VerticalAlignment="Center"
+                 FontFamily="{StaticResource Font.Icon}"
+                 FontSize="12" />
+      <TextBlock x:Name="Txt" VerticalAlignment="Center" />
+    </StackPanel>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Level}" Value="{x:Static ev:EventLevel.Info}">
+        <Setter TargetName="Ico" Property="Text" Value="&#xE946;" />
+        <Setter TargetName="Txt" Property="Text" Value="{loc:Text 信息}" />
+        <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateInfo}" />
+        <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateInfo}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Level}" Value="{x:Static ev:EventLevel.Success}">
+        <Setter TargetName="Ico" Property="Text" Value="&#xE930;" />
+        <Setter TargetName="Txt" Property="Text" Value="{loc:Text 成功}" />
+        <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+        <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Level}" Value="{x:Static ev:EventLevel.Warning}">
+        <Setter TargetName="Ico" Property="Text" Value="&#xE7BA;" />
+        <Setter TargetName="Txt" Property="Text" Value="{loc:Text 警告}" />
+        <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+        <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Level}" Value="{x:Static ev:EventLevel.Error}">
+        <Setter TargetName="Ico" Property="Text" Value="&#xE783;" />
+        <Setter TargetName="Txt" Property="Text" Value="{loc:Text 错误}" />
+        <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+        <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <DataTemplate x:Key="EventSourceCell">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+      <TextBlock x:Name="Ico"
+                 Margin="0,0,4,0"
+                 VerticalAlignment="Center"
+                 FontFamily="{StaticResource Font.Icon}"
+                 FontSize="11"
+                 Foreground="{StaticResource Brush.TextMuted}"
+                 Visibility="Collapsed" />
+      <TextBlock VerticalAlignment="Center" Text="{Binding SourceText}" />
+    </StackPanel>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Source}"
+                   Value="{x:Static ev:EventSource.Modrinth}">
+        <Setter TargetName="Ico" Property="Text" Value="&#xE896;" />
+        <Setter TargetName="Ico" Property="Visibility" Value="Visible" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+</ResourceDictionary>

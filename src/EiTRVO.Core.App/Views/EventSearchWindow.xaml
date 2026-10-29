@@ -1,0 +1,92 @@
+<Window Icon="/icon/icon.ico"
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+        x:Class="EiTRVO.Core.App.Views.EventSearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:b="clr-namespace:EiTRVO.Core.App.Behaviors"
+        xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+        Title="{Binding Title}"
+        Width="900"
+        MinWidth="680"
+        MinHeight="300"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource Brush.White}"
+        Foreground="{StaticResource Brush.Text}"
+        FontFamily="{StaticResource Font.Ui}"
+        FontSize="{StaticResource Size.BodyFont}"
+        TextOptions.TextFormattingMode="Display"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+
+  <Window.InputBindings>
+    <KeyBinding Key="Escape" Command="{Binding CloseCommand}" />
+  </Window.InputBindings>
+
+  <i:Interaction.Behaviors>
+    <b:LightTitleBarBehavior />
+  </i:Interaction.Behaviors>
+
+  <Grid Margin="18">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <TextBox x:Name="SearchBox"
+             Grid.Row="0"
+             Height="28"
+             Padding="6,0"
+             VerticalContentAlignment="Center"
+             ToolTip="{loc:Text 搜索事件消息、来源、实例或时间}"
+             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+      <i:Interaction.Behaviors>
+        <b:FocusOnLoadedBehavior />
+      </i:Interaction.Behaviors>
+    </TextBox>
+
+    <TextBlock Grid.Row="1"
+               Margin="0,8,0,6"
+               Foreground="{StaticResource Brush.TextMuted}"
+               Text="{Binding ResultCountText}" />
+
+    <DataGrid Grid.Row="2"
+              Height="180"
+              VerticalAlignment="Top"
+              AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              CanUserDeleteRows="False"
+              HeadersVisibility="Column"
+              IsReadOnly="True"
+              ItemsSource="{Binding Results}">
+      <DataGrid.Columns>
+        <DataGridTextColumn Width="48" Header="ID" Binding="{Binding Id}" />
+        <DataGridTemplateColumn Width="64" Header="{loc:Text 级别}" CellTemplate="{StaticResource EventLevelCell}" />
+        <DataGridTemplateColumn Width="110" Header="{loc:Text 来源}" CellTemplate="{StaticResource EventSourceCell}" />
+        <DataGridTextColumn Width="*" Header="{loc:Text 消息}" Binding="{Binding Message}">
+          <DataGridTextColumn.ElementStyle>
+            <Style TargetType="TextBlock">
+              <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+              <Setter Property="ToolTip" Value="{Binding Message}" />
+            </Style>
+          </DataGridTextColumn.ElementStyle>
+        </DataGridTextColumn>
+        <DataGridTextColumn Width="130" Header="{loc:Text 时间}" Binding="{Binding Time}" />
+      </DataGrid.Columns>
+    </DataGrid>
+
+    <Grid Grid.Row="3" Margin="0,12,0,0">
+      <TextBlock VerticalAlignment="Center"
+                 Foreground="{StaticResource Brush.TextMuted}"
+                 Text="{loc:Text 输入关键字会实时筛选当前页面的事件}" />
+      <c:IconButton Icon="&#xE711;"
+                    Text="{loc:Text 关闭}"
+                    HorizontalAlignment="Right"
+                    Command="{Binding CloseCommand}" />
+    </Grid>
+  </Grid>
+</Window>

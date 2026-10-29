@@ -1,0 +1,128 @@
+<!--
+  PageTemplates.xaml — ViewModel → View 的映射（ViewModel-first 导航）。
+
+  外壳里的 ContentControl 只认 CurrentPage 这个 ViewModel，由这里的 DataTemplate
+  决定用哪个 UserControl 渲染它。这样 View 之间、View 与 ViewModel 之间都不需要
+  互相 new（AGENTS.md §2.2 / §2.5）。
+
+  最后两个是模态层的内容（p13 / p15 的对话框），由 MainWindow 的遮罩层渲染。
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels.Pages"
+                    xmlns:dvm="clr-namespace:EiTRVO.Core.App.ViewModels.Dialogs"
+                    xmlns:v="clr-namespace:EiTRVO.Core.App.Views.Pages"
+                    xmlns:d="clr-namespace:EiTRVO.Core.App.Views.Dialogs">
+
+  <!-- p01 仪表板 -->
+  <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+    <v:P01DashboardView />
+  </DataTemplate>
+
+  <!-- p02 本地实例 -->
+  <DataTemplate DataType="{x:Type vm:InstancesViewModel}">
+    <v:P02InstancesView />
+  </DataTemplate>
+
+  <!-- p03 实例详情 -->
+  <DataTemplate DataType="{x:Type vm:InstanceDetailViewModel}">
+    <v:P03InstanceDetailView />
+  </DataTemplate>
+
+  <!-- p04 新建实例向导 -->
+  <DataTemplate DataType="{x:Type vm:NewInstanceViewModel}">
+    <v:P04NewInstanceView />
+  </DataTemplate>
+
+  <!-- p05 所有版本 -->
+  <DataTemplate DataType="{x:Type vm:VersionsViewModel}">
+    <v:P05VersionsView />
+  </DataTemplate>
+
+  <!-- p06 下载与队列 -->
+  <DataTemplate DataType="{x:Type vm:DownloadsViewModel}">
+    <v:P06DownloadsView />
+  </DataTemplate>
+
+  <!-- p07 模组管理 -->
+  <DataTemplate DataType="{x:Type vm:ModsViewModel}">
+    <v:P07ModsView />
+  </DataTemplate>
+
+  <!-- p08 整合包 -->
+  <DataTemplate DataType="{x:Type vm:ModpacksViewModel}">
+    <v:P08ModpacksView />
+  </DataTemplate>
+
+  <!-- p09 资源包 / 存档 -->
+  <DataTemplate DataType="{x:Type vm:ResourcesViewModel}">
+    <v:P09ResourcesView />
+  </DataTemplate>
+
+  <!-- p10 Java 与设置（全局） -->
+  <DataTemplate DataType="{x:Type vm:JavaSettingsViewModel}">
+    <v:P10JavaSettingsView />
+  </DataTemplate>
+
+  <!-- p11 账户 -->
+  <DataTemplate DataType="{x:Type vm:AccountsViewModel}">
+    <v:P11AccountsView />
+  </DataTemplate>
+
+  <!-- p12 关于 -->
+  <DataTemplate DataType="{x:Type vm:AboutViewModel}">
+    <v:P12AboutView />
+  </DataTemplate>
+
+  <!-- p13 删除实例 -->
+  <DataTemplate DataType="{x:Type vm:DeleteInstanceViewModel}">
+    <v:P13DeleteInstanceView />
+  </DataTemplate>
+
+  <!-- p14 正在启动 -->
+  <DataTemplate DataType="{x:Type vm:LaunchingViewModel}">
+    <v:P14LaunchingView />
+  </DataTemplate>
+
+  <!-- p15 添加账户 -->
+  <DataTemplate DataType="{x:Type vm:AccountLoginViewModel}">
+    <v:P15AccountLoginView />
+  </DataTemplate>
+
+  <!-- p17 实例设置（逐实例） -->
+  <DataTemplate DataType="{x:Type vm:InstanceSettingsViewModel}">
+    <v:P17InstanceSettingsView />
+  </DataTemplate>
+
+  <!-- ==================== 模态层内容 ==================== -->
+
+  <DataTemplate DataType="{x:Type dvm:DeleteConfirmDialogViewModel}">
+    <d:DeleteConfirmDialogView />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type dvm:AddAccountDialogViewModel}">
+    <d:AddAccountDialogView />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type dvm:OfflineAccountDialogViewModel}">
+    <d:OfflineAccountDialogView />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type dvm:RenameInstanceDialogViewModel}">
+    <d:RenameInstanceDialogView />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type dvm:RemoveAccountDialogViewModel}">
+    <d:RemoveAccountDialogView />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type dvm:ModrinthDownloadDialogViewModel}">
+    <d:ModrinthDownloadDialogView />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type dvm:JavaRuntimeWarningDialogViewModel}">
+    <d:JavaRuntimeWarningDialogView />
+  </DataTemplate>
+
+</ResourceDictionary>

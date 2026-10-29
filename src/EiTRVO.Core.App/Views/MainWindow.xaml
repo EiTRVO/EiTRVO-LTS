@@ -1,0 +1,594 @@
+<Window Icon="/icon/icon.ico"
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:b="clr-namespace:EiTRVO.Core.App.Behaviors"
+        xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+        xmlns:ldc="clr-namespace:EiTRVO.Core.Launcher.Downloads;assembly=EiTRVO.Core.Launcher"
+        xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+        x:Name="RootWindow"
+        Title="EiTRVO LTS"
+        Width="{StaticResource Size.WindowWidth}"
+        Height="{StaticResource Size.WindowHeight}"
+        MinWidth="{StaticResource Size.WindowMinWidth}"
+        MinHeight="{StaticResource Size.WindowMinHeight}"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Brush.White}"
+        Foreground="{StaticResource Brush.Text}"
+        FontFamily="{StaticResource Font.Ui}"
+        FontSize="{StaticResource Size.BodyFont}"
+        TextOptions.TextFormattingMode="Display"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+
+  <!-- 白色标题栏走 DWM（原生标题栏着色），不做 WindowChrome 全自绘。
+       因此「EiTRVO LTS」标题与 − □ ✕ 三个按钮都由 Windows 绘制。 -->
+  <i:Interaction.Behaviors>
+    <b:LightTitleBarBehavior />
+  </i:Interaction.Behaviors>
+  <Window.InputBindings>
+    <KeyBinding Key="Escape" Command="{Binding CloseMenusCommand}" />
+    <KeyBinding Key="F" Modifiers="Control" Command="{Binding OpenEventSearchCommand}" />
+  </Window.InputBindings>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <!-- 这里原本还有一条 22px 的浅色菜单栏（实例/版本/账户/工具/帮助）。
+         按评审意见去掉：Server Manager 原图并没有独立菜单栏（那五个入口本来就画在深色页头右侧），
+         而 Core 的「随时要找」入口已经由页头四个按钮 + 左导航覆盖，再多一条是重复层级。 -->
+    <!-- ==================== 深色页头（50px）：面包屑 + 右侧四个全局按钮 ====================
+         底色是横向蓝渐变（2026-10-06，用户按 Sample2.png 的进度对话框头指定，见 README §5 第 37 条）。
+         忙碌时另有一道亮光扫过；它只在真的有任务时动（ShellViewModel.IsBusy），空闲时页头是静止的。 -->
+    <Border Grid.Row="0" Style="{StaticResource PageHeadBorder}">
+      <Grid>
+        <!-- 扫光：垫在内容下面、不参与命中测试；MappingMode 用"相对包围盒"，
+             所以窗口宽度变化时不必换算像素（动画直接推 StartPoint/EndPoint）。
+             注意三件事（都踩过，见 CHANGELOG 2026-10-06）：
+             ① 渐变**内联**在 Rectangle.Fill 上，不放 Style 的 Setter —— Setter 里的 Freezable 会被冻结，动画一启动就抛；
+             ② 动画路径必须写具体类型 `(LinearGradientBrush.StartPoint)`：`GradientBrush` 上没有 StartPoint 这个公共属性，
+                写错会在**加载 XAML 时**就抛 XamlParseException（整个窗口起不来，不是"动画不动"）；
+             ③ 要判断静态属性得用 `Source={x:Static …}`，直接写 `Binding="{x:Static …}"` 会把 bool 塞进 Binding 里抛 InvalidCastException。 -->
+        <Rectangle IsHitTestVisible="False">
+          <Rectangle.Fill>
+            <!-- 柔和光带：两头渐隐（0）→ 5% 过渡环 → 17% 平台 → 再对称收回去。
+                 6 个停靠点 + 中间平台是为了避开"两头透明、中间一个尖峰"的三角形（那个看着偏硬）。 -->
+            <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="-0.45,0" EndPoint="-0.05,0">
+              <GradientStop Color="{StaticResource Color.SweepClear}" Offset="0" />
+              <GradientStop Color="{StaticResource Color.SweepHalo}" Offset="0.16" />
+              <GradientStop Color="{StaticResource Color.SweepHighlight}" Offset="0.42" />
+              <GradientStop Color="{StaticResource Color.SweepHighlight}" Offset="0.58" />
+              <GradientStop Color="{StaticResource Color.SweepHalo}" Offset="0.84" />
+              <GradientStop Color="{StaticResource Color.SweepClear}" Offset="1" />
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+          <Rectangle.Style>
+            <Style TargetType="Rectangle">
+              <Setter Property="Visibility" Value="Collapsed" />
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                  <Setter Property="Visibility" Value="Visible" />
+                  <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="PageHeadSweepStory">
+                      <Storyboard RepeatBehavior="Forever">
+                        <PointAnimation Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.StartPoint)"
+                                        From="-0.45,0" To="1.45,0" Duration="0:0:5.4" />
+                        <PointAnimation Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.EndPoint)"
+                                        From="-0.05,0" To="1.85,0" Duration="0:0:5.4" />
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </DataTrigger.EnterActions>
+                  <DataTrigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="PageHeadSweepStory" />
+                  </DataTrigger.ExitActions>
+                </DataTrigger>
+                <!-- 系统里关了"显示动画"（辅助功能 / 省电）时，扫光直接不出现 —— 它只是一个装饰 -->
+                <DataTrigger Binding="{Binding Source={x:Static SystemParameters.ClientAreaAnimation}}" Value="False">
+                  <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </Rectangle.Style>
+        </Rectangle>
+
+        <Grid Margin="12,0,12,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+
+        <!-- 面包屑：不含「EiTRVO Core」根节点；统一细体；非末级可点回该层 -->
+        <ItemsControl Grid.Column="0"
+                      VerticalAlignment="Center"
+                      ItemsSource="{Binding Breadcrumb}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock x:Name="Sep"
+                           Style="{StaticResource Text.CrumbSeparator}"
+                           Text="&#x203A;" />
+                <Button x:Name="Link"
+                        Style="{StaticResource CrumbLinkButton}"
+                        Content="{Binding Text}"
+                        Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{Binding Target}" />
+                <TextBlock x:Name="Cur"
+                           Style="{StaticResource Text.Crumb}"
+                           Text="{Binding Text}" />
+              </StackPanel>
+              <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding ShowSeparator}" Value="False">
+                  <Setter TargetName="Sep" Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                  <Setter TargetName="Link" Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsCurrent}" Value="False">
+                  <Setter TargetName="Cur" Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+              </DataTemplate.Triggers>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- 页头四按钮：队列（含徽标 ▾，点开下拉）/ 账户（点开下拉）/ 设置 / 帮助。
+             2026-10-18（S10-a / S10-b）：队列与账户改为**下拉菜单**（设计稿 p18 / p19），不再直达页面。 -->
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+
+          <c:HeaderTool x:Name="QueueToolButton"
+                        Icon="&#xE896;"
+                        Text="{loc:Text 队列}"
+                        ShowCaret="True"
+                        Badge="{Binding QueueBadge}"
+                        ToolTip="{Binding QueueTooltip}"
+                        Command="{Binding ToggleQueueMenuCommand}" />
+          <!-- 右侧两组 “后面的工具” 各套一层 StackPanel：窗口内浮层的右边缘要按它们的实际宽度
+               对齐按钮右边缘（按钮宽度随语言与玩家名变化，不能写死）。 -->
+          <StackPanel x:Name="AfterQueueTools" Orientation="Horizontal">
+            <c:HeaderTool x:Name="AccountToolButton"
+                          Icon="&#xE7EF;"
+                          Text="{Binding AccountLabel}"
+                          ToolTip="{Binding AccountTooltip}"
+                          IsEnabled="{Binding IsAccountToolEnabled}"
+                          Command="{Binding ToggleAccountMenuCommand}" />
+            <StackPanel x:Name="AfterAccountTools" Orientation="Horizontal">
+              <Border Style="{StaticResource ToolSeparator}" />
+              <c:HeaderTool Icon="&#xE713;"
+                            Text="{loc:Text 设置}"
+                            ToolTip="{loc:Text Java 与设置 — 运行时、内存分配、下载源与全局选项}"
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="{x:Static vm:PageId.JavaSettings}" />
+              <c:HeaderTool Icon="&#xE7C1;"
+                            Text="{loc:Text 帮助}"
+                            ToolTip="{loc:Text 帮助与支持中心}"
+                            Command="{Binding OpenHelpCommand}" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+        </Grid>
+      </Grid>
+    </Border>
+
+    <!-- ==================== 主体：左导航 210px + 内容区 ==================== -->
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <Border Grid.Column="0" Style="{StaticResource SideNavBorder}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Padding="0,8,0,8">
+          <ItemsControl ItemsSource="{Binding NavigationGroups}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <StackPanel>
+                  <Border x:Name="GroupHead" Style="{StaticResource NavGroupBorder}">
+                    <TextBlock Style="{StaticResource NavGroupText}" Text="{Binding Title}" />
+                  </Border>
+                  <ItemsControl ItemsSource="{Binding Items}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <Button Style="{StaticResource NavItemButton}"
+                                Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding Target}">
+                          <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Width="18"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{StaticResource Font.Icon}"
+                                       FontSize="16"
+                                       Foreground="#FF333333"
+                                       TextAlignment="Center"
+                                       Text="{Binding Icon}" />
+                            <TextBlock Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Text="{Binding Text}" />
+                          </StackPanel>
+                        </Button>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                </StackPanel>
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding HasTitle}" Value="False">
+                    <Setter TargetName="GroupHead" Property="Visibility" Value="Collapsed" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Border>
+
+      <!-- 页面宿主：ViewModel-first —— 由 DataTemplate 决定用哪个 View -->
+      <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
+    </Grid>
+
+    <!-- ==================== 页头下拉浮层（窗口内，2026-10-18 S10-a / S10-b） ====================
+         为什么不用 Popup：Popup 是独立 HWND，实测在本项目的 DPI/组合下偏移量不可靠
+         （浮层会伸出窗口右边缘被裁掉），而且截图时它是另一个窗口、PrintWindow 拍不到。
+         放在窗口最上层（Panel.ZIndex）后，点浮层外的那层透明 Border 收起两个下拉。 -->
+    <Grid Grid.Row="0"
+          Grid.RowSpan="2"
+          Panel.ZIndex="50"
+          Visibility="{Binding IsAnyMenuOpen, Converter={StaticResource BoolToVisibility}}">
+      <Border Background="Transparent">
+        <i:Interaction.Triggers>
+          <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding CloseMenusCommand}" />
+          </i:EventTrigger>
+        </i:Interaction.Triggers>
+      </Border>
+<Border Width="360"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="{Binding ActualWidth, ElementName=AfterQueueTools, Converter={StaticResource MenuRightAlign}}"
+                    Visibility="{Binding IsQueueMenuOpen, Converter={StaticResource BoolToVisibility}}"
+                    Style="{StaticResource HeaderMenuPopupBorder}">
+                <StackPanel>
+
+                  <Border Style="{StaticResource HeaderMenuHeader}">
+                    <DockPanel LastChildFill="False">
+                      <TextBlock DockPanel.Dock="Left"
+                                 Style="{StaticResource HeaderMenuTitleText}"
+                                 Text="{loc:Text 下载与队列}" />
+                      <TextBlock DockPanel.Dock="Left"
+                                 Style="{StaticResource HeaderMenuCountText}"
+                                 Text="{Binding QueueMenuSummary}" />
+                      <Button DockPanel.Dock="Right"
+                              Style="{StaticResource HeaderMenuLinkButton}"
+                              Content="{loc:Text 打开页面}"
+                              Command="{Binding OpenQueuePageCommand}" />
+                    </DockPanel>
+                  </Border>
+
+                  <!-- 进行中任务：整块可点（打开 p06）；「取消」是它的**兄弟**（外层 Button 里的子按钮收不到点击）。 -->
+                  <Grid Visibility="{Binding HasActiveQueueTask, Converter={StaticResource BoolToVisibility}}">
+                    <Button Style="{StaticResource HeaderMenuBlockButton}"
+                            Command="{Binding OpenQueuePageCommand}">
+                      <StackPanel Margin="0,0,64,0">
+                        <DockPanel>
+                          <TextBlock DockPanel.Dock="Left"
+                                     FontWeight="SemiBold"
+                                     Text="{Binding ActiveQueueTask.Title}"
+                                     TextTrimming="CharacterEllipsis" />
+                          <TextBlock DockPanel.Dock="Right"
+                                     Margin="8,0,0,0"
+                                     FontSize="{StaticResource Size.SmallFont}"
+                                     Foreground="{StaticResource Brush.TextMuted}"
+                                     Text="{Binding ActiveQueuePercent, StringFormat={}{0:0}%}" />
+                        </DockPanel>
+                        <ProgressBar Style="{StaticResource MiniProgressTrack}"
+                                     Height="4"
+                                     Margin="0,6,0,5"
+                                     Maximum="100"
+                                     Value="{Binding ActiveQueuePercent, Mode=OneWay}" />
+                        <TextBlock FontSize="{StaticResource Size.SmallFont}"
+                                   Foreground="{StaticResource Brush.TextMuted}"
+                                   Text="{Binding ActiveQueueMeta}"
+                                   TextTrimming="CharacterEllipsis" />
+                      </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource HeaderMenuActionButton}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="10,0,10,0"
+                            Content="{Binding ActiveQueueTask.ActionText}"
+                            ToolTip="{Binding ActiveQueueTask.ActionDetail}"
+                            Command="{Binding QueueRowActionCommand}"
+                            CommandParameter="{Binding ActiveQueueTask}" />
+                  </Grid>
+
+                  <!-- 排队中 -->
+                  <ItemsControl ItemsSource="{Binding WaitingQueueTasks}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <Grid>
+                          <Button Style="{StaticResource HeaderMenuRowButton}"
+                                  Height="30"
+                                  Command="{Binding DataContext.OpenQueuePageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                            <Grid Margin="10,0,64,0">
+                              <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                              </Grid.ColumnDefinitions>
+                              <TextBlock Grid.Column="0"
+                                         Style="{StaticResource HeaderMenuGlyphText}"
+                                         Foreground="{StaticResource Brush.TextMuted}"
+                                         Text="&#xE896;" />
+                              <TextBlock Grid.Column="1"
+                                         VerticalAlignment="Center"
+                                         Text="{Binding Title}"
+                                         TextTrimming="CharacterEllipsis" />
+                              <TextBlock Grid.Column="2"
+                                         Margin="8,0,0,0"
+                                         VerticalAlignment="Center"
+                                         MaxWidth="120"
+                                         FontSize="{StaticResource Size.SmallFont}"
+                                         Foreground="{StaticResource Brush.TextMuted}"
+                                         Text="{Binding Detail}"
+                                         TextTrimming="CharacterEllipsis" />
+                            </Grid>
+                          </Button>
+                          <Button Style="{StaticResource HeaderMenuActionButton}"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0,10,0"
+                                  Content="{Binding ActionText}"
+                                  ToolTip="{Binding ActionDetail}"
+                                  Command="{Binding DataContext.QueueRowActionCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                  CommandParameter="{Binding}" />
+                        </Grid>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+
+                  <!-- 最近结束（最多两条，新的在前）：失败 / 已取消的行给「重试」。 -->
+                  <Border Style="{StaticResource HeaderMenuSep}"
+                          Visibility="{Binding HasRecentQueueTasks, Converter={StaticResource BoolToVisibility}}" />
+                  <ItemsControl ItemsSource="{Binding RecentQueueTasks}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <Grid>
+                          <Button Style="{StaticResource HeaderMenuRowButton}"
+                                  Height="30"
+                                  Command="{Binding DataContext.OpenQueuePageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                            <Grid Margin="10,0,64,0">
+                              <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                              </Grid.ColumnDefinitions>
+                              <TextBlock x:Name="RecentGlyph"
+                                         Grid.Column="0"
+                                         Style="{StaticResource HeaderMenuGlyphText}"
+                                         Text="&#xE930;" />
+                              <TextBlock Grid.Column="1"
+                                         VerticalAlignment="Center"
+                                         Text="{Binding Title}"
+                                         TextTrimming="CharacterEllipsis" />
+                              <TextBlock Grid.Column="2"
+                                         Margin="8,0,0,0"
+                                         VerticalAlignment="Center"
+                                         MaxWidth="120"
+                                         FontSize="{StaticResource Size.SmallFont}"
+                                         Foreground="{StaticResource Brush.TextMuted}"
+                                         Text="{Binding Detail}"
+                                         TextTrimming="CharacterEllipsis" />
+                            </Grid>
+                          </Button>
+                          <Button Style="{StaticResource HeaderMenuActionButton}"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0,10,0"
+                                  Content="{Binding ActionText}"
+                                  ToolTip="{Binding ActionDetail}"
+                                  Visibility="{Binding CanAct, Converter={StaticResource BoolToVisibility}}"
+                                  Command="{Binding DataContext.QueueRowActionCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                  CommandParameter="{Binding}" />
+                        </Grid>
+                        <DataTemplate.Triggers>
+                          <DataTrigger Binding="{Binding State}" Value="{x:Static ldc:DownloadQueueState.Failed}">
+                            <Setter TargetName="RecentGlyph" Property="Text" Value="&#xE783;" />
+                            <Setter TargetName="RecentGlyph" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding State}" Value="{x:Static ldc:DownloadQueueState.Cancelled}">
+                            <Setter TargetName="RecentGlyph" Property="Text" Value="&#xE711;" />
+                            <Setter TargetName="RecentGlyph" Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding IsRetry}" Value="True">
+                            <Setter TargetName="RecentGlyph" Property="Text" Value="&#xE783;" />
+                            <Setter TargetName="RecentGlyph" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+                          </DataTrigger>
+                        </DataTemplate.Triggers>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+
+                  <!-- 空状态：不画假行，给一个明确出口 -->
+                  <Border Padding="20,18,20,18"
+                          Visibility="{Binding HasNoQueueTasks, Converter={StaticResource BoolToVisibility}}">
+                    <StackPanel HorizontalAlignment="Center">
+                      <TextBlock HorizontalAlignment="Center"
+                                 FontFamily="{StaticResource Font.Icon}"
+                                 FontSize="26"
+                                 Foreground="#FFC0C0C0"
+                                 Text="&#xE896;" />
+                      <TextBlock Margin="0,6,0,8"
+                                 HorizontalAlignment="Center"
+                                 Foreground="{StaticResource Brush.TextMuted}"
+                                 Text="{loc:Text 当前没有下载任务}" />
+                      <!-- 2026-10-24 用户要求：空队列时这里不再重复「打开下载与队列」；底部动作条保留唯一入口。 -->
+                    </StackPanel>
+                  </Border>
+
+                  <Border Style="{StaticResource HeaderMenuFooter}">
+                    <DockPanel LastChildFill="False">
+                      <Button DockPanel.Dock="Left"
+                              Style="{StaticResource HeaderMenuActionButton}"
+                              Content="{loc:Text 取消全部}"
+                              Command="{Binding CancelAllQueueCommand}" />
+                      <Button DockPanel.Dock="Right"
+                              Style="{StaticResource HeaderMenuLinkButton}"
+                              Content="{loc:Text 打开下载与队列}"
+                              Command="{Binding OpenQueuePageCommand}" />
+                    </DockPanel>
+                  </Border>
+
+                </StackPanel>
+              </Border>
+
+<Border Width="300"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="{Binding ActualWidth, ElementName=AfterAccountTools, Converter={StaticResource MenuRightAlign}}"
+                    Visibility="{Binding IsAccountMenuOpen, Converter={StaticResource BoolToVisibility}}"
+                    Style="{StaticResource HeaderMenuPopupBorder}">
+                <StackPanel>
+
+                  <Border Style="{StaticResource HeaderMenuHeader}">
+                    <DockPanel LastChildFill="False">
+                      <TextBlock DockPanel.Dock="Left"
+                                 Style="{StaticResource HeaderMenuTitleText}"
+                                 Text="{loc:Text 账户}" />
+                      <TextBlock DockPanel.Dock="Left"
+                                 Style="{StaticResource HeaderMenuCountText}"
+                                 Text="{Binding AccountMenuSummary}" />
+                      <Button DockPanel.Dock="Right"
+                              Style="{StaticResource HeaderMenuLinkButton}"
+                              Content="{loc:Text 管理账户}"
+                              Command="{Binding ManageAccountsCommand}" />
+                    </DockPanel>
+                  </Border>
+
+                  <!-- 账户列表：点一行 = 设为默认（启动游戏时使用它）。 -->
+                  <ItemsControl ItemsSource="{Binding AccountRows}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <Button x:Name="AccountRow"
+                                Style="{StaticResource HeaderMenuRowButton}"
+                                Height="44"
+                                Padding="10,0"
+                                Command="{Binding DataContext.SelectAccountCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}">
+                          <Grid>
+                            <Grid.ColumnDefinitions>
+                              <ColumnDefinition Width="26" />
+                              <ColumnDefinition Width="*" />
+                              <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0"
+                                    Width="26"
+                                    Height="26"
+                                    Background="{StaticResource Brush.ControlBackground}"
+                                    BorderBrush="{StaticResource Brush.ControlBorder}"
+                                    BorderThickness="1">
+                              <TextBlock HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         FontFamily="{StaticResource Font.Icon}"
+                                         FontSize="14"
+                                         Foreground="#FF5A5A5A"
+                                         Text="&#xE77B;" />
+                            </Border>
+                            <StackPanel Grid.Column="1"
+                                        Margin="9,0,8,0"
+                                        VerticalAlignment="Center">
+                              <TextBlock Text="{Binding PlayerName}" TextTrimming="CharacterEllipsis" />
+                              <TextBlock FontSize="{StaticResource Size.SmallFont}"
+                                         Foreground="{StaticResource Brush.TextMuted}"
+                                         Text="{Binding Meta}"
+                                         TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+                            <Border Grid.Column="2"
+                                    Style="{StaticResource HeaderMenuBadge}"
+                                    Visibility="{Binding IsDefault, Converter={StaticResource BoolToVisibility}}">
+                              <TextBlock FontSize="10.5"
+                                         Foreground="{StaticResource Brush.Accent}"
+                                         Text="{loc:Text 默认}" />
+                            </Border>
+                          </Grid>
+                        </Button>
+                        <DataTemplate.Triggers>
+                          <!-- 默认账户行 = 左导航/列表同一个选中语汇（#cce8ff + 加粗），不新造"选中色"。 -->
+                          <DataTrigger Binding="{Binding IsDefault}" Value="True">
+                            <Setter TargetName="AccountRow" Property="Background" Value="{StaticResource Brush.AccentSelected}" />
+                            <Setter TargetName="AccountRow" Property="FontWeight" Value="SemiBold" />
+                          </DataTrigger>
+                        </DataTemplate.Triggers>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+
+                  <TextBlock Margin="10,10,10,4"
+                             TextWrapping="Wrap"
+                             Foreground="{StaticResource Brush.TextMuted}"
+                             Text="{loc:Text 还没有登录账户}"
+                             Visibility="{Binding HasNoAccounts, Converter={StaticResource BoolToVisibility}}" />
+
+                  <Border Style="{StaticResource HeaderMenuSep}" />
+
+                  <!-- 添加入口（两个都走既有的登录 / 离线账户入口） -->
+                  <Button Style="{StaticResource HeaderMenuRowButton}"
+                          Height="30"
+                          Padding="10,0"
+                          Command="{Binding AddMicrosoftAccountCommand}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                      <TextBlock Style="{StaticResource HeaderMenuGlyphText}" Text="&#xE710;" />
+                      <TextBlock Margin="8,0,0,0" Text="{loc:Text 添加微软账户}" />
+                    </StackPanel>
+                  </Button>
+                  <Button Style="{StaticResource HeaderMenuRowButton}"
+                          Height="30"
+                          Padding="10,0"
+                          Command="{Binding AddOfflineAccountCommand}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                      <TextBlock Style="{StaticResource HeaderMenuGlyphText}" Text="&#xE710;" />
+                      <TextBlock Margin="8,0,0,0" Text="{loc:Text 添加离线账户}" />
+                    </StackPanel>
+                  </Button>
+
+                  <TextBlock Margin="10,6,10,2"
+                             TextWrapping="Wrap"
+                             Foreground="{StaticResource Brush.StateErr}"
+                             Text="{Binding AccountMenuError}"
+                             Visibility="{Binding HasAccountMenuError, Converter={StaticResource BoolToVisibility}}" />
+
+                  <Border BorderBrush="{StaticResource Brush.Line}"
+                          BorderThickness="0,1,0,0"
+                          Padding="10,5">
+                    <TextBlock FontSize="{StaticResource Size.SmallFont}"
+                               Foreground="{StaticResource Brush.TextMuted}"
+                               TextWrapping="Wrap"
+                               Text="{loc:Text 启动游戏时使用「默认」账户；管理账户可改名、移除或重新登录。}" />
+                  </Border>
+
+                </StackPanel>
+              </Border>
+    </Grid>
+    <!-- ==================== 模态层（p13 / p15） ====================
+         遮罩放在窗口这一层，而不是页面里，这样它才能盖住整个窗口（含左导航与页头），
+         与设计稿 .modal-scrim{position:absolute;inset:0} 的行为一致。 -->
+    <Grid Grid.Row="0"
+          Grid.RowSpan="2"
+          Background="{StaticResource Brush.PopupScrim}"
+          Visibility="{Binding CurrentPage.HasDialog, Converter={StaticResource BoolToVisibility}}">
+      <ContentControl HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Content="{Binding CurrentPage.Dialog}" />
+    </Grid>
+  </Grid>
+</Window>

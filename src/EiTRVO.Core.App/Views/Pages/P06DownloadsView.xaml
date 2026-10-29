@@ -1,0 +1,188 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P06DownloadsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+             xmlns:ldc="clr-namespace:EiTRVO.Core.Launcher.Downloads;assembly=EiTRVO.Core.Launcher"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p06 下载与队列。对应 mockup/pages/p06-downloads.html。
+    结构：区块标题（带未完成任务数）→ 总体进度属性表 →
+          队列列表 → 动作条。2026-10-24 用户要求去掉页面下方的下载事件流。
+    页头「队列」徽标的数字与这一页的统计同源（都来自 IDownloadCatalog.PendingTaskCount）。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <c:SectionHeader Grid.Row="0"
+                     Icon="&#xE896;"
+                     Title="{Binding SectionTitle}"
+                     Subtitle="{Binding SectionSubtitle}" />
+
+    <Grid Grid.Row="1" Style="{StaticResource PropsBox}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+      </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource PropsDivider}" />
+
+      <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 当前任务}" />
+      <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource Text.PropValue}" Text="{Binding CurrentTaskText}" />
+      <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 总体进度}" />
+      <c:MiniProgressBar Grid.Row="0" Grid.Column="3"
+                         Value="{Binding Progress.Percent}"
+                         IsIndeterminate="{Binding Progress.IsIndeterminate}" />
+
+      <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 已下载 / 总计}" />
+      <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Text.PropValue}" Text="{Binding Progress.AmountText}" />
+      <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 当前速度}" />
+      <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource Text.PropValue}" Text="{Binding Progress.SpeedText}" />
+
+      <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 剩余文件}" />
+      <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource Text.PropValue}" Text="{Binding Progress.FilesText}" />
+      <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 预计剩余}" />
+      <TextBlock Grid.Row="2" Grid.Column="3" Style="{StaticResource Text.PropValue}" Text="{Binding RemainingTextText}" />
+
+      <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 并发连接}" />
+      <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource Text.PropValue}" Text="{Binding Progress.ConnectionsText}" />
+      <TextBlock Grid.Row="3" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 数据源}" />
+      <TextBlock Grid.Row="3" Grid.Column="3" Style="{StaticResource Text.PropValue}" Text="{Binding Progress.DataSource}" />
+    </Grid>
+
+    <!-- ==================== 队列（行内徽标是**动作**：取消 / 重试） ==================== -->
+    <Grid Grid.Row="3" Margin="18,12,18,0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <c:SectionHeader Grid.Row="0" Icon="&#xE896;" Title="{loc:Text 队列}" TitleSize="14" Padding="0,0,0,6" />
+      <Border Grid.Row="1" MaxHeight="110" Style="{StaticResource PickerListBorder}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <ItemsControl ItemsSource="{Binding Queue}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <!-- 行本体仍是一个**禁用**按钮（设计稿里整行是不可点的展示行，状态由数据决定），
+                     而 M7-g 的行内动作是**它的兄弟**：禁用元素内部的子元素收不到任何点击，
+                     把动作按钮放进那个按钮里就等于把它一起禁掉了。 -->
+                <Grid>
+                  <Button Style="{StaticResource PickerRowButton}"
+                          IsEnabled="False"
+                          HorizontalContentAlignment="Stretch">
+                    <Grid VerticalAlignment="Center">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="18" />
+                        <ColumnDefinition Width="190" />
+                        <ColumnDefinition Width="*" />
+                        <!-- 右侧这 70px 是留给上层那个动作（取消 / 重试）的：
+                             明细文本因此不会跑到它下面去。 -->
+                        <ColumnDefinition Width="70" />
+                      </Grid.ColumnDefinitions>
+                      <Border x:Name="Bar"
+                              Grid.Column="0"
+                              Width="4"
+                              Margin="-10,0,0,0"
+                              HorizontalAlignment="Left"
+                              Background="{StaticResource Brush.Accent}"
+                              Visibility="Collapsed" />
+                      <TextBlock Grid.Column="0"
+                                 VerticalAlignment="Center"
+                                 FontFamily="{StaticResource Font.Icon}"
+                                 FontSize="15"
+                                 Foreground="#FF333333"
+                                 Text="&#xE896;" />
+                      <TextBlock Grid.Column="1"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Title}"
+                                 TextTrimming="CharacterEllipsis"
+                                 ToolTip="{Binding Title}" />
+                      <TextBlock Grid.Column="2"
+                                 VerticalAlignment="Center"
+                                 FontWeight="Normal"
+                                 Foreground="{StaticResource Brush.TextMuted}"
+                                 Text="{Binding Detail}"
+                                 TextTrimming="CharacterEllipsis"
+                                 ToolTip="{Binding Detail}" />
+                    </Grid>
+                  </Button>
+
+                  <!-- 动作（取消 / 重试）与状态词**互斥显示**：两者都在同一格上，
+                       都可见时后声明的那个会盖住前一个（AGENTS §5.2 的 p07 空状态那条教训）。 -->
+                  <Button x:Name="RowAction"
+                          Style="{StaticResource LinkButton}"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center"
+                          Margin="0,0,12,0"
+                          Content="{Binding ActionText}"
+                          ToolTip="{Binding ActionDetail}"
+                          Visibility="{Binding CanAct, Converter={StaticResource BoolToVisibility}}"
+                          Command="{Binding DataContext.QueueActionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                          CommandParameter="{Binding}" />
+                  <TextBlock x:Name="Badge"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Margin="0,0,12,0"
+                             FontWeight="Normal"
+                             Foreground="{StaticResource Brush.StateOk}"
+                             Text="{loc:Text 已完成}"
+                             Visibility="{Binding CanAct, Converter={StaticResource InverseBoolToVisibility}}" />
+                </Grid>
+                <DataTemplate.Triggers>
+                  <!-- 取消是主色链接、重试是告警色：两者都不是"故障红"（用户自己点的那一下不该看起来像坏了）。 -->
+                  <DataTrigger Binding="{Binding State}" Value="{x:Static ldc:DownloadQueueState.Queued}">
+                    <Setter TargetName="RowAction" Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding IsRetry}" Value="True">
+                    <Setter TargetName="RowAction" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding IsActive}" Value="True">
+                    <Setter TargetName="Bar" Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Border>
+    </Grid>
+
+    <Border Grid.Row="4" Style="{StaticResource ActionBar}">
+      <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <!-- M7-g：这一颗按钮真的取消所有未完成的任务。设计稿写「全部暂停」，
+             而"暂停"意味着之后能接着跑（要 Range 与断点），P1-14 要的是取消 / 重试 ——
+             改名登记在 tools\icon-label-renames.txt。 -->
+        <c:IconButton Icon="&#xE769;"
+                      Text="{loc:Text 取消全部}"
+                      Command="{Binding CancelAllCommand}" />
+        <c:IconButton Icon="&#xE74D;"
+                      Text="{loc:Text 清空已完成}"
+                      Margin="10,0,0,0"
+                      Command="{Binding ClearFinishedCommand}" />
+        <c:IconButton Icon="&#xE713;"
+                      Text="{loc:Text 下载源设置}"
+                      Margin="10,0,0,0"
+                      Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                      CommandParameter="{x:Static vm:PageId.JavaSettings}" />
+      </WrapPanel>
+    </Border>
+
+  </Grid>
+</UserControl>

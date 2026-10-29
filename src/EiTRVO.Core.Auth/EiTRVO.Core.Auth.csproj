@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    与 Launcher 同理：net8.0（非 Windows TFM），认证链不允许触碰任何 UI 类型。
+    引用 Launcher 只为复用存储地基（ILauncherPaths / AtomicFile / LauncherJson / 诊断事件），
+    方向是 Auth → Launcher，不存在反向引用。
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>EiTRVO.Core.Auth</RootNamespace>
+    <AssemblyName>EiTRVO.Core.Auth</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 账户令牌的 DPAPI 加密（Windows 专用；本产品仅支持 win-x64） -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" />
+    <!-- 认证链的出站请求：命名客户端（白名单 + 重试挂在管道上，见 AppServices） -->
+    <PackageReference Include="Microsoft.Extensions.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EiTRVO.Core.Launcher\EiTRVO.Core.Launcher.csproj" />
+  </ItemGroup>
+
+</Project>

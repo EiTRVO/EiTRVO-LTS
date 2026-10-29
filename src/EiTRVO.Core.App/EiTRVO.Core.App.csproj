@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!-- Resources/Strings.resx 就是简体中文本身，英文走 Strings.en.resx 卫星程序集。
+         不设这一项的话，zh-Hans 会被当成「非中性语言」而去找并不存在的卫星程序集。 -->
+    <NeutralLanguage>zh-Hans</NeutralLanguage>
+    <RootNamespace>EiTRVO.Core.App</RootNamespace>
+    <AssemblyName>EiTRVO.Core.App</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>icon\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EiTRVO.Core.Launcher\EiTRVO.Core.Launcher.csproj" />
+    <ProjectReference Include="..\EiTRVO.Core.Auth\EiTRVO.Core.Auth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <!-- 单文件 exe 没有旁边的 appsettings.json 时，从程序集资源里读同一份配置。 -->
+    <EmbeddedResource Include="appsettings.json" />
+    <!-- WPF 窗口的 Icon 属性要从资源里取；ApplicationIcon 只负责 exe/任务栏的 Win32 图标。 -->
+    <Resource Include="icon\icon.ico" />
+    <Resource Include="Assets\Help\*.png" />
+  </ItemGroup>
+
+  <!-- ViewModel / 服务都是 internal（默认不对外暴露），测试程序集需要看得见它们（AGENTS.md §2.4、§4）。 -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="EiTRVO.Core.App.Tests" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,208 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P09ResourcesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p09 资源包 / 存档。对应 mockup/pages/p09-resources.html。
+    结构：区块标题（添加文件）→ 资源包优先级列表 → 资源包动作条 → 1px 分隔线 →
+          存档小标题（备份全部存档）→ 存档表（固定 4 行视口）→ 贴底动作条。
+    存档表里 9 行数据配 120px 视口，因此会出现纵向滚动 —— 这正是原图的行为。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <!-- M7-g-2b：资源包动作的结果（失败原因 / 备份去向），为空时高度为 0。 -->
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <c:SectionHeader Grid.Row="0"
+                       Icon="&#xE8F1;"
+                       Title="{Binding SectionTitle}"
+                       Subtitle="{Binding SectionSubtitle}">
+        <c:IconButton Icon="&#xE8E5;" Text="{loc:Text 添加文件}"
+                      Command="{Binding AddFileCommand}"
+                      ToolTip="{loc:Text 选择一个本地资源包 .zip，导入当前实例的 resourcepacks 文件夹。}" />
+        <c:IconButton Icon="&#xE896;" Text="{loc:Text 从 Modrinth 下载}" Margin="8,0,0,0"
+                      Command="{Binding OpenModrinthCommand}"
+                      ToolTip="{loc:Text 搜索 Modrinth 上的资源包；下载会按当前实例的游戏版本排进「下载与队列」。}" />
+      </c:SectionHeader>
+
+      <!--
+        资源包（按优先级排序；列表第一行 = 游戏「选择资源包」界面里最上面的那个 = 最高优先级）。
+        M7-g-2b 起这是**可选列表**（账户列表同款 PickerRowItem）：选中一行才能对它做启用 / 停用 /
+        上移 / 下移 / 删除。高亮由容器的 IsSelected 驱动（设计稿的 `.opt.sel`），行模板不再自己画竖条。
+      -->
+      <Grid Grid.Row="1" Margin="18,0,18,0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <c:SectionHeader Grid.Row="0" Icon="&#xE8F1;" Title="{loc:Text 资源包}" Subtitle="{Binding ResourcePackCountText}"
+                         TitleSize="14" Padding="0,0,0,6" />
+        <Border Grid.Row="1" MaxHeight="80" Style="{StaticResource PickerListBorder}">
+          <ListBox ItemsSource="{Binding ResourcePacks}"
+                   SelectedItem="{Binding SelectedResourcePack, Mode=TwoWay}"
+                   ItemContainerStyle="{StaticResource PickerRowItem}"
+                   Background="Transparent"
+                   BorderThickness="0"
+                   Padding="0"
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <Grid VerticalAlignment="Center">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Grid.Column="0" VerticalAlignment="Center" FontFamily="{StaticResource Font.Icon}"
+                             FontSize="15" Foreground="#FF333333" Text="&#xE8F1;" />
+                  <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Name}" />
+                  <TextBlock Grid.Column="2" VerticalAlignment="Center" FontWeight="Normal"
+                             Foreground="{StaticResource Brush.TextMuted}" Text="{Binding Detail}" />
+                  <TextBlock x:Name="Badge" Grid.Column="3" VerticalAlignment="Center" FontWeight="Normal"
+                             Text="{loc:Text 已启用}" Foreground="{StaticResource Brush.StateOk}" />
+                </Grid>
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                    <Setter TargetName="Badge" Property="Text" Value="{loc:Text 已禁用}" />
+                    <Setter TargetName="Badge" Property="Foreground" Value="{StaticResource Brush.StateOff}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </Border>
+      </Grid>
+
+      <!-- M7-g-2b：五颗按钮都真的改 options.txt（启用 / 停用 = 启用列表增删，上下移 = 优先级，删除 = 移进回收目录）。
+           可执行性跟着选中行的状态走：已启用的行「启用」是灰的、优先级最高的行「上移」是灰的，反之亦然。 -->
+      <Border Grid.Row="2" Style="{StaticResource ActionBar}" Margin="0,10,0,0" Padding="18,10,18,0">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <WrapPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <c:IconButton Icon="&#xE8A7;" Text="{loc:Text 启用}"
+                          ToolTip="{loc:Text 把选中的资源包加进启用列表（options.txt 的 resourcePacks）。}"
+                          Command="{Binding EnableResourcePackCommand}" />
+            <c:IconButton Icon="&#xE769;" Text="{loc:Text 禁用}" Margin="10,0,0,0"
+                          ToolTip="{loc:Text 把选中的资源包从启用列表里去掉（文件不删）。}"
+                          Command="{Binding DisableResourcePackCommand}" />
+            <c:IconButton Icon="&#xE70E;" Text="{loc:Text 上移优先级}" Margin="10,0,0,0"
+                          ToolTip="{loc:Text 让这个资源包压在上面一层（数字越小越优先，第 1 个就是最高的）。}"
+                          Command="{Binding MoveResourcePackUpCommand}" />
+            <c:IconButton Icon="&#xE70D;" Text="{loc:Text 下移优先级}" Margin="10,0,0,0"
+                          ToolTip="{loc:Text 让这个资源包往下让一层（不会挪到内置包下面）。}"
+                          Command="{Binding MoveResourcePackDownCommand}" />
+            <c:IconButton Icon="&#xE74D;" Text="{loc:Text 删除}" Margin="10,0,0,0"
+                          ToolTip="{loc:Text 把选中的资源包移进备份目录（backups\resourcepacks 下按时间戳分目录），可以从那里拿回来。}"
+                          Command="{Binding DeleteResourcePackCommand}" />
+          </WrapPanel>
+          <c:IconButton Grid.Column="1" Icon="&#xE9D9;" Text="{loc:Text 打开 resourcepacks 目录}" HorizontalAlignment="Right"
+                        Command="{Binding OpenResourcePacksFolderCommand}" />
+        </Grid>
+      </Border>
+
+      <!--
+        M7-g-2b：资源包动作的失败原因 / 成功去向（"文件被移到了哪个目录"）。
+        为空时整行不占高度 —— 与 p07 同一手法。
+      -->
+      <StackPanel Grid.Row="3" Margin="18,4,18,0">
+        <TextBlock Foreground="{StaticResource Brush.StateErr}"
+                   Text="{Binding ActionError}"
+                   Visibility="{Binding ActionError, Converter={StaticResource EmptyToCollapsed}}" />
+        <TextBlock Foreground="{StaticResource Brush.TextMuted}"
+                   Text="{Binding ActionNote}"
+                   Visibility="{Binding ActionNote, Converter={StaticResource EmptyToCollapsed}}" />
+      </StackPanel>
+
+      <Border Grid.Row="4" Style="{StaticResource HairLine}" />
+
+      <c:SectionHeader Grid.Row="5" Icon="&#xE8B7;" Title="{loc:Text 存档}" Subtitle="{Binding SaveCountText}"
+                       TitleSize="14" Padding="18,12,18,6">
+        <!-- M7-f：这一颗按钮真的会排队备份（一个存档一个任务），排完队跳 p06 看进度。 -->
+        <c:IconButton Icon="&#xE896;" Text="{loc:Text 备份全部存档}"
+                      ToolTip="{loc:Text 把这一页里的每个存档各排一个备份任务（队列顺序执行，进度按存档分开看）。}"
+                      Command="{Binding BackupAllCommand}" />
+      </c:SectionHeader>
+
+      <DataGrid Grid.Row="6"
+                Height="120"
+                Margin="18,0,18,12"
+                ItemsSource="{Binding Saves}"
+                SelectedItem="{Binding SelectedSave, Mode=TwoWay}">
+        <DataGrid.Columns>
+          <DataGridTextColumn Width="240" Header="{loc:Text 存档名称}" Binding="{Binding Name}" />
+          <DataGridTextColumn Width="90" Header="{loc:Text 大小}" Binding="{Binding Size}" />
+          <DataGridTextColumn Width="130" Header="{loc:Text 最后游玩}" Binding="{Binding LastPlayed}" />
+          <DataGridTextColumn Width="110" Header="{loc:Text 游戏模式}" Binding="{Binding GameMode}" />
+          <DataGridTextColumn Width="*" Header="{loc:Text 版本}" Binding="{Binding GameVersion}" />
+          <DataGridTemplateColumn Width="110" Header="{loc:Text 状态}">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                  <TextBlock x:Name="Ico" Margin="0,0,4,0" VerticalAlignment="Center"
+                             FontFamily="{StaticResource Font.Icon}" FontSize="11"
+                             Foreground="{StaticResource Brush.StateOff}" Text="&#xE739;" />
+                  <TextBlock x:Name="Txt" VerticalAlignment="Center"
+                             Foreground="{StaticResource Brush.StateOff}" Text="{loc:Text 未备份}" />
+                </StackPanel>
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding IsBackedUp}" Value="True">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE74E;" />
+                    <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+                    <Setter TargetName="Txt" Property="Text" Value="{loc:Text 已备份}" />
+                    <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Grid>
+
+    <Border Grid.Row="1" Style="{StaticResource ActionBarDocked}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+          <!-- M7-f：三颗按钮都排进下载队列（设计稿 p09 里这两个备份按钮的 href 指的就是 p06）。
+               「恢复所选」在设计稿里画成禁用态，实现是**选中一个已备份的存档时才亮** ——
+               有意差异登记在 src/EiTRVO.Core.App/README.md 的差异表里。 -->
+          <c:IconButton Icon="&#xE8B7;" Text="{loc:Text 备份所选}"
+                        ToolTip="{loc:Text 把这个存档打包成备份目录里的一个 zip（先写临时文件、复核通过才替换旧备份）。}"
+                        Command="{Binding BackupSelectedCommand}" />
+          <c:IconButton Icon="&#xE777;" Text="{loc:Text 恢复所选}" Margin="10,0,0,0"
+                        ToolTip="{loc:Text 把备份放回来：当前存档会先整目录移进备份目录（不是删掉），再放入备份里的内容。}"
+                        Command="{Binding RestoreSelectedCommand}" />
+        </WrapPanel>
+        <c:IconButton Grid.Column="1" Icon="&#xE74D;" Text="{loc:Text 删除所选}" HorizontalAlignment="Right"
+                      ToolTip="{loc:Text 把这个存档整目录移进 backups\saves 下按时间戳分的目录，可以从那里拿回来。}"
+                      Command="{Binding DeleteSelectedSaveCommand}" />
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

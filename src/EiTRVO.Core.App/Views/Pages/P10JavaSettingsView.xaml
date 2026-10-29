@@ -1,0 +1,255 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P10JavaSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:lrt="clr-namespace:EiTRVO.Core.Launcher.Runtime;assembly=EiTRVO.Core.Launcher"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p10 Java 与设置（全局）。对应 mockup/pages/p10-java-settings.html。
+    结构：区块标题 → Java 运行时检测表 → 实例 Java 覆盖 → 1px 分隔线 →
+          内存分配 → 1px 分隔线 → 全局设置 → 贴底动作条。
+    这一页改的是所有实例默认继承的全局值；单个实例的覆盖值在 p17。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- 内容区可滚动：窗口高度不足时（最小 620）属性表不该被直接切掉一截 -->
+    <ScrollViewer Grid.Row="0"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+      <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <c:SectionHeader Grid.Row="0" Icon="&#xE713;" Title="{Binding SectionTitle}" Subtitle="{Binding SectionSubtitle}" />
+
+      <c:SectionHeader Grid.Row="1" Icon="&#xE9D9;" Title="{loc:Text Java 运行时}" TitleSize="14" Padding="18,0,18,6">
+        <CheckBox Content="{loc:Text 强制以选定 Java 启动游戏}"
+                  IsChecked="{Binding ForceSelectedJava, Mode=TwoWay}"
+                  IsEnabled="{Binding CanForceSelectedJava}"
+                  VerticalAlignment="Center"
+                  Margin="0,0,12,0"
+                  ToolTip="{loc:Text 开启后忽略游戏版本与实例设置，始终使用表格中选中的 Java。}" />
+        <c:IconButton Icon="&#xE8B7;" Text="{loc:Text 浏览}" Margin="0,0,8,0"
+                      Command="{Binding BrowseCustomJavaCommand}"
+                      ToolTip="{loc:Text 添加用户自有的 Java 可执行文件}" />
+        <c:IconButton Icon="&#xE896;" Text="{loc:Text 获取 Java 25}"
+                      Command="{Binding FetchJavaCommand}" />
+      </c:SectionHeader>
+
+      <DataGrid Grid.Row="2" Height="120" Margin="18,0,18,10" ItemsSource="{Binding Runtimes}"
+                SelectedItem="{Binding SelectedRuntime, Mode=TwoWay}">
+        <DataGrid.Columns>
+          <DataGridTemplateColumn Width="34" Header="">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock x:Name="Ico" VerticalAlignment="Center" FontFamily="{StaticResource Font.Icon}"
+                           FontSize="15" Foreground="{StaticResource Brush.StateOff}" Text="&#xE739;" />
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding State}" Value="{x:Static lrt:JavaRuntimeState.Missing}">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE7BA;" />
+                    <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+                  </DataTrigger>
+                  <!-- 对号表示“当前选中的运行时”，所以必须跟着 DataGridRow.IsSelected 走，
+                       而不是像以前那样所有可用行都画对号。 -->
+                  <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}}"
+                               Value="True">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE73E;" />
+                    <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+          <DataGridTextColumn Width="120" Header="{loc:Text 版本}" Binding="{Binding Version}" />
+          <DataGridTextColumn Width="90" Header="{loc:Text 位数}" Binding="{Binding Bits}" />
+          <DataGridTextColumn Width="130" Header="{loc:Text 供应商}" Binding="{Binding Vendor}" />
+          <DataGridTextColumn Width="*" Header="{loc:Text 路径}" Binding="{Binding Path}" />
+          <DataGridTemplateColumn Width="110" Header="{loc:Text 适用版本}">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock x:Name="Txt" VerticalAlignment="Center"
+                           Foreground="{StaticResource Brush.StateOk}" Text="{Binding SupportedRange}" />
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding State}" Value="{x:Static lrt:JavaRuntimeState.Missing}">
+                    <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+        </DataGrid.Columns>
+      </DataGrid>
+
+      <Grid Grid.Row="3" Margin="18,0,18,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Border Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Style="{StaticResource PropsDivider}" />
+        
+        <TextBlock Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text Java 覆盖（全局默认）}" ToolTip="{loc:Text 所有实例的默认 Java；单个实例可在「实例设置」页覆盖。}" />
+        <ComboBox Grid.Column="1" Margin="0,0,8,0" MinWidth="0"
+                  ItemsSource="{Binding JavaOverrideOptions}" ItemTemplate="{StaticResource ChoiceOptionText}"
+                  SelectedValuePath="Value" SelectedValue="{Binding JavaOverride, Mode=TwoWay}"
+                  ToolTip="{loc:Text 留空则按版本自动匹配；这里填的是所有实例的默认值，可被单个实例覆盖。}" />
+        <TextBlock Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 自动获取}" />
+        <CheckBox Grid.Column="3" VerticalAlignment="Center" IsChecked="{Binding AutoFetchJava, Mode=TwoWay}"
+                  Content="{loc:Text 缺失时自动下载 Mojang 官方 JRE}" />
+      </Grid>
+
+      <Border Grid.Row="4" Style="{StaticResource HairLine}" />
+
+      <c:SectionHeader Grid.Row="5" Icon="&#xE9D2;" Title="{loc:Text 内存分配}" TitleSize="14" Padding="18,12,18,6" />
+
+      <!-- ==================== 内存分配 ====================
+           设计稿（p10 原图）在这里是 **两个** 网格：
+             ① 130px / 1fr 一行，只放「最大内存 (Xmx)」；
+             ② 130px / 1fr / 130px / 1fr 两行，放 JVM 参数 + 游戏窗口 + 全屏启动 + 启动附加参数。
+           这两块以前被我并进了「全局设置」，所以那一块才显得又挤又多行。 -->
+      <Grid Grid.Row="6" Margin="18,0,18,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 最大内存 (Xmx)}" />
+        <StackPanel Grid.Row="0" Grid.Column="1" MinHeight="{StaticResource Size.PropRowHeight}" Margin="0,0,0,2">
+          <StackPanel Orientation="Horizontal">
+            <Slider Width="260" Minimum="1024" Maximum="16384" TickFrequency="512"
+                    IsSnapToTickEnabled="True" VerticalAlignment="Center"
+                    Value="{Binding MaxMemoryMb, Mode=TwoWay}" />
+            <TextBox MinWidth="0" Width="90" Margin="12,0,0,0" Text="{Binding MaxMemoryMb, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" Text="MB" />
+          </StackPanel>
+          <TextBlock Margin="0,2,0,0" Style="{StaticResource Text.SmallMuted}" Text="{Binding MemoryHint}" />
+        </StackPanel>
+      </Grid>
+
+      <Grid Grid.Row="7" Margin="18,0,18,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource PropsDivider}" />
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text JVM 参数}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,8,0" MinWidth="0"
+                 Text="{Binding JvmArguments, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+        <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 游戏窗口}" />
+        <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal">
+          <TextBox MinWidth="0" Width="70" Text="{Binding WindowWidth, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+          <TextBlock Margin="6,0,6,0" VerticalAlignment="Center" Text="×" />
+          <TextBox MinWidth="0" Width="70" Text="{Binding WindowHeight, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+        </StackPanel>
+
+        <!-- 设计稿这一格是空标签，用来把「全屏启动」对到第 2 列 -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="" />
+        <CheckBox Grid.Row="1" Grid.Column="1" Margin="0,0,8,0" VerticalAlignment="Center"
+                  IsChecked="{Binding Fullscreen, Mode=TwoWay}" Content="{loc:Text 全屏启动}" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 启动附加参数}" />
+        <TextBox Grid.Row="1" Grid.Column="3" MinWidth="0"
+                 Text="{Binding ExtraGameArguments, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+      </Grid>
+
+      <Border Grid.Row="8" Style="{StaticResource HairLine}" />
+
+      <c:SectionHeader Grid.Row="9" Icon="&#xE713;" Title="{loc:Text 全局设置}" TitleSize="14" Padding="18,12,18,6" />
+
+      <!-- ==================== 全局设置（设计稿只有 3 行） ==================== -->
+      <Grid Grid.Row="10" Margin="18,0,18,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="130" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Style="{StaticResource PropsDivider}" />
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 游戏目录}" />
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0,0,8,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <TextBox MinWidth="0"
+                   Margin="0,0,8,0"
+                   Text="{Binding GameDirectory, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+          <c:IconButton Grid.Column="1"
+                        Icon="&#xE8B7;"
+                        Text="{loc:Text 浏览}"
+                        Command="{Binding BrowseGameDirectoryCommand}" />
+        </Grid>
+        <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 下载源}" />
+        <TextBlock Grid.Row="0" Grid.Column="3" Style="{StaticResource Text.PropValue}"
+                   Text="{loc:Text 官方源（piston-meta.mojang.com）}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 并发下载数}" />
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,8,0" MinWidth="0"
+                  ItemsSource="{Binding ConcurrentDownloadOptions}" ItemTemplate="{StaticResource ChoiceOptionText}"
+                  SelectedValuePath="Value" SelectedValue="{Binding ConcurrentDownloads, Mode=TwoWay}" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 启动后}" />
+        <CheckBox Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"
+                  IsChecked="{Binding MinimizeAfterLaunch, Mode=TwoWay}" Content="{loc:Text 启动游戏后最小化启动器}" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 语言}" />
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,0,8,0" MinWidth="0"
+                  ItemsSource="{Binding LanguageOptions}" ItemTemplate="{StaticResource ChoiceOptionText}"
+                  SelectedValuePath="Value" SelectedValue="{Binding Language, Mode=TwoWay}" />
+        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 崩溃时}" />
+        <CheckBox Grid.Row="2" Grid.Column="3" VerticalAlignment="Center"
+                  IsChecked="{Binding KeepLogsOnCrash, Mode=TwoWay}" Content="{loc:Text 保留日志并提示查看诊断}" />
+      </Grid>
+    </Grid>
+    </ScrollViewer>
+
+    <Border Grid.Row="1" Style="{StaticResource ActionBarDocked}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+          <c:IconButton Icon="&#xE8B7;" Text="{loc:Text 重新检测 Java}" Command="{Binding RedetectCommand}" />
+          <c:IconButton Icon="&#xE9F9;" Text="{loc:Text 重置为默认}" Margin="10,0,0,0" Command="{Binding ResetToDefaultCommand}" />
+        </WrapPanel>
+        <c:IconButton Grid.Column="1" Icon="&#xE73E;" Text="{loc:Text 保存设置}" HorizontalAlignment="Right"
+                      Style="{StaticResource IconButton.PrimaryCompact}" Command="{Binding SaveCommand}" />
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

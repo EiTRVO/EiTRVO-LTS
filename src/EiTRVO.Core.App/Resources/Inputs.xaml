@@ -1,0 +1,366 @@
+<!--
+  Inputs.xaml — 输入控件样式。
+
+  几何与配色来自 shell.css：
+    · .input / select.input    22px 高 / 1px #ababab 边 / 白底 / 左右 6px 内边距
+    · .input:focus             1px 主色边（不是系统焦点虚线框）
+    · .input[readonly]         #f7f7f7 底 + #6d6d6d 字
+    · .checkline .box          13×13 方框 / 1px #8a8a8a / 选中时主色边 + 主色对勾
+    · .slider                  4px 轨道 / 12×14 方形滑块 / 已选段主色
+    · .mini-progress           10px 描边条 + 主色填充
+  控件一律直角、无阴影：Server Manager 的骨架不允许圆角。
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- ==================== 文本框 ==================== -->
+  <Style TargetType="TextBox">
+    <Setter Property="Height" Value="{StaticResource Size.ControlHeight}" />
+    <!-- 设计稿 .input{min-width:200px} 是浏览器最小宽度；WPF 里窗口可缩放，
+         保留它会让输入框在窄窗口下越过列边界，所以这里不设最小宽度，由列宽决定。 -->
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="Padding" Value="6,0,6,0" />
+    <Setter Property="Background" Value="{StaticResource Brush.White}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.ControlBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SelectionBrush" Value="{StaticResource Brush.Accent}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="TextBox">
+          <Border x:Name="Bd"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  SnapsToDevicePixels="True">
+            <!-- 2026-10-06 实机反馈"设置页面的 Textbox 输入时文字不是从左侧开始"：
+                 `TextBoxBase` 自己就会把 `Control.Padding` 应用到内容宿主上，这里再写一次
+                 `Margin="{TemplateBinding Padding}"` 等于**把内边距加了两遍** ——
+                 实测：只留框架那一遍时文字起点 6dip（= 设计稿 `.input{padding:0 6px}` + 1px 边框），
+                 两遍时是 15～16dip（白白吃掉 9dip 宽度，长值因此被截断：JVM 参数的默认值就是这样少显示一位）。
+                 所以这里**必须留空**：Padding 由 TextBox 自己那一次给。 -->
+            <ScrollViewer x:Name="PART_ContentHost"
+                          VerticalAlignment="Center"
+                          Focusable="False"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Hidden" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.ButtonHoverBorder}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.Accent}" />
+            </Trigger>
+            <Trigger Property="IsReadOnly" Value="True">
+              <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.ControlDisabledBackground}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="{StaticResource Brush.ControlDisabledText}" />
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.ControlDisabledBackground}" />
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.ControlDisabledBorder}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 下拉框 ==================== -->
+  <!--
+    ChoiceOption<T> 的显示模板。
+    必须用 ItemTemplate 而不是 DisplayMemberPath：自定义 ComboBox 模板时，
+    选中框渲染的是 ComboBox.SelectionBoxItem + SelectionBoxItemTemplate，
+    而 SelectionBoxItemTemplate 只跟随 ItemTemplate —— 用 DisplayMemberPath 的话
+    选中框会退化成显示记录的 ToString()（实测就是「ChoiceOption { Text = 64, Value = 64 }」）。
+  -->
+  <DataTemplate x:Key="ChoiceOptionText">
+    <TextBlock VerticalAlignment="Center" Text="{Binding Text}" />
+  </DataTemplate>
+
+  <Style TargetType="ComboBoxItem">
+    <Setter Property="Height" Value="{StaticResource Size.RowHeight}" />
+    <Setter Property="Padding" Value="6,0,6,0" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ComboBoxItem">
+          <Border x:Name="Bd"
+                  Background="Transparent"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.RowHover}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.AccentSelected}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="ComboBox">
+    <Setter Property="Height" Value="{StaticResource Size.ControlHeight}" />
+    <!-- 设计稿 .input{min-width:200px} 是浏览器最小宽度；WPF 里窗口可缩放，
+         保留它会让输入框在窄窗口下越过列边界，所以这里不设最小宽度，由列宽决定。 -->
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="MaxDropDownHeight" Value="260" />
+    <Setter Property="Background" Value="{StaticResource Brush.White}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.ControlBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ComboBox">
+          <Grid>
+            <ToggleButton x:Name="ToggleButton"
+                          Focusable="False"
+                          ClickMode="Press"
+                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+              <ToggleButton.Template>
+                <ControlTemplate TargetType="ToggleButton">
+                  <Border x:Name="Bd"
+                          Background="{StaticResource Brush.White}"
+                          BorderBrush="{StaticResource Brush.ControlBorder}"
+                          BorderThickness="1"
+                          SnapsToDevicePixels="True">
+                    <Grid>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                      </Grid.ColumnDefinitions>
+                      <ContentPresenter Grid.Column="0"
+                                        Margin="6,0,6,0"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Content="{Binding SelectionBoxItem, RelativeSource={RelativeSource AncestorType=ComboBox}}"
+                                        ContentTemplate="{Binding SelectionBoxItemTemplate, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+                      <Path Grid.Column="1"
+                            Margin="0,0,6,0"
+                            VerticalAlignment="Center"
+                            Fill="{StaticResource Brush.CaretDark}"
+                            Data="M 0,0 L 6,0 L 3,4 Z" />
+                    </Grid>
+                  </Border>
+                  <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                      <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.ButtonHoverBorder}" />
+                    </Trigger>
+                  </ControlTemplate.Triggers>
+                </ControlTemplate>
+              </ToggleButton.Template>
+            </ToggleButton>
+            <Popup x:Name="PART_Popup"
+                   AllowsTransparency="True"
+                   Placement="Bottom"
+                   Focusable="False"
+                   PopupAnimation="None"
+                   IsOpen="{TemplateBinding IsDropDownOpen}">
+              <Border x:Name="DropDownBorder"
+                      Background="{StaticResource Brush.White}"
+                      BorderBrush="{StaticResource Brush.ControlBorder}"
+                      BorderThickness="1"
+                      MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                      MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                      SnapsToDevicePixels="True">
+                <ScrollViewer SnapsToDevicePixels="True">
+                  <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                </ScrollViewer>
+              </Border>
+            </Popup>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="{StaticResource Brush.ControlDisabledText}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 复选框 ==================== -->
+  <!-- .checkline：13×13 方框 + 8px 间距 + 12px 标签 -->
+  <Style TargetType="CheckBox">
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="CheckBox">
+          <StackPanel Orientation="Horizontal" Background="Transparent">
+            <Border x:Name="Box"
+                    Width="13"
+                    Height="13"
+                    VerticalAlignment="Center"
+                    Background="{StaticResource Brush.White}"
+                    BorderBrush="{StaticResource Brush.CheckBoxBorder}"
+                    BorderThickness="1"
+                    SnapsToDevicePixels="True">
+              <TextBlock x:Name="Tick"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontFamily="{StaticResource Font.Icon}"
+                         FontSize="9"
+                         Foreground="{StaticResource Brush.Accent}"
+                         Text="&#xE73E;"
+                         Visibility="Collapsed" />
+            </Border>
+            <ContentPresenter Margin="8,0,0,0"
+                              VerticalAlignment="Center"
+                              RecognizesAccessKey="True" />
+          </StackPanel>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+              <Setter TargetName="Tick" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource Brush.Accent}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="{StaticResource Brush.ControlDisabledText}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 滑块（内存分配） ==================== -->
+  <Style x:Key="SliderThumb" TargetType="Thumb">
+    <Setter Property="Width" Value="12" />
+    <Setter Property="Height" Value="14" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Thumb">
+          <Border Background="{StaticResource Brush.ChromeBackground}"
+                  BorderBrush="{StaticResource Brush.CheckBoxBorder}"
+                  BorderThickness="1"
+                  SnapsToDevicePixels="True" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="SliderRepeatSelected" TargetType="RepeatButton">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="RepeatButton">
+          <Border Height="4" VerticalAlignment="Center" Background="{StaticResource Brush.Accent}" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="SliderRepeatUnselected" TargetType="RepeatButton">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="RepeatButton">
+          <Border Height="4" VerticalAlignment="Center" Background="{StaticResource Brush.SliderTrack}" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="Slider">
+    <Setter Property="Height" Value="14" />
+    <Setter Property="MinWidth" Value="150" />
+    <Setter Property="IsMoveToPointEnabled" Value="True" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Slider">
+          <Grid Height="14" VerticalAlignment="Center" Background="Transparent">
+            <Border Height="4" VerticalAlignment="Center" Background="{StaticResource Brush.SliderTrack}" />
+            <Track x:Name="PART_Track" VerticalAlignment="Center">
+              <Track.DecreaseRepeatButton>
+                <RepeatButton Style="{StaticResource SliderRepeatSelected}" Command="Slider.DecreaseLarge" />
+              </Track.DecreaseRepeatButton>
+              <Track.Thumb>
+                <Thumb Style="{StaticResource SliderThumb}" />
+              </Track.Thumb>
+              <Track.IncreaseRepeatButton>
+                <RepeatButton Style="{StaticResource SliderRepeatUnselected}" Command="Slider.IncreaseLarge" />
+              </Track.IncreaseRepeatButton>
+            </Track>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Opacity" Value="0.55" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 进度条轨道（供 MiniProgressBar 内部使用） ==================== -->
+  <Style x:Key="MiniProgressTrack" TargetType="ProgressBar">
+    <Setter Property="Minimum" Value="0" />
+    <Setter Property="Maximum" Value="100" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ProgressBar">
+          <Border Background="{StaticResource Brush.ProgressTrackBackground}"
+                  BorderBrush="{StaticResource Brush.ProgressTrackBorder}"
+                  BorderThickness="1"
+                  ClipToBounds="True"
+                  SnapsToDevicePixels="True">
+            <Grid>
+              <Rectangle x:Name="PART_Track" Fill="Transparent" />
+              <Rectangle x:Name="PART_Indicator"
+                         HorizontalAlignment="Left"
+                         Fill="{StaticResource Brush.Accent}" />
+              <!-- 不确定进度：一根滑动的小块（总量未知时不能画一个假的百分比）。 -->
+              <Rectangle x:Name="IndeterminateBar"
+                         Width="36"
+                         HorizontalAlignment="Left"
+                         Fill="{StaticResource Brush.Accent}"
+                         Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                  <TranslateTransform x:Name="IndeterminateSlide" X="-36" />
+                </Rectangle.RenderTransform>
+              </Rectangle>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsIndeterminate" Value="True">
+              <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="IndeterminateBar" Property="Visibility" Value="Visible" />
+              <Trigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard RepeatBehavior="Forever">
+                    <DoubleAnimation Storyboard.TargetName="IndeterminateSlide"
+                                     Storyboard.TargetProperty="X"
+                                     From="-36"
+                                     To="150"
+                                     Duration="0:0:1.2" />
+                  </Storyboard>
+                </BeginStoryboard>
+              </Trigger.EnterActions>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

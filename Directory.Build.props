@@ -1,0 +1,27 @@
+<Project>
+
+  <!--
+    AGENTS.md §4 强制要求的构建设置。
+    注意：这里刻意 **不** 设置 TargetFramework —— 各项目自行声明
+    （App = net8.0-windows；Launcher / Auth = net8.0，用编译器保证不引入 UI 类型）。
+  -->
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <NeutralLanguage>zh-CN</NeutralLanguage>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <!--
+      打开 XML 文档生成，IDE0005（删除不必要的 using）才会在构建期生效 —— Roslyn 对此有硬性要求，
+      否则 EnforceCodeStyleInBuild 会直接报 CSC error EnableGenerateDocumentationFile。
+      CS1591（公共成员缺少 XML 注释）随之抑制：本仓库要求“有注释”，但不强制每个成员都有。
+    -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>

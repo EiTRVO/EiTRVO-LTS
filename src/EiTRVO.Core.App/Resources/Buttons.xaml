@@ -1,0 +1,327 @@
+<!--
+  Buttons.xaml — 按钮族样式。
+
+  几何全部来自 shell.css：
+    · .btn-secondary           22px 高 / 1px #ababab 边 / #fdfdfd 底 / 悬停 #e5f1fb
+    · .btn-primary.compact     与次级同尺寸，仅换成主色 #0078d7 + 白字（12px 常规字重）
+    · .taskbtn                 22px 高 / 无间距变化 / 深色小三角
+    · .headtools .tool         32px 高 / 深色页头 / 白字 / 悬停 #3f3f3f
+    · .caret                   9×9 方框 + 纯三角（深底 / 浅底两态）
+  所有按钮都用默认箭头光标：设计稿写的是 cursor:default，不是手型。
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:EiTRVO.Core.App.Controls">
+
+  <!-- ==================== 下拉三角 ==================== -->
+  <Style TargetType="{x:Type c:CaretGlyph}">
+    <Setter Property="Width" Value="9" />
+    <Setter Property="Height" Value="9" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:CaretGlyph}">
+          <!-- 2026-10-24 用户要求：下拉三角外侧不要再画方框，只留三角形。 -->
+          <Border Background="Transparent" BorderThickness="0">
+            <Path HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Fill="{StaticResource Brush.White}"
+                  Data="M 0,0 L 6,0 L 3,4 Z" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- 深色三角 / 透明底：用于浅色背景上的「任务 ▾」 -->
+  <Style x:Key="CaretGlyph.Dark" TargetType="{x:Type c:CaretGlyph}">
+    <Setter Property="Width" Value="9" />
+    <Setter Property="Height" Value="9" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:CaretGlyph}">
+          <Border Background="Transparent" BorderThickness="0">
+            <Path HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Fill="{StaticResource Brush.CaretDark}"
+                  Data="M 0,0 L 6,0 L 3,4 Z" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 「图标 + 文字」按钮 ==================== -->
+  <!-- 默认形态 = 次级按钮（.btn-secondary） -->
+  <Style TargetType="{x:Type c:IconButton}">
+    <Setter Property="Height" Value="{StaticResource Size.ControlHeight}" />
+    <Setter Property="Padding" Value="10,0,10,0" />
+    <Setter Property="Background" Value="{StaticResource Brush.ControlBackground}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.ControlBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:IconButton}">
+          <Border x:Name="Bd"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+              <TextBlock x:Name="Glyph"
+                         VerticalAlignment="Center"
+                         FontFamily="{StaticResource Font.Icon}"
+                         FontSize="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                         Text="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                         Visibility="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyToCollapsed}}" />
+              <TextBlock x:Name="Label"
+                         Margin="6,0,0,0"
+                         VerticalAlignment="Center"
+                         Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
+                         Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyToCollapsed}}" />
+            </StackPanel>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.AccentHover}" />
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.ButtonHoverBorder}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="{StaticResource Brush.ControlDisabledText}" />
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.ControlDisabledBackground}" />
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.ControlDisabledBorder}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- 主按钮（紧凑版 .btn-primary.compact）：与次级按钮同尺寸，只换成主色 -->
+  <Style x:Key="IconButton.PrimaryCompact" TargetType="{x:Type c:IconButton}"
+         BasedOn="{StaticResource {x:Type c:IconButton}}">
+    <Setter Property="Background" Value="{StaticResource Brush.Accent}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.Accent}" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.White}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:IconButton}">
+          <Border x:Name="Bd"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+              <TextBlock x:Name="Glyph"
+                         VerticalAlignment="Center"
+                         FontFamily="{StaticResource Font.Icon}"
+                         FontSize="13"
+                         Text="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                         Visibility="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyToCollapsed}}" />
+              <TextBlock x:Name="Label"
+                         Margin="6,0,0,0"
+                         VerticalAlignment="Center"
+                         Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
+                         Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyToCollapsed}}" />
+            </StackPanel>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.PrimaryHover}" />
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.PrimaryHover}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.PrimaryDisabled}" />
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.PrimaryDisabled}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- 筛选行里的 24×22 小图标方钮（.iconbtn）：只有图标、没有文字 -->
+  <Style x:Key="IconButton.IconBox" TargetType="{x:Type c:IconButton}"
+         BasedOn="{StaticResource {x:Type c:IconButton}}">
+    <Setter Property="Width" Value="24" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+
+  <!-- 破坏性操作按钮（设计稿 p13 的「删除」：红边红字） -->
+  <Style x:Key="IconButton.Danger" TargetType="{x:Type c:IconButton}"
+         BasedOn="{StaticResource {x:Type c:IconButton}}">
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.Danger}" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Danger}" />
+  </Style>
+
+  <!-- ==================== 「任务 ▾」 ==================== -->
+  <Style TargetType="{x:Type c:TaskButton}">
+    <Setter Property="Height" Value="{StaticResource Size.ControlHeight}" />
+    <Setter Property="Padding" Value="8,0,8,0" />
+    <Setter Property="Background" Value="{StaticResource Brush.ControlBackground}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.ControlBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:TaskButton}">
+          <Border x:Name="Bd"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+              <!-- 图标与文字之间是 6px；三角前面另加 2px -->
+              <TextBlock VerticalAlignment="Center"
+                         FontFamily="{StaticResource Font.Icon}"
+                         FontSize="12"
+                         Foreground="{StaticResource Brush.SectionGlyph}"
+                         Text="&#xE712;" />
+              <TextBlock Margin="6,0,0,0"
+                         VerticalAlignment="Center"
+                         Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" />
+              <c:CaretGlyph Style="{StaticResource CaretGlyph.Dark}" Margin="2,0,0,0" />
+            </StackPanel>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.AccentHover}" />
+              <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.ButtonHoverBorder}" />
+            </Trigger>
+            <!-- p06 自己的两处「任务」按规范稿保留为纯装饰：禁用必须看得出来（不能看着像能点）。 -->
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="Bd" Property="Opacity" Value="0.5" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 深色页头工具按钮 ==================== -->
+  <Style TargetType="{x:Type c:HeaderTool}">
+    <Setter Property="Height" Value="32" />
+    <Setter Property="Padding" Value="8,0,8,0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.PageHeadForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:HeaderTool}">
+          <Border x:Name="Bd"
+                  Background="{TemplateBinding Background}"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+              <TextBlock VerticalAlignment="Center"
+                         FontFamily="{StaticResource Font.Icon}"
+                         FontSize="15"
+                         Text="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <TextBlock x:Name="Label"
+                         Margin="6,0,0,0"
+                         VerticalAlignment="Center"
+                         Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
+                         Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyToCollapsed}}" />
+              <Border x:Name="Badge"
+                      Margin="6,0,0,0"
+                      MinWidth="15"
+                      Height="15"
+                      Padding="4,0,4,0"
+                      Background="{StaticResource Brush.Accent}"
+                      VerticalAlignment="Center"
+                      Visibility="{Binding Badge, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyToCollapsed}}">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="10"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource Brush.White}"
+                           Text="{Binding Badge, RelativeSource={RelativeSource TemplatedParent}}" />
+              </Border>
+              <c:CaretGlyph Margin="2,0,0,0"
+                            VerticalAlignment="Center"
+                            Visibility="{Binding ShowCaret, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibility}}" />
+            </StackPanel>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.PageHeadHover}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="#FF6F6F6F" />
+              <Setter TargetName="Bd" Property="Background" Value="Transparent" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 表格内联链接 ==================== -->
+  <!-- .link{color:#0078d7}，无下划线、无边框、无内外边距（因为是表格单元格内容） -->
+  <Style x:Key="LinkButton" TargetType="Button">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Accent}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="{StaticResource Brush.ControlDisabledText}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== 深色页头提词框 ==================== -->
+  <!-- 规范明确要求自定义 ToolTip：深色直角、1px #5a5a5a 边、不用系统默认气泡 -->
+  <Style TargetType="ToolTip">
+    <Setter Property="Foreground" Value="{StaticResource Brush.PageHeadForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.SmallFont}" />
+    <Setter Property="HasDropShadow" Value="False" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ToolTip">
+          <Border Background="{StaticResource Brush.PageHeadBackground}"
+                  BorderBrush="{StaticResource Brush.ToolDivider}"
+                  BorderThickness="1"
+                  Padding="8,4,8,4">
+            <ContentPresenter />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

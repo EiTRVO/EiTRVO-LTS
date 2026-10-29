@@ -1,0 +1,192 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P02InstancesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p02 本地实例。对应 mockup/pages/p02-instances.html。
+    结构：区块标题 → 筛选行 → 实例表格（固定 8 行视口 = 216px）→ 贴底动作条。
+    这是设计稿里唯一带「启动游戏」的页面（连接性表：启动 → p14，不经实例详情）。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <c:SectionHeader Grid.Row="0"
+                       Icon="&#xE968;"
+                       Title="{Binding SectionTitle}"
+                       Subtitle="{Binding SectionSubtitle}" />
+
+      <!-- 筛选行。筛选框与三个小方钮在设计稿里就是控制台样式的静态控件，
+           本次交付只还原前端，未接任何过滤逻辑（见交付说明的「已知未接线控件」）。 -->
+      <Grid Grid.Row="1" Style="{StaticResource FilterRow}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Style="{StaticResource FilterBoxBorder}">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource Font.Icon}"
+                       FontSize="12"
+                       Text="&#xE71C;" />
+            <!-- 占位文本垫在输入框下面，只在输入为空时显示（设计稿的「筛选器」是占位符） -->
+            <Grid Grid.Column="1">
+              <TextBlock Margin="6,0,6,0"
+                         VerticalAlignment="Center"
+                         IsHitTestVisible="False"
+                         Foreground="{StaticResource Brush.TextMuted}"
+                         Text="{loc:Text 筛选器}">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                      <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                          <Condition Binding="{Binding FilterText}" Value="" />
+                          <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=InstancesFilterBox}" Value="False" />
+                        </MultiDataTrigger.Conditions>
+                        <Setter Property="Visibility" Value="Visible" />
+                      </MultiDataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+              <TextBox x:Name="InstancesFilterBox"
+                       Margin="6,0,6,0"
+                       Padding="0"
+                       VerticalAlignment="Center"
+                       Background="Transparent"
+                       BorderThickness="0"
+                       Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+            <TextBlock Grid.Column="2"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource Font.Icon}"
+                       FontSize="12"
+                       Foreground="{StaticResource Brush.TextMuted}"
+                       Text="&#xE721;" />
+          </Grid>
+        </Border>
+        <c:IconButton Grid.Column="1" Style="{StaticResource IconButton.IconBox}" Icon="&#xE8CB;" Margin="8,0,0,0" ToolTip="{loc:Text 切换排序方向}" Command="{Binding ToggleSortCommand}" />
+        <c:IconButton Grid.Column="2" Style="{StaticResource IconButton.IconBox}" Icon="&#xE72C;" Margin="8,0,0,0" ToolTip="{loc:Text 重新扫描实例目录}" Command="{Binding RefreshCommand}" />
+        <TextBlock Grid.Column="3"
+                   Margin="0,0,0,0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Foreground="{StaticResource Brush.TextMuted}"
+                   Text="{Binding SortHintText}" />
+      </Grid>
+
+      <DataGrid Grid.Row="2"
+                Height="216"
+                Margin="18,0,18,12"
+                ItemsSource="{Binding Instances}"
+                SelectedItem="{Binding SelectedInstance, Mode=TwoWay}">
+        <DataGrid.Columns>
+          <DataGridTemplateColumn Width="34" Header="">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock x:Name="Ico"
+                           VerticalAlignment="Center"
+                           FontFamily="{StaticResource Font.Icon}"
+                           FontSize="15"
+                           Foreground="#FF333333"
+                           Text="&#xE968;" />
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding IsActive}" Value="True">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE73E;" />
+                    <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+
+          <DataGridTemplateColumn Width="190" Header="{loc:Text 实例名称}">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <Button Style="{StaticResource LinkButton}"
+                        Content="{Binding Name}"
+                        Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{x:Static vm:PageId.InstanceDetail}" />
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+
+          <DataGridTextColumn Width="80" Header="{loc:Text 游戏版本}" Binding="{Binding GameVersion}" />
+          <DataGridTextColumn Width="130" Header="{loc:Text 模组加载器}" Binding="{Binding LoaderDisplay}" />
+          <DataGridTextColumn Width="70" Header="{loc:Text 占用空间}" Binding="{Binding SizeOnDisk}" />
+          <DataGridTextColumn Width="*" Header="{loc:Text 上次启动}" Binding="{Binding LastLaunched}" />
+
+          <DataGridTemplateColumn Width="150" Header="{loc:Text 状态}">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{Binding StatusTone, Converter={StaticResource ToneBrush}}"
+                           TextTrimming="CharacterEllipsis"
+                           Text="{Binding StatusText}" />
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Grid>
+
+    <!-- ==================== 贴底动作条 ==================== -->
+    <Border Grid.Row="1" Style="{StaticResource ActionBarDocked}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+          <c:IconButton Icon="&#xE8A7;"
+                        Text="{loc:Text 查看详情}"
+                        Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        CommandParameter="{x:Static vm:PageId.InstanceDetail}" />
+          <c:IconButton Icon="&#xE70F;" Text="{loc:Text 重命名}" Margin="10,0,0,0"
+                        Command="{Binding OpenRenameCommand}" />
+          <c:IconButton Icon="&#xE74D;"
+                        Text="{loc:Text 删除}"
+                        Margin="10,0,0,0"
+                        Command="{Binding OpenDeleteCommand}" />
+        </WrapPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+          <!-- 2026-10-24 用户要求：去掉右下角的「实例设置」按钮（实例设置仍可从实例详情/其它入口进入）。 -->
+          <!-- 启动游戏的唯一入口。颜色保持主色，尺寸与相邻次级按钮一致（22px）。
+               M4-d 起它是**真的启动**（内核编排），不再是纯导航：没有实例时不可点。 -->
+          <c:IconButton Icon="&#xE768;"
+                        Text="{loc:Text 启动游戏}"
+                        Margin="10,0,0,0"
+                        Style="{StaticResource IconButton.PrimaryCompact}"
+                        IsEnabled="{Binding CanStartGame}"
+                        Command="{Binding StartGameCommand}" />
+        </StackPanel>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

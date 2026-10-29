@@ -1,0 +1,158 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P11AccountsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+             xmlns:au="clr-namespace:EiTRVO.Core.Auth;assembly=EiTRVO.Core.Auth"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p11 账户。对应 mockup/pages/p11-accounts.html；「离线登录」那一行与「以离线模式登录」按钮
+    照 p15-dialog-account-login.html 的**页面区**实现（设计稿把添加账户流程的两个状态画在同一个文件里：
+    弹窗是 Microsoft 设备代码流，而页面区那行离线登录属于账户页）。
+    结构：区块标题（添加账户）→ 账户列表 → 离线登录 → 账户动作条 → 1px 分隔线 →
+          皮肤（上传皮肤）→ 皮肤属性。
+    列表项的令牌状态来自数据（TokenState），「刷新令牌」按钮会真的改它；
+    离线账户会被真的派生 UUID 并落盘（D-6）。
+    2026-10-24 用户要求：去掉底部「账户令牌使用 … 不会在启动器内输入密码」说明条。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <c:SectionHeader Grid.Row="0" Icon="&#xE77B;" Title="{Binding SectionTitle}" Subtitle="{Binding SectionSubtitle}" />
+
+    <!--
+      账户列表：**可选**列表（设计稿 `.picker .list` 的 `.opt`/`.opt.sel`）。
+      2026-10-06 用户反馈（Bug2.png）：离线账户也该是"可选的账户" —— 当时这些行是
+      `IsEnabled="False"` 的死行，除了「设为默认」根本没有办法切到另一个账户（包括离线账户）。
+      现在用 ListBox：选中项双向绑到 SelectedAccount，高亮（#cce8ff + 4px 主色左条 + 加粗）
+      由 PickerRowItem 的 IsSelected 驱动，顺带把上下键导航也带上了。
+      右侧工具区是**两个添加入口**（用户要求）：左边「添加微软账户」、右边「添加离线账户」。
+      2026-10-06 之前「添加账户」在页面顶部的「账户」区块标题里，用户点名要把它挪到这里、并改名。
+    -->
+    <c:SectionHeader Grid.Row="1" Icon="&#xE77B;" Title="{loc:Text 账户列表}" TitleSize="14" Padding="18,0,18,6">
+      <c:IconButton Icon="&#xE710;" Text="{loc:Text 添加微软账户}"
+                    Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{x:Static vm:PageId.AccountLogin}" />
+      <c:IconButton Icon="&#xE710;" Text="{loc:Text 添加离线账户}" Margin="10,0,0,0"
+                    Command="{Binding OpenAddOfflineCommand}" />
+    </c:SectionHeader>
+
+    <Border Grid.Row="2" Margin="18,0,18,0" MaxHeight="80" Style="{StaticResource PickerListBorder}">
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <ListBox ItemsSource="{Binding Accounts}"
+                 SelectedItem="{Binding SelectedAccount, Mode=TwoWay}"
+                 ItemContainerStyle="{StaticResource PickerRowItem}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Focusable="True"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="18" />
+                  <ColumnDefinition Width="150" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontFamily="{StaticResource Font.Icon}"
+                           FontSize="15" Foreground="#FF333333" Text="&#xE77B;" />
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding PlayerName}" />
+                <TextBlock Grid.Column="2" VerticalAlignment="Center" FontWeight="Normal"
+                           Foreground="{StaticResource Brush.TextMuted}" TextTrimming="CharacterEllipsis"
+                           Text="{Binding Meta}" />
+                <TextBlock x:Name="Badge" Grid.Column="3" VerticalAlignment="Center" FontWeight="Normal"
+                           Foreground="{StaticResource Brush.StateOk}" Text="{loc:Text 令牌有效}" />
+              </Grid>
+              <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Kind}" Value="{x:Static au:AccountKind.Offline}">
+                  <Setter TargetName="Badge" Property="Text" Value="{loc:Text 仅离线可用}" />
+                  <Setter TargetName="Badge" Property="Foreground" Value="{StaticResource Brush.StateOff}" />
+                  <Setter TargetName="Badge" Property="FontWeight" Value="Normal" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding TokenState}" Value="{x:Static au:TokenState.Expiring}">
+                  <Setter TargetName="Badge" Property="Text" Value="{loc:Text 令牌即将过期}" />
+                  <Setter TargetName="Badge" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding TokenState}" Value="{x:Static au:TokenState.Expired}">
+                  <Setter TargetName="Badge" Property="Text" Value="{loc:Text 需重新登录}" />
+                  <Setter TargetName="Badge" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+                </DataTrigger>
+              </DataTemplate.Triggers>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </Border>
+
+    <!--
+      提示位：只在有错误时占高度（刷新令牌失败必须看得见，见 ActionError 的注释）。
+      以前这里还有一条「离线登录 | 玩家名称」输入行 —— 它不属于本页（设计稿的 p11 里没有），
+      已经搬进「添加离线账户」对话框。
+    -->
+    <TextBlock Grid.Row="3" Margin="18,8,18,0" TextWrapping="Wrap"
+               Foreground="{StaticResource Brush.StateErr}" Text="{Binding ActionError}"
+               Visibility="{Binding ActionError, Converter={StaticResource EmptyToCollapsed}}" />
+
+    <Border Grid.Row="4" Style="{StaticResource ActionBar}" Margin="0,10,0,0" Padding="18,10,18,0">
+      <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <c:IconButton Icon="&#xE8D4;" Text="{loc:Text 重新登录}"
+                      Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                      CommandParameter="{x:Static vm:PageId.AccountLogin}" />
+        <c:IconButton Icon="&#xE8C8;" Text="{loc:Text 刷新令牌}" Margin="10,0,0,0" Command="{Binding RefreshTokensCommand}" />
+        <c:IconButton Icon="&#xE74D;" Text="{loc:Text 移除账户}" Margin="10,0,0,0" Command="{Binding OpenRemoveAccountCommand}" />
+      </WrapPanel>
+    </Border>
+
+    <Border Grid.Row="5" Style="{StaticResource HairLine}" />
+
+    <c:SectionHeader Grid.Row="6" Icon="&#xE8D4;" Title="{loc:Text 皮肤}" Subtitle="{Binding Skin.PlayerName}"
+                     TitleSize="14" Padding="18,12,18,6">
+      <c:IconButton Icon="&#xE898;" Text="{loc:Text 上传皮肤}" Command="{Binding UploadSkinCommand}" />
+      <c:IconButton Icon="&#xE7A7;" Text="{loc:Text 恢复默认皮肤}" Margin="10,0,0,0"
+                    Command="{Binding ResetSkinCommand}" />
+    </c:SectionHeader>
+
+    <Grid Grid.Row="7" Margin="18,0,18,0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="130" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="130" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+      </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource PropsDivider}" />
+
+      <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 当前皮肤}" />
+      <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource Text.PropValue}" Text="{Binding SkinCurrentSkinText}" />
+      <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 披风}" />
+      <TextBlock x:Name="CapeText" Grid.Row="0" Grid.Column="3" Style="{StaticResource Text.PropValue}"
+                 Foreground="{StaticResource Brush.StateOff}" Text="{loc:Text 未拥有}" />
+
+      <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 皮肤模型}" />
+      <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,8,0" MinWidth="0" HorizontalAlignment="Left"
+                ItemsSource="{Binding SkinModelOptions}" ItemTemplate="{StaticResource ChoiceOptionText}"
+                SelectedValuePath="Value" SelectedValue="{Binding SkinModel, Mode=TwoWay}"
+                IsEnabled="{Binding CanChangeSkinModel}"
+                ToolTip="{loc:Text 离线账户没有 Java 版皮肤档案，不能改皮肤模型。}" />
+      <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 最近更新}" />
+      <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource Text.PropValue}" Text="{Binding SkinLastUpdatedText}" />
+    </Grid>
+
+  </Grid>
+</UserControl>

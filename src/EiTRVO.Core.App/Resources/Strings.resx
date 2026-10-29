@@ -1,0 +1,3299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="的项仅作用于本实例；其余项继承" xml:space="preserve">
+    <value> 的项仅作用于本实例；其余项继承</value>
+  </data>
+  <data name="加密存储于本机（仅当前 Windows 用户可解密）。" xml:space="preserve">
+    <value> 加密存储于本机（仅当前 Windows 用户可解密）。</value>
+  </data>
+  <data name="前会先做安全扫描：检查 zip 炸弹、路径穿越、危险扩展名与外部下载源白名单。" xml:space="preserve">
+    <value> 前会先做安全扫描：检查 zip 炸弹、路径穿越、危险扩展名与外部下载源白名单。</value>
+  </data>
+  <data name="需要" xml:space="preserve">
+    <value> 需要 </value>
+  </data>
+  <data name="（EiTRVO 产品线共用，从配置读取）" xml:space="preserve">
+    <value>（EiTRVO 产品线共用，从配置读取）</value>
+  </data>
+  <data name="。可点击「修复依赖」自动补全。" xml:space="preserve">
+    <value>。可点击「修复依赖」自动补全。</value>
+  </data>
+  <data name="。全局值可在「Java 与设置」页修改。" xml:space="preserve">
+    <value>。全局值可在「Java 与设置」页修改。</value>
+  </data>
+  <data name="{0} · 剩余{1}" xml:space="preserve">
+    <value>{0} · 剩余{1}</value>
+  </data>
+  <data name="{0} 个" xml:space="preserve">
+    <value>{0} 个</value>
+  </data>
+  <data name="{0} 个 · {1} 个已备份" xml:space="preserve">
+    <value>{0} 个 · {1} 个已备份</value>
+  </data>
+  <data name="{0} 个（{1}）" xml:space="preserve">
+    <value>{0} 个（{1}）</value>
+  </data>
+  <data name="{0} 个活动任务 · {1} 个排队" xml:space="preserve">
+    <value>{0} 个活动任务 · {1} 个排队</value>
+  </data>
+  <data name="{0} 个已登录账户" xml:space="preserve">
+    <value>{0} 个已登录账户</value>
+  </data>
+  <data name="{0}（{1}，发布于 {2}）" xml:space="preserve">
+    <value>{0}（{1}，发布于 {2}）</value>
+  </data>
+  <data name="{0}（第 {1} 阶段，共 {2} 阶段）" xml:space="preserve">
+    <value>{0}（第 {1} 阶段，共 {2} 阶段）</value>
+  </data>
+  <data name="{0} 个模组缺失依赖" xml:space="preserve">
+    <value>{0} 个模组缺失依赖</value>
+  </data>
+  <data name="（已失效）{0}" xml:space="preserve">
+    <value>（已失效）{0}</value>
+  </data>
+  <data name="Java {0}（已检测到 {1}）" xml:space="preserve">
+    <value>Java {0}（已检测到 {1}）</value>
+  </data>
+  <data name="Java {0}（未检测到，启动前需要获取）" xml:space="preserve">
+    <value>Java {0}（未检测到，启动前需要获取）</value>
+  </data>
+  <data name="Java 与设置" xml:space="preserve">
+    <value>Java 与设置</value>
+  </data>
+  <data name="Java 与设置 — 运行时、内存分配、下载源与全局选项" xml:space="preserve">
+    <value>Java 与设置 — 运行时、内存分配、下载源与全局选项</value>
+  </data>
+  <data name="Java 运行时" xml:space="preserve">
+    <value>Java 运行时</value>
+  </data>
+  <data name="JVM 参数" xml:space="preserve">
+    <value>JVM 参数</value>
+  </data>
+  <data name="安装" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="安装将下载约" xml:space="preserve">
+    <value>安装将下载约 </value>
+  </data>
+  <data name="按上次启动排序" xml:space="preserve">
+    <value>按上次启动排序</value>
+  </data>
+  <data name="按相关性排序" xml:space="preserve">
+    <value>按相关性排序</value>
+  </data>
+  <data name="版本" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="版本清单" xml:space="preserve">
+    <value>版本清单</value>
+  </data>
+  <data name="帮助" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="帮助与关于 — 诊断导出、版本信息、第三方许可" xml:space="preserve">
+    <value>帮助与关于 — 诊断导出、版本信息、第三方许可</value>
+  </data>
+  <data name="保存设置" xml:space="preserve">
+    <value>保存设置</value>
+  </data>
+  <data name="保留日志并提示查看诊断" xml:space="preserve">
+    <value>保留日志并提示查看诊断</value>
+  </data>
+  <data name="备份全部存档" xml:space="preserve">
+    <value>备份全部存档</value>
+  </data>
+  <data name="备份所选" xml:space="preserve">
+    <value>备份所选</value>
+  </data>
+  <data name="备注" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="本地实例" xml:space="preserve">
+    <value>本地实例</value>
+  </data>
+  <data name="本地文件" xml:space="preserve">
+    <value>本地文件</value>
+  </data>
+  <data name="本地状态" xml:space="preserve">
+    <value>本地状态</value>
+  </data>
+  <data name="崩溃时" xml:space="preserve">
+    <value>崩溃时</value>
+  </data>
+  <data name="并发连接" xml:space="preserve">
+    <value>并发连接</value>
+  </data>
+  <data name="并发下载数" xml:space="preserve">
+    <value>并发下载数</value>
+  </data>
+  <data name="不会在启动器内输入密码" xml:space="preserve">
+    <value>不会在启动器内输入密码</value>
+  </data>
+  <data name="不可用" xml:space="preserve">
+    <value>不可用</value>
+  </data>
+  <data name="不推荐用于整合包" xml:space="preserve">
+    <value>不推荐用于整合包</value>
+  </data>
+  <data name="操作" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="操作系统版本" xml:space="preserve">
+    <value>操作系统版本</value>
+  </data>
+  <data name="查看第三方许可" xml:space="preserve">
+    <value>查看第三方许可</value>
+  </data>
+  <data name="查看实时日志" xml:space="preserve">
+    <value>查看实时日志</value>
+  </data>
+  <data name="查看下载队列" xml:space="preserve">
+    <value>查看下载队列</value>
+  </data>
+  <data name="查看详情" xml:space="preserve">
+    <value>查看详情</value>
+  </data>
+  <data name="查看运行状态" xml:space="preserve">
+    <value>查看运行状态</value>
+  </data>
+  <data name="产品名称" xml:space="preserve">
+    <value>产品名称</value>
+  </data>
+  <data name="成功" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="处理器" xml:space="preserve">
+    <value>处理器</value>
+  </data>
+  <data name="窗口尺寸" xml:space="preserve">
+    <value>窗口尺寸</value>
+  </data>
+  <data name="窗口化" xml:space="preserve">
+    <value>窗口化</value>
+  </data>
+  <data name="此操作不可撤销。" xml:space="preserve">
+    <value>此操作不可撤销。</value>
+  </data>
+  <data name="从 Modrinth 浏览" xml:space="preserve">
+    <value>从 Modrinth 浏览</value>
+  </data>
+  <data name="从 Modrinth 添加" xml:space="preserve">
+    <value>从 Modrinth 添加</value>
+  </data>
+  <data name="从文件导入 .mrpack" xml:space="preserve">
+    <value>从文件导入 .mrpack</value>
+  </data>
+  <data name="存档" xml:space="preserve">
+    <value>存档</value>
+  </data>
+  <data name="存档加密锁不在首期范围（见功能总清单 O-2）" xml:space="preserve">
+    <value>存档加密锁不在首期范围（见功能总清单 O-2）</value>
+  </data>
+  <data name="存档名称" xml:space="preserve">
+    <value>存档名称</value>
+  </data>
+  <data name="错误" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="打开" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="打开 mods 目录" xml:space="preserve">
+    <value>打开 mods 目录</value>
+  </data>
+  <data name="打开 resourcepacks 目录" xml:space="preserve">
+    <value>打开 resourcepacks 目录</value>
+  </data>
+  <data name="打开日志目录" xml:space="preserve">
+    <value>打开日志目录</value>
+  </data>
+  <data name="打开游戏目录" xml:space="preserve">
+    <value>打开游戏目录</value>
+  </data>
+  <data name="大小" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="带" xml:space="preserve">
+    <value>带 </value>
+  </data>
+  <data name="待执行" xml:space="preserve">
+    <value>待执行</value>
+  </data>
+  <data name="当前阶段" xml:space="preserve">
+    <value>当前阶段</value>
+  </data>
+  <data name="当前皮肤" xml:space="preserve">
+    <value>当前皮肤</value>
+  </data>
+  <data name="当前任务" xml:space="preserve">
+    <value>当前任务</value>
+  </data>
+  <data name="当前实例" xml:space="preserve">
+    <value>当前实例</value>
+  </data>
+  <data name="当前速度" xml:space="preserve">
+    <value>当前速度</value>
+  </data>
+  <data name="当前未运行游戏" xml:space="preserve">
+    <value>当前未运行游戏</value>
+  </data>
+  <data name="当前文件" xml:space="preserve">
+    <value>当前文件</value>
+  </data>
+  <data name="当前已是最新版本" xml:space="preserve">
+    <value>当前已是最新版本</value>
+  </data>
+  <data name="导出" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="导出当前实例" xml:space="preserve">
+    <value>导出当前实例</value>
+  </data>
+  <data name="导出账户（DPAPI 加密）" xml:space="preserve">
+    <value>导出账户（DPAPI 加密）</value>
+  </data>
+  <data name="导出诊断日志" xml:space="preserve">
+    <value>导出诊断日志</value>
+  </data>
+  <data name="导入" xml:space="preserve">
+    <value>导入 </value>
+  </data>
+  <data name="登录" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="登录将使用 Microsoft 设备代码流。" xml:space="preserve">
+    <value>登录将使用 Microsoft 设备代码流。</value>
+  </data>
+  <data name="登录走 Microsoft 设备代码流，" xml:space="preserve">
+    <value>登录走 Microsoft 设备代码流，</value>
+  </data>
+  <data name="等待你在浏览器中完成授权…（代码 {0} 分钟内有效）" xml:space="preserve">
+    <value>等待你在浏览器中完成授权…（代码 {0} 分钟内有效）</value>
+  </data>
+  <data name="正在向 Microsoft 申请设备代码…" xml:space="preserve">
+    <value>正在向 Microsoft 申请设备代码…</value>
+  </data>
+  <data name="已完成授权，正在换取令牌…" xml:space="preserve">
+    <value>已完成授权，正在换取令牌…</value>
+  </data>
+  <data name="正在完成登录（Xbox Live → Minecraft 服务）…" xml:space="preserve">
+    <value>正在完成登录（Xbox Live → Minecraft 服务）…</value>
+  </data>
+  <data name="登录成功。" xml:space="preserve">
+    <value>登录成功。</value>
+  </data>
+  <data name="设备代码已过期，请返回后重新打开本页。" xml:space="preserve">
+    <value>设备代码已过期，请返回后重新打开本页。</value>
+  </data>
+  <data name="登录没有完成，请返回后重试。" xml:space="preserve">
+    <value>登录没有完成，请返回后重试。</value>
+  </data>
+  <data name="正在准备登录…" xml:space="preserve">
+    <value>正在准备登录…</value>
+  </data>
+  <data name="网络不可用，请稍后重试。" xml:space="preserve">
+    <value>网络不可用，请稍后重试。</value>
+  </data>
+  <data name="第 {0} 步，共 {1} 步 · {2}" xml:space="preserve">
+    <value>第 {0} 步，共 {1} 步 · {2}</value>
+  </data>
+  <data name="第 1 步：在浏览器打开" xml:space="preserve">
+    <value>第 1 步：在浏览器打开</value>
+  </data>
+  <data name="第 2 步：输入以下代码" xml:space="preserve">
+    <value>第 2 步：输入以下代码</value>
+  </data>
+  <data name="第三方声明" xml:space="preserve">
+    <value>第三方声明</value>
+  </data>
+  <data name="队列" xml:space="preserve">
+    <value>队列</value>
+  </data>
+  <data name="发布日期" xml:space="preserve">
+    <value>发布日期</value>
+  </data>
+  <data name="返回实例详情" xml:space="preserve">
+    <value>返回实例详情</value>
+  </data>
+  <data name="附加参数" xml:space="preserve">
+    <value>附加参数</value>
+  </data>
+  <data name="复制代码" xml:space="preserve">
+    <value>复制代码</value>
+  </data>
+  <data name="复制链接" xml:space="preserve">
+    <value>复制链接</value>
+  </data>
+  <data name="该版本需要 Java {0}；已检测到 {1}" xml:space="preserve">
+    <value>该版本需要 Java {0}；已检测到 {1}</value>
+  </data>
+  <data name="该版本需要 Java {0}；未检测到可用的运行时" xml:space="preserve">
+    <value>该版本需要 Java {0}；未检测到可用的运行时</value>
+  </data>
+  <data name="该版本需要 Java {0}；尚未检测" xml:space="preserve">
+    <value>该版本需要 Java {0}；尚未检测</value>
+  </data>
+  <data name="该版本需要 Java {0}；指定的运行时不可用" xml:space="preserve">
+    <value>该版本需要 Java {0}；指定的运行时不可用</value>
+  </data>
+  <data name="该实例的配置变更记录" xml:space="preserve">
+    <value>该实例的配置变更记录</value>
+  </data>
+  <data name="该实例还没有模组：可以用「从 Modrinth 添加」，或直接把 .jar 放进 mods 目录。" xml:space="preserve">
+    <value>该实例还没有模组：可以用「从 Modrinth 添加」，或直接把 .jar 放进 mods 目录。</value>
+  </data>
+  <data name="该实例占用 {0}，包含 {1} 个模组与 {2} 个存档。" xml:space="preserve">
+    <value>该实例占用 {0}，包含 {1} 个模组与 {2} 个存档。</value>
+  </data>
+  <data name="刚刚" xml:space="preserve">
+    <value>刚刚</value>
+  </data>
+  <data name="隔离目录" xml:space="preserve">
+    <value>隔离目录</value>
+  </data>
+  <data name="个" xml:space="preserve">
+    <value>个</value>
+  </data>
+  <data name="更新所选" xml:space="preserve">
+    <value>更新所选</value>
+  </data>
+  <data name="供应商" xml:space="preserve">
+    <value>供应商</value>
+  </data>
+  <data name="共 {0} 个实例" xml:space="preserve">
+    <value>共 {0} 个实例</value>
+  </data>
+  <data name="关于" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="官方源（piston-meta.mojang.com）" xml:space="preserve">
+    <value>官方源（piston-meta.mojang.com）</value>
+  </data>
+  <data name="管理 Java 运行时" xml:space="preserve">
+    <value>管理 Java 运行时</value>
+  </data>
+  <data name="管理实例" xml:space="preserve">
+    <value>管理实例</value>
+  </data>
+  <data name="含启动参数（凭据已脱敏）" xml:space="preserve">
+    <value>含启动参数（凭据已脱敏）</value>
+  </data>
+  <data name="恢复所选" xml:space="preserve">
+    <value>恢复所选</value>
+  </data>
+  <data name="获取 Java 25" xml:space="preserve">
+    <value>获取 Java 25</value>
+  </data>
+  <data name="级别" xml:space="preserve">
+    <value>级别</value>
+  </data>
+  <data name="加载器" xml:space="preserve">
+    <value>加载器</value>
+  </data>
+  <data name="加载器版本" xml:space="preserve">
+    <value>加载器版本</value>
+  </data>
+  <data name="加载器匹配" xml:space="preserve">
+    <value>加载器匹配</value>
+  </data>
+  <data name="架构" xml:space="preserve">
+    <value>架构</value>
+  </data>
+  <data name="检查更新" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="简介" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="简体中文" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="阶段" xml:space="preserve">
+    <value>阶段</value>
+  </data>
+  <data name="界面风格来源" xml:space="preserve">
+    <value>界面风格来源</value>
+  </data>
+  <data name="界面基线" xml:space="preserve">
+    <value>界面基线</value>
+  </data>
+  <data name="仅离线" xml:space="preserve">
+    <value>仅离线</value>
+  </data>
+  <data name="仅离线可用" xml:space="preserve">
+    <value>仅离线可用</value>
+  </data>
+  <data name="仅显示：" xml:space="preserve">
+    <value>仅显示：</value>
+  </data>
+  <data name="仅用于单机与离线服" xml:space="preserve">
+    <value>仅用于单机与离线服</value>
+  </data>
+  <data name="请输入玩家名。" xml:space="preserve">
+    <value>请输入玩家名。</value>
+  </data>
+  <data name="玩家名只能包含字母、数字与下划线。" xml:space="preserve">
+    <value>玩家名只能包含字母、数字与下划线。</value>
+  </data>
+  <data name="玩家名太短（至少 {0} 位）。" xml:space="preserve">
+    <value>玩家名太短（至少 {0} 位）。</value>
+  </data>
+  <data name="玩家名太长（最多 {0} 位）。" xml:space="preserve">
+    <value>玩家名太长（最多 {0} 位）。</value>
+  </data>
+  <data name="该玩家名的离线账号已存在。" xml:space="preserve">
+    <value>该玩家名的离线账号已存在。</value>
+  </data>
+  <data name="账户文件写入失败，请检查磁盘与权限。" xml:space="preserve">
+    <value>账户文件写入失败，请检查磁盘与权限。</value>
+  </data>
+  <data name="账户文件读不出来，已取消这次写入（原文件未改动）。" xml:space="preserve">
+    <value>账户文件读不出来，已取消这次写入（原文件未改动）。</value>
+  </data>
+  <data name="进行中" xml:space="preserve">
+    <value>进行中</value>
+  </data>
+  <data name="禁用" xml:space="preserve">
+    <value>禁用</value>
+  </data>
+  <data name="禁用所选" xml:space="preserve">
+    <value>禁用所选</value>
+  </data>
+  <data name="经典 (Classic)" xml:space="preserve">
+    <value>经典 (Classic)</value>
+  </data>
+  <data name="警告" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="可更新" xml:space="preserve">
+    <value>可更新</value>
+  </data>
+  <data name="快照" xml:space="preserve">
+    <value>快照</value>
+  </data>
+  <data name="来源" xml:space="preserve">
+    <value>来源</value>
+  </data>
+  <data name="来源：" xml:space="preserve">
+    <value>来源：</value>
+  </data>
+  <data name="类型" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="累计游玩时长" xml:space="preserve">
+    <value>累计游玩时长</value>
+  </data>
+  <data name="离线登录" xml:space="preserve">
+    <value>离线登录</value>
+  </data>
+  <data name="令牌即将过期" xml:space="preserve">
+    <value>令牌即将过期</value>
+  </data>
+  <data name="令牌有效" xml:space="preserve">
+    <value>令牌有效</value>
+  </data>
+  <data name="留空则继承全局" xml:space="preserve">
+    <value>留空则继承全局</value>
+  </data>
+  <data name="路径" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="模组" xml:space="preserve">
+    <value>模组</value>
+  </data>
+  <data name="模组管理" xml:space="preserve">
+    <value>模组管理</value>
+  </data>
+  <data name="模组加载器" xml:space="preserve">
+    <value>模组加载器</value>
+  </data>
+  <data name="模组名称" xml:space="preserve">
+    <value>模组名称</value>
+  </data>
+  <data name="模组数量" xml:space="preserve">
+    <value>模组数量</value>
+  </data>
+  <data name="目标平台" xml:space="preserve">
+    <value>目标平台</value>
+  </data>
+  <data name="内存分配" xml:space="preserve">
+    <value>内存分配</value>
+  </data>
+  <data name="披风" xml:space="preserve">
+    <value>披风</value>
+  </data>
+  <data name="皮肤" xml:space="preserve">
+    <value>皮肤</value>
+  </data>
+  <data name="皮肤模型" xml:space="preserve">
+    <value>皮肤模型</value>
+  </data>
+  <data name="其他" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="启动次数" xml:space="preserve">
+    <value>启动次数</value>
+  </data>
+  <data name="启动方式" xml:space="preserve">
+    <value>启动方式</value>
+  </data>
+  <data name="启动附加参数" xml:space="preserve">
+    <value>启动附加参数</value>
+  </data>
+  <data name="启动后" xml:space="preserve">
+    <value>启动后</value>
+  </data>
+  <data name="启动后行为" xml:space="preserve">
+    <value>启动后行为</value>
+  </data>
+  <data name="启动游戏" xml:space="preserve">
+    <value>启动游戏</value>
+  </data>
+  <data name="启动游戏后最小化启动器" xml:space="preserve">
+    <value>启动游戏后最小化启动器</value>
+  </data>
+  <data name="启用" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="启用所选" xml:space="preserve">
+    <value>启用所选</value>
+  </data>
+  <data name="清空已完成" xml:space="preserve">
+    <value>清空已完成</value>
+  </data>
+  <data name="取消" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="取消启动" xml:space="preserve">
+    <value>取消启动</value>
+  </data>
+  <data name="全部" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="全部级别" xml:space="preserve">
+    <value>全部级别</value>
+  </data>
+  <data name="全部暂停" xml:space="preserve">
+    <value>全部暂停</value>
+  </data>
+  <data name="全局默认 + 实例覆盖" xml:space="preserve">
+    <value>全局默认 + 实例覆盖</value>
+  </data>
+  <data name="全局默认值" xml:space="preserve">
+    <value>全局默认值</value>
+  </data>
+  <data name="全局设置" xml:space="preserve">
+    <value>全局设置</value>
+  </data>
+  <data name="全屏" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="全屏启动" xml:space="preserve">
+    <value>全屏启动</value>
+  </data>
+  <data name="缺失时自动下载 Mojang 官方 JRE" xml:space="preserve">
+    <value>缺失时自动下载 Mojang 官方 JRE</value>
+  </data>
+  <data name="缺失依赖" xml:space="preserve">
+    <value>缺失依赖</value>
+  </data>
+  <data name="确定要删除实例「{0}」吗？" xml:space="preserve">
+    <value>确定要删除实例「{0}」吗？</value>
+  </data>
+  <data name="认证" xml:space="preserve">
+    <value>认证</value>
+  </data>
+  <data name="任务" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="筛选器" xml:space="preserve">
+    <value>筛选器</value>
+  </data>
+  <data name="删除" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="删除实例" xml:space="preserve">
+    <value>删除实例</value>
+  </data>
+  <data name="删除实例 — EiTRVO Core" xml:space="preserve">
+    <value>删除实例 — EiTRVO Core</value>
+  </data>
+  <data name="删除所选" xml:space="preserve">
+    <value>删除所选</value>
+  </data>
+  <data name="上传皮肤" xml:space="preserve">
+    <value>上传皮肤</value>
+  </data>
+  <data name="上次启动" xml:space="preserve">
+    <value>上次启动</value>
+  </data>
+  <data name="上一步" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="上移优先级" xml:space="preserve">
+    <value>上移优先级</value>
+  </data>
+  <data name="设为默认" xml:space="preserve">
+    <value>设为默认</value>
+  </data>
+  <data name="设置" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="剩余文件" xml:space="preserve">
+    <value>剩余文件</value>
+  </data>
+  <data name="时间" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="实例 Java 覆盖" xml:space="preserve">
+    <value>实例 Java 覆盖</value>
+  </data>
+  <data name="实例操作" xml:space="preserve">
+    <value>实例操作</value>
+  </data>
+  <data name="实例覆盖" xml:space="preserve">
+    <value>实例覆盖</value>
+  </data>
+  <data name="实例路径" xml:space="preserve">
+    <value>实例路径</value>
+  </data>
+  <data name="实例名称" xml:space="preserve">
+    <value>实例名称</value>
+  </data>
+  <data name="实例设置" xml:space="preserve">
+    <value>实例设置</value>
+  </data>
+  <data name="实例详情" xml:space="preserve">
+    <value>实例详情</value>
+  </data>
+  <data name="实例占用空间" xml:space="preserve">
+    <value>实例占用空间</value>
+  </data>
+  <data name="使用全局默认（自动按版本匹配）" xml:space="preserve">
+    <value>使用全局默认（自动按版本匹配）</value>
+  </data>
+  <data name="事件" xml:space="preserve">
+    <value>事件</value>
+  </data>
+  <data name="适用版本" xml:space="preserve">
+    <value>适用版本</value>
+  </data>
+  <data name="属性" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="数据目录" xml:space="preserve">
+    <value>数据目录</value>
+  </data>
+  <data name="数据源" xml:space="preserve">
+    <value>数据源</value>
+  </data>
+  <data name="刷新令牌" xml:space="preserve">
+    <value>刷新令牌</value>
+  </data>
+  <data name="搜索整合包" xml:space="preserve">
+    <value>搜索整合包</value>
+  </data>
+  <data name="速度" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="所需 Java" xml:space="preserve">
+    <value>所需 Java</value>
+  </data>
+  <data name="所有版本" xml:space="preserve">
+    <value>所有版本</value>
+  </data>
+  <data name="所有事件" xml:space="preserve">
+    <value>所有事件</value>
+  </data>
+  <data name="添加 Microsoft 账户" xml:space="preserve">
+    <value>添加 Microsoft 账户</value>
+  </data>
+  <data name="添加 Microsoft 账户 — EiTRVO Core" xml:space="preserve">
+    <value>添加 Microsoft 账户 — EiTRVO Core</value>
+  </data>
+  <data name="添加文件" xml:space="preserve">
+    <value>添加文件</value>
+  </data>
+    <data name="条" xml:space="preserve">
+    <value>条</value>
+  </data>
+  <data name="完成" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="玩家名称" xml:space="preserve">
+    <value>玩家名称</value>
+  </data>
+  <data name="未备份" xml:space="preserve">
+    <value>未备份</value>
+  </data>
+  <data name="未验证来源" xml:space="preserve">
+    <value>未验证来源</value>
+  </data>
+  <data name="未拥有" xml:space="preserve">
+    <value>未拥有</value>
+  </data>
+  <data name="未运行" xml:space="preserve">
+    <value>未运行</value>
+  </data>
+  <data name="位数" xml:space="preserve">
+    <value>位数</value>
+  </data>
+  <data name="文件进度" xml:space="preserve">
+    <value>文件进度</value>
+  </data>
+  <data name="我已在浏览器完成授权" xml:space="preserve">
+    <value>我已在浏览器完成授权</value>
+  </data>
+  <data name="无边框全屏" xml:space="preserve">
+    <value>无边框全屏</value>
+  </data>
+  <data name="物理内存 {0} · 推荐 {1} · 安全区上限 {2} MB" xml:space="preserve">
+    <value>物理内存 {0} · 推荐 {1} · 安全区上限 {2} MB</value>
+  </data>
+  <data name="物理内存 {0} · 全局默认 {1} MB · 本实例覆盖为 {2} MB" xml:space="preserve">
+    <value>物理内存 {0} · 全局默认 {1} MB · 本实例覆盖为 {2} MB</value>
+  </data>
+  <data name="下一步" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="下移优先级" xml:space="preserve">
+    <value>下移优先级</value>
+  </data>
+  <data name="下载" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="下载队列" xml:space="preserve">
+    <value>下载队列</value>
+  </data>
+  <data name="下载量" xml:space="preserve">
+    <value>下载量</value>
+  </data>
+  <data name="下载与队列" xml:space="preserve">
+    <value>下载与队列</value>
+  </data>
+      <data name="下载源" xml:space="preserve">
+    <value>下载源</value>
+  </data>
+  <data name="下载源设置" xml:space="preserve">
+    <value>下载源设置</value>
+  </data>
+  <data name="纤细 (Slim)" xml:space="preserve">
+    <value>纤细 (Slim)</value>
+  </data>
+  <data name="显卡" xml:space="preserve">
+    <value>显卡</value>
+  </data>
+  <data name="消息" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="校验文件" xml:space="preserve">
+    <value>校验文件</value>
+  </data>
+  <data name="新建实例" xml:space="preserve">
+    <value>新建实例</value>
+  </data>
+  <data name="信息" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="修复依赖" xml:space="preserve">
+    <value>修复依赖</value>
+  </data>
+  <data name="需重新登录" xml:space="preserve">
+    <value>需重新登录</value>
+  </data>
+  <data name="许可证" xml:space="preserve">
+    <value>许可证</value>
+  </data>
+  <data name="选择" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="依赖政策" xml:space="preserve">
+    <value>依赖政策</value>
+  </data>
+  <data name="仪表板" xml:space="preserve">
+    <value>仪表板</value>
+  </data>
+  <data name="移除账户" xml:space="preserve">
+    <value>移除账户</value>
+  </data>
+  <data name="已安装的内存" xml:space="preserve">
+    <value>已安装的内存</value>
+  </data>
+  <data name="已安装的整合包" xml:space="preserve">
+    <value>已安装的整合包</value>
+  </data>
+  <data name="已备份" xml:space="preserve">
+    <value>已备份</value>
+  </data>
+  <data name="已禁用" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="已启用" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="已完成" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="已下载 / 总计" xml:space="preserve">
+    <value>已下载 / 总计</value>
+  </data>
+  <data name="已校验" xml:space="preserve">
+    <value>已校验</value>
+  </data>
+  <data name="已选版本" xml:space="preserve">
+    <value>已选版本</value>
+  </data>
+  <data name="已选择" xml:space="preserve">
+    <value>已选择</value>
+  </data>
+  <data name="已有账户" xml:space="preserve">
+    <value>已有账户</value>
+  </data>
+  <data name="以离线模式登录" xml:space="preserve">
+    <value>以离线模式登录</value>
+  </data>
+  <data name="添加" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="添加离线账户" xml:space="preserve">
+    <value>添加离线账户</value>
+  </data>
+  <data name="离线账户 — EiTRVO Core" xml:space="preserve">
+    <value>离线账户 — EiTRVO Core</value>
+  </data>
+  <data name="离线账户不经过 Xbox 服务器：只有玩家名，UUID 由名字派生。" xml:space="preserve">
+    <value>离线账户不经过 Xbox 服务器：只有玩家名，UUID 由名字派生。</value>
+  </data>
+  <data name="添加微软账户" xml:space="preserve">
+    <value>添加微软账户</value>
+  </data>
+  <data name="已筛出 {0} / {1} 条" xml:space="preserve">
+    <value>已筛出 {0} / {1} 条</value>
+  </data>
+  <data name="启动器" xml:space="preserve">
+    <value>启动器</value>
+  </data>
+  <data name="下载器" xml:space="preserve">
+    <value>下载器</value>
+  </data>
+  <data name="Modrinth" xml:space="preserve">
+    <value>Modrinth</value>
+  </data>
+  <data name="启动核心" xml:space="preserve">
+    <value>启动核心</value>
+  </data>
+  <data name="移除账户 — EiTRVO Core" xml:space="preserve">
+    <value>移除账户 — EiTRVO Core</value>
+  </data>
+  <data name="确定要移除账户「{0}」吗？" xml:space="preserve">
+    <value>确定要移除账户「{0}」吗？</value>
+  </data>
+  <data name="将删除本机保存的登录信息" xml:space="preserve">
+    <value>将删除本机保存的登录信息</value>
+  </data>
+  <data name="这个账户已经不在列表里了，请关闭后重试。" xml:space="preserve">
+    <value>这个账户已经不在列表里了，请关闭后重试。</value>
+  </data>
+  <data name="账户文件读不出来，已取消这次移除（原文件未改动）。" xml:space="preserve">
+    <value>账户文件读不出来，已取消这次移除（原文件未改动）。</value>
+  </data>
+  <data name="用所选版本新建实例" xml:space="preserve">
+    <value>用所选版本新建实例</value>
+  </data>
+  <data name="用系统浏览器打开" xml:space="preserve">
+    <value>用系统浏览器打开</value>
+  </data>
+  <data name="用于 {0}" xml:space="preserve">
+    <value>用于 {0}</value>
+  </data>
+  <data name="用于 {0} · 共 {1} 个" xml:space="preserve">
+    <value>用于 {0} · 共 {1} 个</value>
+  </data>
+  <data name="用于 {0} · 仅影响该实例" xml:space="preserve">
+    <value>用于 {0} · 仅影响该实例</value>
+  </data>
+  <data name="游戏版本" xml:space="preserve">
+    <value>游戏版本</value>
+  </data>
+  <data name="游戏版本匹配" xml:space="preserve">
+    <value>游戏版本匹配</value>
+  </data>
+  <data name="游戏窗口" xml:space="preserve">
+    <value>游戏窗口</value>
+  </data>
+  <data name="游戏窗口与启动" xml:space="preserve">
+    <value>游戏窗口与启动</value>
+  </data>
+  <data name="游戏将在安装完成后可启动" xml:space="preserve">
+    <value>游戏将在安装完成后可启动</value>
+  </data>
+  <data name="游戏模式" xml:space="preserve">
+    <value>游戏模式</value>
+  </data>
+  <data name="游戏目录" xml:space="preserve">
+    <value>游戏目录</value>
+  </data>
+  <data name="语言" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="预计剩余" xml:space="preserve">
+    <value>预计剩余</value>
+  </data>
+  <data name="运行时" xml:space="preserve">
+    <value>运行时</value>
+  </data>
+  <data name="暂停" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="占用空间" xml:space="preserve">
+    <value>占用空间</value>
+  </data>
+  <data name="账户" xml:space="preserve">
+    <value>账户</value>
+  </data>
+    <data name="账户列表" xml:space="preserve">
+    <value>账户列表</value>
+  </data>
+  <data name="账户令牌使用" xml:space="preserve">
+    <value>账户令牌使用 </value>
+  </data>
+  <data name="整合包" xml:space="preserve">
+    <value>整合包</value>
+  </data>
+  <data name="正式版" xml:space="preserve">
+    <value>正式版</value>
+  </data>
+  <data name="正在启动" xml:space="preserve">
+    <value>正在启动</value>
+  </data>
+  <data name="重命名" xml:space="preserve">
+    <value>重命名</value>
+  </data>
+  <data name="重新登录" xml:space="preserve">
+    <value>重新登录</value>
+  </data>
+  <data name="重新检测 Java" xml:space="preserve">
+    <value>重新检测 Java</value>
+  </data>
+  <data name="重置所有设置" xml:space="preserve">
+    <value>重置所有设置</value>
+  </data>
+  <data name="重置为默认" xml:space="preserve">
+    <value>重置为默认</value>
+  </data>
+  <data name="重置为全局默认" xml:space="preserve">
+    <value>重置为全局默认</value>
+  </data>
+  <data name="状态" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="资源包" xml:space="preserve">
+    <value>资源包</value>
+  </data>
+  <data name="资源包 / 存档" xml:space="preserve">
+    <value>资源包 / 存档</value>
+  </data>
+  <data name="资源校验" xml:space="preserve">
+    <value>资源校验</value>
+  </data>
+  <data name="资源与配置" xml:space="preserve">
+    <value>资源与配置</value>
+  </data>
+  <data name="自动（按游戏版本匹配）" xml:space="preserve">
+    <value>自动（按游戏版本匹配）</value>
+  </data>
+  <data name="自动获取" xml:space="preserve">
+    <value>自动获取</value>
+  </data>
+  <data name="总体进度" xml:space="preserve">
+    <value>总体进度</value>
+  </data>
+  <data name="最大内存 (Xmx)" xml:space="preserve">
+    <value>最大内存 (Xmx)</value>
+  </data>
+  <data name="最后退出码" xml:space="preserve">
+    <value>最后退出码</value>
+  </data>
+  <data name="最后游玩" xml:space="preserve">
+    <value>最后游玩</value>
+  </data>
+  <data name="最近更新" xml:space="preserve">
+    <value>最近更新</value>
+  </data>
+  <data name="最小化启动器" xml:space="preserve">
+    <value>最小化启动器</value>
+  </data>
+  <data name="最新" xml:space="preserve">
+    <value>最新</value>
+  </data>
+  <data name="{0} | 共 {1}" xml:space="preserve">
+    <value>{0} | 共 {1}</value>
+  </data>
+  <data name="{0} | 共 {1} {2}" xml:space="preserve">
+    <value>{0} | 共 {1} {2}</value>
+  </data>
+  <data name="共 {0} 个版本 · 快照 {1} · 正式版 {2}" xml:space="preserve">
+    <value>共 {0} 个版本 · 快照 {1} · 正式版 {2}</value>
+  </data>
+  <data name="：" xml:space="preserve">
+    <value>：</value>
+  </data>
+  <data name="。" xml:space="preserve">
+    <value>。</value>
+  </data>
+  <data name="未覆盖时继承全局默认" xml:space="preserve">
+    <value>未覆盖时继承全局默认</value>
+  </data>
+  <data name="确认并安装" xml:space="preserve">
+    <value>确认并安装</value>
+  </data>
+  <data name="启动器遇到未处理的错误" xml:space="preserve">
+    <value>启动器遇到未处理的错误</value>
+  </data>
+  <data name="错误详情已写入日志：{0}" xml:space="preserve">
+    <value>错误详情已写入日志：{0}</value>
+  </data>
+  <data name="账户文件无法读取：{0}" xml:space="preserve">
+    <value>账户文件无法读取：{0}</value>
+  </data>
+  <data name="换了 Windows 用户或换了机器（密文绑当前用户），请重新登录；原文件未改动" xml:space="preserve">
+    <value>换了 Windows 用户或换了机器（密文绑当前用户），请重新登录；原文件未改动</value>
+  </data>
+  <data name="当前平台不支持账户加密存储" xml:space="preserve">
+    <value>当前平台不支持账户加密存储</value>
+  </data>
+  <data name="文件已损坏，请重新登录；原文件未改动" xml:space="preserve">
+    <value>文件已损坏，请重新登录；原文件未改动</value>
+  </data>
+  <data name="还没有版本清单" xml:space="preserve">
+    <value>还没有版本清单</value>
+  </data>
+  <data name="失败" xml:space="preserve">
+    <value>失败</value>
+  </data>
+  <data name="排序与视图尚未实现（设计稿未定义其行为）" xml:space="preserve">
+    <value>排序与视图尚未实现（设计稿未定义其行为）</value>
+  </data>
+  <data name="重新获取版本清单" xml:space="preserve">
+    <value>重新获取版本清单</value>
+  </data>
+  <data name="重置筛选" xml:space="preserve">
+    <value>重置筛选</value>
+  </data>
+  <data name="尚未开始" xml:space="preserve">
+    <value>尚未开始</value>
+  </data>
+  <data name="尚未选择" xml:space="preserve">
+    <value>尚未选择</value>
+  </data>
+  <data name="已停止" xml:space="preserve">
+    <value>已停止</value>
+  </data>
+  <data name="已校验 {0} 个文件" xml:space="preserve">
+    <value>已校验 {0} 个文件</value>
+  </data>
+  <data name="游戏正在运行" xml:space="preserve">
+    <value>游戏正在运行</value>
+  </data>
+  <data name="不适用（启动不下载文件）" xml:space="preserve">
+    <value>不适用（启动不下载文件）</value>
+  </data>
+  <data name="选择皮肤文件" xml:space="preserve">
+    <value>选择皮肤文件</value>
+  </data>
+  <data name="PNG 图片 (*.png)|*.png" xml:space="preserve">
+    <value>PNG 图片 (*.png)|*.png</value>
+  </data>
+  <data name="恢复默认皮肤" xml:space="preserve">
+    <value>恢复默认皮肤</value>
+  </data>
+  <data name="磁盘空间不足：{0} 还缺 {1} MB" xml:space="preserve">
+    <value>磁盘空间不足：{0} 还缺 {1} MB</value>
+  </data>
+  <data name="安装任务异常结束（{0}，{1}）" xml:space="preserve">
+    <value>安装任务异常结束（{0}，{1}）</value>
+  </data>
+  <data name="安装队列意外中断（{0}）" xml:space="preserve">
+    <value>安装队列意外中断（{0}）</value>
+  </data>
+  <data name="安装任务开始：{0}（实例 {1}）" xml:space="preserve">
+    <value>安装任务开始：{0}（实例 {1}）</value>
+  </data>
+  <data name="加载器 {0} 尚未接入，任务未执行（{1}，实例 {2}）" xml:space="preserve">
+    <value>加载器 {0} 尚未接入，任务未执行（{1}，实例 {2}）</value>
+  </data>
+  <data name="安装任务已取消：{0}" xml:space="preserve">
+    <value>安装任务已取消：{0}</value>
+  </data>
+  <data name="Java 运行时获取任务开始：{0}" xml:space="preserve">
+    <value>Java 运行时获取任务开始：{0}</value>
+  </data>
+  <data name="Java 运行时获取任务已取消：{0}" xml:space="preserve">
+    <value>Java 运行时获取任务已取消：{0}</value>
+  </data>
+  <data name="Java 运行时获取任务异常结束（{0}，{1}）" xml:space="preserve">
+    <value>Java 运行时获取任务异常结束（{0}，{1}）</value>
+  </data>
+  <data name="安装失败后的回滚没有做完（{0}，{1}）" xml:space="preserve">
+    <value>安装失败后的回滚没有做完（{0}，{1}）</value>
+  </data>
+  <data name="正在运行 {0} 官方安装器（{1} / {2}）" xml:space="preserve">
+    <value>正在运行 {0} 官方安装器（{1} / {2}）</value>
+  </data>
+  <data name="{0} 官方安装器失败（{1}，退出码 {2}）" xml:space="preserve">
+    <value>{0} 官方安装器失败（{1}，退出码 {2}）</value>
+  </data>
+  <data name="官方安装器没有写出预期的版本 JSON：{0}" xml:space="preserve">
+    <value>官方安装器没有写出预期的版本 JSON：{0}</value>
+  </data>
+  <data name="{0} {1} 安装完成（游戏 {2}，版本 {3}）" xml:space="preserve">
+    <value>{0} {1} 安装完成（游戏 {2}，版本 {3}）</value>
+  </data>
+  <data name="读不到原版 {0} 的版本 JSON（{1}），安装器将只按规则表挑 Java" xml:space="preserve">
+    <value>读不到原版 {0} 的版本 JSON（{1}），安装器将只按规则表挑 Java</value>
+  </data>
+  <data name="已选定官方 Java 运行时：{0} {1}（主版本 {2}，需要 {3}）" xml:space="preserve">
+    <value>已选定官方 Java 运行时：{0} {1}（主版本 {2}，需要 {3}）</value>
+  </data>
+  <data name="Java 运行时已是最新（{0} {1}），跳过下载：{2}" xml:space="preserve">
+    <value>Java 运行时已是最新（{0} {1}），跳过下载：{2}</value>
+  </data>
+  <data name="{0} 的下载没有完成（{1} 个文件失败；已下载的部分留在暂存目录，重试会接着下）" xml:space="preserve">
+    <value>{0} 的下载没有完成（{1} 个文件失败；已下载的部分留在暂存目录，重试会接着下）</value>
+  </data>
+  <data name="{0} {1} 已就绪：{2}（新下 {3} 个、跳过 {4} 个文件）" xml:space="preserve">
+    <value>{0} {1} 已就绪：{2}（新下 {3} 个、跳过 {4} 个文件）</value>
+  </data>
+  <data name="{0} 里有越界条目，已跳过：{1}" xml:space="preserve">
+    <value>{0} 里有越界条目，已跳过：{1}</value>
+  </data>
+  <data name="正在运行 OptiFine {0} 官方安装器（游戏 {1}，版本 {2}）" xml:space="preserve">
+    <value>正在运行 OptiFine {0} 官方安装器（游戏 {1}，版本 {2}）</value>
+  </data>
+  <data name="OptiFine {0} 官方安装器失败（游戏 {1}，退出码 {2}）" xml:space="preserve">
+    <value>OptiFine {0} 官方安装器失败（游戏 {1}，退出码 {2}）</value>
+  </data>
+  <data name="OptiFine 安装器没有写出预期的版本 JSON：{0}" xml:space="preserve">
+    <value>OptiFine 安装器没有写出预期的版本 JSON：{0}</value>
+  </data>
+  <data name="OptiFine {0} 安装完成（游戏 {1}，版本 {2}，{3} 个库，{4}）" xml:space="preserve">
+    <value>OptiFine {0} 安装完成（游戏 {1}，版本 {2}，{3} 个库，{4}）</value>
+  </data>
+  <data name="读不到原版 {0} 的版本 JSON（{1}），OptiFine 安装器将只按规则表挑 Java" xml:space="preserve">
+    <value>读不到原版 {0} 的版本 JSON（{1}），OptiFine 安装器将只按规则表挑 Java</value>
+  </data>
+  <data name="{0} 里没有可解压的文件" xml:space="preserve">
+    <value>{0} 里没有可解压的文件</value>
+  </data>
+  <data name="版本 {0} 安装完成（新下 {1} 个文件、跳过 {2} 个）" xml:space="preserve">
+    <value>版本 {0} 安装完成（新下 {1} 个文件、跳过 {2} 个）</value>
+  </data>
+  <data name="资源布局副本写入失败，已跳过（{0}，{1}）" xml:space="preserve">
+    <value>资源布局副本写入失败，已跳过（{0}，{1}）</value>
+  </data>
+  <data name="已创建实例：{0}（{1}）" xml:space="preserve">
+    <value>已创建实例：{0}（{1}）</value>
+  </data>
+  <data name="实例元数据不是合法 JSON（{0}，{1}），已按默认值显示（原文件未改动）" xml:space="preserve">
+    <value>实例元数据不是合法 JSON（{0}，{1}），已按默认值显示（原文件未改动）</value>
+  </data>
+  <data name="开始启动游戏：{0}" xml:space="preserve">
+    <value>开始启动游戏：{0}</value>
+  </data>
+  <data name="内存分配已按本机上限收敛：{0} MB → {1} MB" xml:space="preserve">
+    <value>内存分配已按本机上限收敛：{0} MB → {1} MB</value>
+  </data>
+  <data name="想自动获取官方运行时（{0}），但队列用不了（{1}），这次没有排队" xml:space="preserve">
+    <value>想自动获取官方运行时（{0}），但队列用不了（{1}），这次没有排队</value>
+  </data>
+  <data name="{0} 缺少 Java（需要 {1}），已按设置开始下载官方运行时" xml:space="preserve">
+    <value>{0} 缺少 Java（需要 {1}），已按设置开始下载官方运行时</value>
+  </data>
+  <data name="实例 {0} 的元数据写不进去，这次的启动记录没有保存" xml:space="preserve">
+    <value>实例 {0} 的元数据写不进去，这次的启动记录没有保存</value>
+  </data>
+  <data name="启动失败（{0}）：{1}" xml:space="preserve">
+    <value>启动失败（{0}）：{1}</value>
+  </data>
+  <data name="游戏已被启动器结束（运行 {0} 秒）" xml:space="preserve">
+    <value>游戏已被启动器结束（运行 {0} 秒）</value>
+  </data>
+  <data name="游戏已退出（退出码 {0}，运行 {1} 秒）" xml:space="preserve">
+    <value>游戏已退出（退出码 {0}，运行 {1} 秒）</value>
+  </data>
+  <data name="游戏异常退出（退出码 {0}，运行 {1} 秒）{2}" xml:space="preserve">
+    <value>游戏异常退出（退出码 {0}，运行 {1} 秒）{2}</value>
+  </data>
+  <data name="标准错误尾部：" xml:space="preserve">
+    <value>标准错误尾部：</value>
+  </data>
+  <data name="Java 检测缓存不可用（{0}），本次重新检测（原文件未改动）" xml:space="preserve">
+    <value>Java 检测缓存不可用（{0}），本次重新检测（原文件未改动）</value>
+  </data>
+  <data name="Java 检测结果写入缓存失败（{0}），下次启动会重新检测" xml:space="preserve">
+    <value>Java 检测结果写入缓存失败（{0}），下次启动会重新检测</value>
+  </data>
+  <data name="获取官方 Java 运行时索引失败：{0} 返回了 {1}" xml:space="preserve">
+    <value>获取官方 Java 运行时索引失败：{0} 返回了 {1}</value>
+  </data>
+  <data name="已获取官方 Java 运行时索引（{0} 个候选，本平台 {1} 个）" xml:space="preserve">
+    <value>已获取官方 Java 运行时索引（{0} 个候选，本平台 {1} 个）</value>
+  </data>
+  <data name="读取 Java 版本超时（{0}，{1}），已跳过这个候选" xml:space="preserve">
+    <value>读取 Java 版本超时（{0}，{1}），已跳过这个候选</value>
+  </data>
+  <data name="无法运行该 Java 候选（{0}，{1}），已跳过" xml:space="preserve">
+    <value>无法运行该 Java 候选（{0}，{1}），已跳过</value>
+  </data>
+  <data name="已保存全局设置" xml:space="preserve">
+    <value>已保存全局设置</value>
+  </data>
+  <data name="已保存实例 {0} 的启动参数" xml:space="preserve">
+    <value>已保存实例 {0} 的启动参数</value>
+  </data>
+  <data name="获取 {0} 的加载器列表失败（{1}），本次仍显示上一次的结果" xml:space="preserve">
+    <value>获取 {0} 的加载器列表失败（{1}），本次仍显示上一次的结果</value>
+  </data>
+  <data name="获取 {0} 的 OptiFine 列表失败（{1}），本次不提供 OptiFine" xml:space="preserve">
+    <value>获取 {0} 的 OptiFine 列表失败（{1}），本次不提供 OptiFine</value>
+  </data>
+  <data name="获取加载器版本列表失败：{0} 返回了 {1}" xml:space="preserve">
+    <value>获取加载器版本列表失败：{0} 返回了 {1}</value>
+  </data>
+  <data name="获取加载器 profile 失败：{0} 返回了 {1}" xml:space="preserve">
+    <value>获取加载器 profile 失败：{0} 返回了 {1}</value>
+  </data>
+  <data name="获取 OptiFine 列表失败：{0} 返回了 {1}" xml:space="preserve">
+    <value>获取 OptiFine 列表失败：{0} 返回了 {1}</value>
+  </data>
+  <data name="版本 {0} 的 JSON 不可用（{1}），本次按缺失处理（原文件未改动）" xml:space="preserve">
+    <value>版本 {0} 的 JSON 不可用（{1}），本次按缺失处理（原文件未改动）</value>
+  </data>
+  <data name="获取版本清单失败：{0} 返回了 {1}" xml:space="preserve">
+    <value>获取版本清单失败：{0} 返回了 {1}</value>
+  </data>
+  <data name="已更新版本清单（{0} 个版本，最新正式版 {1}，{2}）" xml:space="preserve">
+    <value>已更新版本清单（{0} 个版本，最新正式版 {1}，{2}）</value>
+  </data>
+  <data name="版本清单缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）" xml:space="preserve">
+    <value>版本清单缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）</value>
+  </data>
+  <data name="设备代码流的验证地址不在登录域名白名单内（{0}），已中止登录" xml:space="preserve">
+    <value>设备代码流的验证地址不在登录域名白名单内（{0}），已中止登录</value>
+  </data>
+  <data name="已申请设备代码（{0}），等待用户在浏览器完成授权（代码 {1} 分钟内有效）" xml:space="preserve">
+    <value>已申请设备代码（{0}），等待用户在浏览器完成授权（代码 {1} 分钟内有效）</value>
+  </data>
+  <data name="用户已完成授权" xml:space="preserve">
+    <value>用户已完成授权</value>
+  </data>
+  <data name="正版账户 {0} 登录成功并已加密落盘" xml:space="preserve">
+    <value>正版账户 {0} 登录成功并已加密落盘</value>
+  </data>
+  <data name="皮肤操作未成功（{0}）：{1}" xml:space="preserve">
+    <value>皮肤操作未成功（{0}）：{1}</value>
+  </data>
+  <data name="已上传皮肤（{0}，{1}）" xml:space="preserve">
+    <value>已上传皮肤（{0}，{1}）</value>
+  </data>
+  <data name="已更新皮肤模型（{0}，{1}）" xml:space="preserve">
+    <value>已更新皮肤模型（{0}，{1}）</value>
+  </data>
+  <data name="已恢复默认皮肤（{0}）" xml:space="preserve">
+    <value>已恢复默认皮肤（{0}）</value>
+  </data>
+  <data name="已保存账户文件（{0} 个账户）" xml:space="preserve">
+    <value>已保存账户文件（{0} 个账户）</value>
+  </data>
+  <data name="已保存正版账户 {0}（明文只存在于 DPAPI 密文里）" xml:space="preserve">
+    <value>已保存正版账户 {0}（明文只存在于 DPAPI 密文里）</value>
+  </data>
+  <data name="已移除账户 {0} 的本地记录（官方账户本身不受影响，重新登录即可恢复）" xml:space="preserve">
+    <value>已移除账户 {0} 的本地记录（官方账户本身不受影响，重新登录即可恢复）</value>
+  </data>
+  <data name="已更新账户 {0} 的皮肤档案（{1}）" xml:space="preserve">
+    <value>已更新账户 {0} 的皮肤档案（{1}）</value>
+  </data>
+  <data name="已刷新正版账户 {0} 的令牌" xml:space="preserve">
+    <value>已刷新正版账户 {0} 的令牌</value>
+  </data>
+  <data name="账户文件无法读取（{0}，{1}，{2}），请重新登录（原文件未改动）" xml:space="preserve">
+    <value>账户文件无法读取（{0}，{1}，{2}），请重新登录（原文件未改动）</value>
+  </data>
+  <data name="Java 运行时检测完成（{0} 个）" xml:space="preserve">
+    <value>Java 运行时检测完成（{0} 个）</value>
+  </data>
+  <data name="未检测到任何 Java 运行时" xml:space="preserve">
+    <value>未检测到任何 Java 运行时</value>
+  </data>
+  <data name="获取版本清单失败，且本地没有缓存（{0}）" xml:space="preserve">
+    <value>获取版本清单失败，且本地没有缓存（{0}）</value>
+  </data>
+  <data name="获取版本清单失败，已沿用本地缓存（{0}）" xml:space="preserve">
+    <value>获取版本清单失败，已沿用本地缓存（{0}）</value>
+  </data>
+  <data name="设备代码已过期（{0}）" xml:space="preserve">
+    <value>设备代码已过期（{0}）</value>
+  </data>
+  <data name="设备代码授权失败（{0}）" xml:space="preserve">
+    <value>设备代码授权失败（{0}）</value>
+  </data>
+  <data name="下载完成（{0} 个文件，跳过 {1} 个，共 {2} 个）" xml:space="preserve">
+    <value>下载完成（{0} 个文件，跳过 {1} 个，共 {2} 个）</value>
+  </data>
+  <data name="下载完成但有文件失败（{0} 个文件，跳过 {1} 个，共 {2} 个）" xml:space="preserve">
+    <value>下载完成但有文件失败（{0} 个文件，跳过 {1} 个，共 {2} 个）</value>
+  </data>
+  <data name="已回滚这次安装的写入（{0}：删除 {1} 个文件、{2} 个目录，恢复 {3} 个文件，失败 {4} 项）" xml:space="preserve">
+    <value>已回滚这次安装的写入（{0}：删除 {1} 个文件、{2} 个目录，恢复 {3} 个文件，失败 {4} 项）</value>
+  </data>
+  <data name="已删除实例 {0}，存档与配置已保留（回收目录：{1}）" xml:space="preserve">
+    <value>已删除实例 {0}，存档与配置已保留（回收目录：{1}）</value>
+  </data>
+  <data name="已删除实例 {0}，含存档与配置（回收目录：{1}）" xml:space="preserve">
+    <value>已删除实例 {0}，含存档与配置（回收目录：{1}）</value>
+  </data>
+  <data name="{0} 的响应是空的。" xml:space="preserve">
+    <value>{0} 的响应是空的。</value>
+  </data>
+  <data name="{0} 返回的不是合法 JSON。" xml:space="preserve">
+    <value>{0} 返回的不是合法 JSON。</value>
+  </data>
+  <data name="Microsoft 的设备代码响应缺少 device_code 或 user_code。" xml:space="preserve">
+    <value>Microsoft 的设备代码响应缺少 device_code 或 user_code。</value>
+  </data>
+  <data name="Microsoft 返回的设备代码响应是空的。" xml:space="preserve">
+    <value>Microsoft 返回的设备代码响应是空的。</value>
+  </data>
+  <data name="Microsoft 返回的验证地址不在允许的登录域名内，已中止这次登录。" xml:space="preserve">
+    <value>Microsoft 返回的验证地址不在允许的登录域名内，已中止这次登录。</value>
+  </data>
+  <data name="Minecraft 服务没有返回可用的访问令牌。" xml:space="preserve">
+    <value>Minecraft 服务没有返回可用的访问令牌。</value>
+  </data>
+  <data name="Xbox Live 拒绝了这次授权（{0} {1}）。" xml:space="preserve">
+    <value>Xbox Live 拒绝了这次授权（{0} {1}）。</value>
+  </data>
+  <data name="Xbox Live 拒绝了这次授权（XErr={0}）。请确认这个账户已创建 Xbox 档案、且所在地区支持 Xbox Live。" xml:space="preserve">
+    <value>Xbox Live 拒绝了这次授权（XErr={0}）。请确认这个账户已创建 Xbox 档案、且所在地区支持 Xbox Live。</value>
+  </data>
+  <data name="Xbox Live 没有返回可用的令牌（缺少 Token 或 uhs）。" xml:space="preserve">
+    <value>Xbox Live 没有返回可用的令牌（缺少 Token 或 uhs）。</value>
+  </data>
+  <data name="Xbox Live 在当前地区不可用（或该账户已被封禁），无法登录。" xml:space="preserve">
+    <value>Xbox Live 在当前地区不可用（或该账户已被封禁），无法登录。</value>
+  </data>
+  <data name="XSTS 没有返回可用的令牌（缺少 Token 或 uhs）。" xml:space="preserve">
+    <value>XSTS 没有返回可用的令牌（缺少 Token 或 uhs）。</value>
+  </data>
+  <data name="登录 Minecraft 服务失败（{0} {1}）。这通常意味着这个账户没有购买 Minecraft Java 版。" xml:space="preserve">
+    <value>登录 Minecraft 服务失败（{0} {1}）。这通常意味着这个账户没有购买 Minecraft Java 版。</value>
+  </data>
+  <data name="登录 Xbox Live 失败（{0} {1}）。请稍后再试。" xml:space="preserve">
+    <value>登录 Xbox Live 失败（{0} {1}）。请稍后再试。</value>
+  </data>
+  <data name="登录没有完成，请重新发起。" xml:space="preserve">
+    <value>登录没有完成，请重新发起。</value>
+  </data>
+  <data name="还没有申请设备代码，无法等待授权（请先调用 StartAsync）。" xml:space="preserve">
+    <value>还没有申请设备代码，无法等待授权（请先调用 StartAsync）。</value>
+  </data>
+  <data name="获取玩家档案失败（{0} {1}）。" xml:space="preserve">
+    <value>获取玩家档案失败（{0} {1}）。</value>
+  </data>
+  <data name="轮询授权结果的响应里没有 access_token。" xml:space="preserve">
+    <value>轮询授权结果的响应里没有 access_token。</value>
+  </data>
+  <data name="轮询授权结果失败：{0}（{1}）。" xml:space="preserve">
+    <value>轮询授权结果失败：{0}（{1}）。</value>
+  </data>
+  <data name="轮询授权结果失败：{0}（{1}）：{2}" xml:space="preserve">
+    <value>轮询授权结果失败：{0}（{1}）：{2}</value>
+  </data>
+  <data name="轮询授权结果时，Microsoft 返回了空响应。" xml:space="preserve">
+    <value>轮询授权结果时，Microsoft 返回了空响应。</value>
+  </data>
+  <data name="认证服务返回的不是合法 JSON。" xml:space="preserve">
+    <value>认证服务返回的不是合法 JSON。</value>
+  </data>
+  <data name="设备代码流收到了不认识的轮询结论：{0}。" xml:space="preserve">
+    <value>设备代码流收到了不认识的轮询结论：{0}。</value>
+  </data>
+  <data name="设备代码已过期，请重新发起登录。" xml:space="preserve">
+    <value>设备代码已过期，请重新发起登录。</value>
+  </data>
+  <data name="申请设备代码失败：{0}（{1}）。" xml:space="preserve">
+    <value>申请设备代码失败：{0}（{1}）。</value>
+  </data>
+  <data name="申请设备代码失败：{0}（{1}）：{2}" xml:space="preserve">
+    <value>申请设备代码失败：{0}（{1}）：{2}</value>
+  </data>
+  <data name="授权被拒绝或代码无效，请重新发起登录。" xml:space="preserve">
+    <value>授权被拒绝或代码无效，请重新发起登录。</value>
+  </data>
+  <data name="刷新令牌的响应里没有 access_token。" xml:space="preserve">
+    <value>刷新令牌的响应里没有 access_token。</value>
+  </data>
+  <data name="刷新令牌失败，官方没有给出原因。" xml:space="preserve">
+    <value>刷新令牌失败，官方没有给出原因。</value>
+  </data>
+  <data name="刷新令牌失败：{0}（{1}）。" xml:space="preserve">
+    <value>刷新令牌失败：{0}（{1}）。</value>
+  </data>
+  <data name="刷新令牌失败：{0}（{1}）：{2}" xml:space="preserve">
+    <value>刷新令牌失败：{0}（{1}）：{2}</value>
+  </data>
+  <data name="刷新令牌失败：{0}。" xml:space="preserve">
+    <value>刷新令牌失败：{0}。</value>
+  </data>
+  <data name="刷新令牌时，Microsoft 返回了空响应。" xml:space="preserve">
+    <value>刷新令牌时，Microsoft 返回了空响应。</value>
+  </data>
+  <data name="玩家档案的响应是空的。" xml:space="preserve">
+    <value>玩家档案的响应是空的。</value>
+  </data>
+  <data name="玩家档案返回的不是合法 JSON。" xml:space="preserve">
+    <value>玩家档案返回的不是合法 JSON。</value>
+  </data>
+  <data name="玩家档案里没有 id 或 name。" xml:space="preserve">
+    <value>玩家档案里没有 id 或 name。</value>
+  </data>
+  <data name="账户文件读不出来（{0}），无法刷新令牌。" xml:space="preserve">
+    <value>账户文件读不出来（{0}），无法刷新令牌。</value>
+  </data>
+  <data name="这个 Microsoft 账户还没有 Xbox 档案。请先在 Xbox 官网（或任意 Xbox 应用）里创建一个档案，再回来登录。" xml:space="preserve">
+    <value>这个 Microsoft 账户还没有 Xbox 档案。请先在 Xbox 官网（或任意 Xbox 应用）里创建一个档案，再回来登录。</value>
+  </data>
+  <data name="这个 Microsoft 账户没有 Minecraft Java 版档案（尚未购买或尚未创建）。" xml:space="preserve">
+    <value>这个 Microsoft 账户没有 Minecraft Java 版档案（尚未购买或尚未创建）。</value>
+  </data>
+  <data name="这个账户的登录已过期，需要重新登录一次。" xml:space="preserve">
+    <value>这个账户的登录已过期，需要重新登录一次。</value>
+  </data>
+  <data name="这个账户没有可用的刷新令牌，需要重新登录一次。" xml:space="preserve">
+    <value>这个账户没有可用的刷新令牌，需要重新登录一次。</value>
+  </data>
+  <data name="这个账户需要先在 Xbox 官网上完成一次成人验证。" xml:space="preserve">
+    <value>这个账户需要先在 Xbox 官网上完成一次成人验证。</value>
+  </data>
+  <data name="这是未成年账户，需要先加入一个家庭组（由成年人配置）才能用于 Minecraft。" xml:space="preserve">
+    <value>这是未成年账户，需要先加入一个家庭组（由成年人配置）才能用于 Minecraft。</value>
+  </data>
+  <data name="?" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="{0}" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="{0} · {1}%" xml:space="preserve">
+    <value>{0} · {1}%</value>
+  </data>
+  <data name="{0} MB" xml:space="preserve">
+    <value>{0} MB</value>
+  </data>
+  <data name="{0} MB（本机内存未知，未按上限收敛）" xml:space="preserve">
+    <value>{0} MB（本机内存未知，未按上限收敛）</value>
+  </data>
+  <data name="{0} MB（已按本机上限 {1} MB 收敛；设置里填的是 {2} MB）" xml:space="preserve">
+    <value>{0} MB（已按本机上限 {1} MB 收敛；设置里填的是 {2} MB）</value>
+  </data>
+  <data name="{0} 个文件已就位" xml:space="preserve">
+    <value>{0} 个文件已就位</value>
+  </data>
+  <data name="1. 读取官方运行时索引" xml:space="preserve">
+    <value>1. 读取官方运行时索引</value>
+  </data>
+  <data name="1. 解析 OptiFine 版本" xml:space="preserve">
+    <value>1. 解析 OptiFine 版本</value>
+  </data>
+  <data name="1. 解析版本 JSON" xml:space="preserve">
+    <value>1. 解析版本 JSON</value>
+  </data>
+  <data name="1. 解析实例与版本" xml:space="preserve">
+    <value>1. 解析实例与版本</value>
+  </data>
+  <data name="2. 下载 OptiFine 安装器" xml:space="preserve">
+    <value>2. 下载 OptiFine 安装器</value>
+  </data>
+  <data name="2. 下载并校验运行时文件" xml:space="preserve">
+    <value>2. 下载并校验运行时文件</value>
+  </data>
+  <data name="2. 下载并校验资源" xml:space="preserve">
+    <value>2. 下载并校验资源</value>
+  </data>
+  <data name="2. 校验本地文件" xml:space="preserve">
+    <value>2. 校验本地文件</value>
+  </data>
+  <data name="3. 搬运到 runtime 目录" xml:space="preserve">
+    <value>3. 搬运到 runtime 目录</value>
+  </data>
+  <data name="3. 解压 natives" xml:space="preserve">
+    <value>3. 解压 natives</value>
+  </data>
+  <data name="3. 选择 Java 运行时" xml:space="preserve">
+    <value>3. 选择 Java 运行时</value>
+  </data>
+  <data name="3. 运行官方安装器并搬运产物" xml:space="preserve">
+    <value>3. 运行官方安装器并搬运产物</value>
+  </data>
+  <data name="4. 构建参数并启动进程" xml:space="preserve">
+    <value>4. 构建参数并启动进程</value>
+  </data>
+  <data name="Mojang 官方运行时的全部文件" xml:space="preserve">
+    <value>Mojang 官方运行时的全部文件</value>
+  </data>
+  <data name="把 natives 归档解到 versions/&lt;id&gt;/natives" xml:space="preserve">
+    <value>把 natives 归档解到 versions/&lt;id&gt;/natives</value>
+  </data>
+  <data name="版本 {0}" xml:space="preserve">
+    <value>版本 {0}</value>
+  </data>
+  <data name="版本 {0}（继承链 {1} 段）" xml:space="preserve">
+    <value>版本 {0}（继承链 {1} 段）</value>
+  </data>
+  <data name="本地文件已就位" xml:space="preserve">
+    <value>本地文件已就位</value>
+  </data>
+  <data name="本机没有能运行这个版本的 Java（需要 Java {0}）。可以到「Java 与设置」页里获取官方运行时。" xml:space="preserve">
+    <value>本机没有能运行这个版本的 Java（需要 Java {0}）。可以到「Java 与设置」页里获取官方运行时。</value>
+  </data>
+  <data name="本机没有能运行这个版本的 Java（需要 Java {0}）。已按设置开始下载 Mojang 官方运行时，下载完成后可以再启动一次。" xml:space="preserve">
+    <value>本机没有能运行这个版本的 Java（需要 Java {0}）。已按设置开始下载 Mojang 官方运行时，下载完成后可以再启动一次。</value>
+  </data>
+  <data name="等待中" xml:space="preserve">
+    <value>等待中</value>
+  </data>
+  <data name="读取 instance.json 与版本 JSON" xml:space="preserve">
+    <value>读取 instance.json 与版本 JSON</value>
+  </data>
+  <data name="构建命令行并启动进程" xml:space="preserve">
+    <value>构建命令行并启动进程</value>
+  </data>
+  <data name="官方安装器（约 7 MB，无发布方校验值）" xml:space="preserve">
+    <value>官方安装器（约 7 MB，无发布方校验值）</value>
+  </data>
+  <data name="还没有检测到本机的 Java 运行时。请先到「Java 与设置」页里重新检测一次（还没查过就不能判定缺少 Java）。" xml:space="preserve">
+    <value>还没有检测到本机的 Java 运行时。请先到「Java 与设置」页里重新检测一次（还没查过就不能判定缺少 Java）。</value>
+  </data>
+  <data name="含 inheritsFrom 继承链合并" xml:space="preserve">
+    <value>含 inheritsFrom 继承链合并</value>
+  </data>
+  <data name="检查客户端 JAR、库与 natives" xml:space="preserve">
+    <value>检查客户端 JAR、库与 natives</value>
+  </data>
+  <data name="客户端 JAR、库、natives 与资源对象" xml:space="preserve">
+    <value>客户端 JAR、库、natives 与资源对象</value>
+  </data>
+  <data name="启动过程中出现未预期的错误（{0}），这次没有启动成功。" xml:space="preserve">
+    <value>启动过程中出现未预期的错误（{0}），这次没有启动成功。</value>
+  </data>
+  <data name="启动已取消" xml:space="preserve">
+    <value>启动已取消</value>
+  </data>
+  <data name="缺少必需的文件（例如 {0}）。" xml:space="preserve">
+    <value>缺少必需的文件（例如 {0}）。</value>
+  </data>
+  <data name="退出码 {0}" xml:space="preserve">
+    <value>退出码 {0}</value>
+  </data>
+  <data name="下载完整才搬进去" xml:space="preserve">
+    <value>下载完整才搬进去</value>
+  </data>
+  <data name="选定组件与版本（java-runtime-*）" xml:space="preserve">
+    <value>选定组件与版本（java-runtime-*）</value>
+  </data>
+  <data name="已解析版本 {0}" xml:space="preserve">
+    <value>已解析版本 {0}</value>
+  </data>
+  <data name="已经有一个游戏在运行。先结束它，再启动新的。" xml:space="preserve">
+    <value>已经有一个游戏在运行。先结束它，再启动新的。</value>
+  </data>
+  <data name="已选择 Java {0}" xml:space="preserve">
+    <value>已选择 Java {0}</value>
+  </data>
+  <data name="游戏已被结束" xml:space="preserve">
+    <value>游戏已被结束</value>
+  </data>
+  <data name="游戏已启动" xml:space="preserve">
+    <value>游戏已启动</value>
+  </data>
+  <data name="游戏已退出（退出码 {0}）" xml:space="preserve">
+    <value>游戏已退出（退出码 {0}）</value>
+  </data>
+  <data name="在沙箱里装完，再搬进游戏目录" xml:space="preserve">
+    <value>在沙箱里装完，再搬进游戏目录</value>
+  </data>
+  <data name="找不到这个实例（{0}），它可能已经被删除。" xml:space="preserve">
+    <value>找不到这个实例（{0}），它可能已经被删除。</value>
+  </data>
+  <data name="这个版本需要 Java {0}" xml:space="preserve">
+    <value>这个版本需要 Java {0}</value>
+  </data>
+  <data name="这个实例的 {0} 还没有安装到本地（缺 versions/{1}/{1}.json）。请先在「下载与队列」里安装这个加载器。" xml:space="preserve">
+    <value>这个实例的 {0} 还没有安装到本地（缺 versions/{1}/{1}.json）。请先在「下载与队列」里安装这个加载器。</value>
+  </data>
+  <data name="这个实例的文件不完整：缺 {0} 个（例如 {1}）。请先在「下载与队列」里安装这个版本。" xml:space="preserve">
+    <value>这个实例的文件不完整：缺 {0} 个（例如 {1}）。请先在「下载与队列」里安装这个版本。</value>
+  </data>
+  <data name="这个实例还没有指定游戏版本。请到「实例设置」里选一个版本，或先安装一个版本。" xml:space="preserve">
+    <value>这个实例还没有指定游戏版本。请到「实例设置」里选一个版本，或先安装一个版本。</value>
+  </data>
+  <data name="这个实例选了 {0}，但元数据里没有记下加载器版本，无法确定要启动哪一个。请到「实例设置」里重新选一次。" xml:space="preserve">
+    <value>这个实例选了 {0}，但元数据里没有记下加载器版本，无法确定要启动哪一个。请到「实例设置」里重新选一次。</value>
+  </data>
+  <data name="这个实例要运行 {0}，但这个加载器还没有接上安装/启动路径。现在可以用原版、Fabric、Quilt、Forge、NeoForge 或 OptiFine 启动 —— 悄悄按原版启动会让模组全都不生效，所以这里明确拒绝。" xml:space="preserve">
+    <value>这个实例要运行 {0}，但这个加载器还没有接上安装/启动路径。现在可以用原版、Fabric、Quilt、Forge、NeoForge 或 OptiFine 启动 —— 悄悄按原版启动会让模组全都不生效，所以这里明确拒绝。</value>
+  </data>
+  <data name="这个实例指定的 Java {0} 不能运行该版本（需要 Java {1}）。" xml:space="preserve">
+    <value>这个实例指定的 Java {0} 不能运行该版本（需要 Java {1}）。</value>
+  </data>
+  <data name="这个实例指定的 Java 运行时已经不存在了。请到「实例设置」里重新选一个，或改为自动匹配。" xml:space="preserve">
+    <value>这个实例指定的 Java 运行时已经不存在了。请到「实例设置」里重新选一个，或改为自动匹配。</value>
+  </data>
+  <data name="正在构建命令行…" xml:space="preserve">
+    <value>正在构建命令行…</value>
+  </data>
+  <data name="正在解析版本与继承链…" xml:space="preserve">
+    <value>正在解析版本与继承链…</value>
+  </data>
+  <data name="正在解析实例…" xml:space="preserve">
+    <value>正在解析实例…</value>
+  </data>
+  <data name="正在启动进程…" xml:space="preserve">
+    <value>正在启动进程…</value>
+  </data>
+  <data name="正在校验本地文件…" xml:space="preserve">
+    <value>正在校验本地文件…</value>
+  </data>
+  <data name="正在选择 Java 运行时…" xml:space="preserve">
+    <value>正在选择 Java 运行时…</value>
+  </data>
+  <data name="—" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="{0} · {1}" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="{0}：{1}" xml:space="preserve">
+    <value>{0}：{1}</value>
+  </data>
+  <data name="（沙箱的 versions 目录是空的。）" xml:space="preserve">
+    <value>（沙箱的 versions 目录是空的。）</value>
+  </data>
+  <data name="（沙箱里没有 versions 目录。）" xml:space="preserve">
+    <value>（沙箱里没有 versions 目录。）</value>
+  </data>
+  <data name="{0} 的安装不是纯 JSON profile：Forge / NeoForge 属于 M4-g，OptiFine 属于 M4-i。现在可以先用原版或 Fabric / Quilt 启动。" xml:space="preserve">
+    <value>{0} 的安装不是纯 JSON profile：Forge / NeoForge 属于 M4-g，OptiFine 属于 M4-i。现在可以先用原版或 Fabric / Quilt 启动。</value>
+  </data>
+  <data name="{0} 的安装不走官方安装器：Fabric / Quilt 走纯 JSON profile（M4-f），OptiFine 走它自己的安装器（M4-i）。" xml:space="preserve">
+    <value>{0} 的安装不走官方安装器：Fabric / Quilt 走纯 JSON profile（M4-f），OptiFine 走它自己的安装器（M4-i）。</value>
+  </data>
+  <data name="{0} 的安装还没有接上（枚举里新加了加载器但没加安装路径）。" xml:space="preserve">
+    <value>{0} 的安装还没有接上（枚举里新加了加载器但没加安装路径）。</value>
+  </data>
+  <data name="{0} 个文件失败。" xml:space="preserve">
+    <value>{0} 个文件失败。</value>
+  </data>
+  <data name="{0} 给回的 profile id 是「{1}」，与本地命名规则算出的「{2}」不一致 —— 装到盘上启动时也找不到它。已停止安装（对方可能改了命名约定）。" xml:space="preserve">
+    <value>{0} 给回的 profile id 是「{1}」，与本地命名规则算出的「{2}」不一致 —— 装到盘上启动时也找不到它。已停止安装（对方可能改了命名约定）。</value>
+  </data>
+  <data name="{0} 下载失败：{1}" xml:space="preserve">
+    <value>{0} 下载失败：{1}</value>
+  </data>
+  <data name="{0} 下载失败：所有候选地址都不可用" xml:space="preserve">
+    <value>{0} 下载失败：所有候选地址都不可用</value>
+  </data>
+  <data name="{0} 校验不通过：期望 {1}，实际 {2}" xml:space="preserve">
+    <value>{0} 校验不通过：期望 {1}，实际 {2}</value>
+  </data>
+  <data name="「{0}」的文件都下载完了，但没有找到可执行的 java（清单里既没有 bin/javaw.exe 也没有 bin/java.exe）。" xml:space="preserve">
+    <value>「{0}」的文件都下载完了，但没有找到可执行的 java（清单里既没有 bin/javaw.exe 也没有 bin/java.exe）。</value>
+  </data>
+  <data name="inheritsFrom 成环：{0} 已经出现过（链：{1} → {2}）。" xml:space="preserve">
+    <value>inheritsFrom 成环：{0} 已经出现过（链：{1} → {2}）。</value>
+  </data>
+  <data name="inheritsFrom 链超过 {0} 层，已停止解析（链：{1}）。" xml:space="preserve">
+    <value>inheritsFrom 链超过 {0} 层，已停止解析（链：{1}）。</value>
+  </data>
+  <data name="natives 解压失败：{0}" xml:space="preserve">
+    <value>natives 解压失败：{0}</value>
+  </data>
+  <data name="OptiFine 安装器超过 {0} 分钟没有结束，已终止。" xml:space="preserve">
+    <value>OptiFine 安装器超过 {0} 分钟没有结束，已终止。</value>
+  </data>
+  <data name="OptiFine 安装器下载未完成。" xml:space="preserve">
+    <value>OptiFine 安装器下载未完成。</value>
+  </data>
+  <data name="OptiFine 安装器以退出码 {0} 结束。" xml:space="preserve">
+    <value>OptiFine 安装器以退出码 {0} 结束。</value>
+  </data>
+  <data name="OptiFine 列表里没有 {0} 的 {1} 这个构建（可能刚被撤下，或列表变了）。请在向导里重新选一次。" xml:space="preserve">
+    <value>OptiFine 列表里没有 {0} 的 {1} 这个构建（可能刚被撤下，或列表变了）。请在向导里重新选一次。</value>
+  </data>
+  <data name="安装 {0}" xml:space="preserve">
+    <value>安装 {0}</value>
+  </data>
+  <data name="安装 {0} · {1}" xml:space="preserve">
+    <value>安装 {0} · {1}</value>
+  </data>
+  <data name="安装器报成功，但沙箱里没有 versions/{0}/{0}.json —— 这次安装不算数。" xml:space="preserve">
+    <value>安装器报成功，但沙箱里没有 versions/{0}/{0}.json —— 这次安装不算数。</value>
+  </data>
+  <data name="安装器下载未完成。" xml:space="preserve">
+    <value>安装器下载未完成。</value>
+  </data>
+  <data name="安装器最后说：{0}" xml:space="preserve">
+    <value>安装器最后说：{0}</value>
+  </data>
+  <data name="安装失败。" xml:space="preserve">
+    <value>安装失败。</value>
+  </data>
+  <data name="把 OptiFine 产物搬进游戏目录失败：{0}" xml:space="preserve">
+    <value>把 OptiFine 产物搬进游戏目录失败：{0}</value>
+  </data>
+  <data name="把运行时搬到 {0} 失败：{1}" xml:space="preserve">
+    <value>把运行时搬到 {0} 失败：{1}</value>
+  </data>
+  <data name="版本清单里没有「{0}」，无法安装。" xml:space="preserve">
+    <value>版本清单里没有「{0}」，无法安装。</value>
+  </data>
+  <data name="本地没有版本「{0}」的 JSON（游戏目录与缓存里都没有）。" xml:space="preserve">
+    <value>本地没有版本「{0}」的 JSON（游戏目录与缓存里都没有）。</value>
+  </data>
+  <data name="补全 Java {0} 运行时" xml:space="preserve">
+    <value>补全 Java {0} 运行时</value>
+  </data>
+  <data name="磁盘空间不足。" xml:space="preserve">
+    <value>磁盘空间不足。</value>
+  </data>
+  <data name="磁盘空间不足：还差 {0} MB。" xml:space="preserve">
+    <value>磁盘空间不足：还差 {0} MB。</value>
+  </data>
+  <data name="等待中 · {0}" xml:space="preserve">
+    <value>等待中 · {0}</value>
+  </data>
+  <data name="等待中 · 已排队 {0} 秒" xml:space="preserve">
+    <value>等待中 · 已排队 {0} 秒</value>
+  </data>
+  <data name="队列不认识的任务种类：{0}。" xml:space="preserve">
+    <value>队列不认识的任务种类：{0}。</value>
+  </data>
+  <data name="官方安装器报成功，但本地没有 versions/{0}/{0}.json —— 这次安装不算数（可能是版本号与产出对不上）。" xml:space="preserve">
+    <value>官方安装器报成功，但本地没有 versions/{0}/{0}.json —— 这次安装不算数（可能是版本号与产出对不上）。</value>
+  </data>
+  <data name="官方安装器超过 {0} 分钟没有结束，已终止（网络慢或对方的源不可用）。" xml:space="preserve">
+    <value>官方安装器超过 {0} 分钟没有结束，已终止（网络慢或对方的源不可用）。</value>
+  </data>
+  <data name="官方安装器以退出码 {0} 结束。" xml:space="preserve">
+    <value>官方安装器以退出码 {0} 结束。</value>
+  </data>
+  <data name="获取 {0} 的安装信息失败：{1}" xml:space="preserve">
+    <value>获取 {0} 的安装信息失败：{1}</value>
+  </data>
+  <data name="获取 Java 运行时（适配 {0}）" xml:space="preserve">
+    <value>获取 Java 运行时（适配 {0}）</value>
+  </data>
+  <data name="获取 Java 运行时（最新一代）" xml:space="preserve">
+    <value>获取 Java 运行时（最新一代）</value>
+  </data>
+  <data name="获取版本数据失败：{0}" xml:space="preserve">
+    <value>获取版本数据失败：{0}</value>
+  </data>
+  <data name="获取官方运行时索引失败：{0}" xml:space="preserve">
+    <value>获取官方运行时索引失败：{0}</value>
+  </data>
+  <data name="拿不到官方安装器的校验值（.sha1），已停止安装 —— 无法校验的远端程序不运行。" xml:space="preserve">
+    <value>拿不到官方安装器的校验值（.sha1），已停止安装 —— 无法校验的远端程序不运行。</value>
+  </data>
+  <data name="取 OptiFine 列表失败：{0}" xml:space="preserve">
+    <value>取 OptiFine 列表失败：{0}</value>
+  </data>
+  <data name="取安装器校验值失败：{0}" xml:space="preserve">
+    <value>取安装器校验值失败：{0}</value>
+  </data>
+  <data name="缺少父版本「{0}」：{1} 声明了 inheritsFrom，但本地没有它的版本 JSON。" xml:space="preserve">
+    <value>缺少父版本「{0}」：{1} 声明了 inheritsFrom，但本地没有它的版本 JSON。</value>
+  </data>
+  <data name="沙箱里出现的版本目录：{0}。" xml:space="preserve">
+    <value>沙箱里出现的版本目录：{0}。</value>
+  </data>
+  <data name="适配 {0}" xml:space="preserve">
+    <value>适配 {0}</value>
+  </data>
+  <data name="无法在游戏目录里准备 launcher_profiles.json（官方安装器要求它存在）：{0}" xml:space="preserve">
+    <value>无法在游戏目录里准备 launcher_profiles.json（官方安装器要求它存在）：{0}</value>
+  </data>
+  <data name="下载 {0}" xml:space="preserve">
+    <value>下载 {0}</value>
+  </data>
+  <data name="下载 OptiFine 安装器失败。" xml:space="preserve">
+    <value>下载 OptiFine 安装器失败。</value>
+  </data>
+  <data name="下载安装器失败。" xml:space="preserve">
+    <value>下载安装器失败。</value>
+  </data>
+  <data name="下载到的文件不是 OptiFine 安装器（{0}）：{1}。已停止安装，未运行任何程序。" xml:space="preserve">
+    <value>下载到的文件不是 OptiFine 安装器（{0}）：{1}。已停止安装，未运行任何程序。</value>
+  </data>
+  <data name="下载未完成。" xml:space="preserve">
+    <value>下载未完成。</value>
+  </data>
+  <data name="需要先能读到原版 {0} 的版本 JSON，但：{1}" xml:space="preserve">
+    <value>需要先能读到原版 {0} 的版本 JSON，但：{1}</value>
+  </data>
+  <data name="已回滚这次安装写入的 {0} 项（文件 {1}、目录 {2}、恢复 {3}）。" xml:space="preserve">
+    <value>已回滚这次安装写入的 {0} 项（文件 {1}、目录 {2}、恢复 {3}）。</value>
+  </data>
+  <data name="已回滚这次安装写入的 {0} 项（文件 {1}、目录 {2}、恢复 {3}）；有 {4} 项没删掉（可能被占用）。" xml:space="preserve">
+    <value>已回滚这次安装写入的 {0} 项（文件 {1}、目录 {2}、恢复 {3}）；有 {4} 项没删掉（可能被占用）。</value>
+  </data>
+  <data name="已取消。" xml:space="preserve">
+    <value>已取消。</value>
+  </data>
+  <data name="原版 {0} 的客户端 JAR 不在（{1}），安装器无法打补丁。请先重新安装这个游戏版本。" xml:space="preserve">
+    <value>原版 {0} 的客户端 JAR 不在（{1}），安装器无法打补丁。请先重新安装这个游戏版本。</value>
+  </data>
+  <data name="运行时文件布局失败：{0}" xml:space="preserve">
+    <value>运行时文件布局失败：{0}</value>
+  </data>
+  <data name="这个实例没有记下 {0} 的版本号，无法确定要装哪一个。请在向导或「实例设置」里重新选一次。" xml:space="preserve">
+    <value>这个实例没有记下 {0} 的版本号，无法确定要装哪一个。请在向导或「实例设置」里重新选一次。</value>
+  </data>
+  <data name="这个实例没有记下 OptiFine 的版本号，无法确定要装哪一个。请在向导或「实例设置」里重新选一次。" xml:space="preserve">
+    <value>这个实例没有记下 OptiFine 的版本号，无法确定要装哪一个。请在向导或「实例设置」里重新选一次。</value>
+  </data>
+  <data name="正在获取官方运行时索引" xml:space="preserve">
+    <value>正在获取官方运行时索引</value>
+  </data>
+  <data name="正在解析版本 JSON" xml:space="preserve">
+    <value>正在解析版本 JSON</value>
+  </data>
+  <data name="装 {0} 需要先有一个能用的 Java（安装器本身要用它运行）。请到「Java 与设置」页里检测或获取。" xml:space="preserve">
+    <value>装 {0} 需要先有一个能用的 Java（安装器本身要用它运行）。请到「Java 与设置」页里检测或获取。</value>
+  </data>
+  <data name="装 OptiFine 需要先有一个能用的 Java（安装器本身要用它运行）。请到「Java 与设置」页里检测或获取。" xml:space="preserve">
+    <value>装 OptiFine 需要先有一个能用的 Java（安装器本身要用它运行）。请到「Java 与设置」页里检测或获取。</value>
+  </data>
+  <data name="装 OptiFine 之前必须先把原版 {0} 装好：官方安装器要在原版客户端 JAR 上打补丁，而本地没有它的版本 JSON。请先在「版本列表」里安装这个游戏版本。" xml:space="preserve">
+    <value>装 OptiFine 之前必须先把原版 {0} 装好：官方安装器要在原版客户端 JAR 上打补丁，而本地没有它的版本 JSON。请先在「版本列表」里安装这个游戏版本。</value>
+  </data>
+  <data name="最新一代" xml:space="preserve">
+    <value>最新一代</value>
+  </data>
+  <data name="失败：{0}" xml:space="preserve">
+    <value>失败：{0}</value>
+  </data>
+  <data name="即将完成" xml:space="preserve">
+    <value>即将完成</value>
+  </data>
+  <data name="约 {0} 秒" xml:space="preserve">
+    <value>约 {0} 秒</value>
+  </data>
+  <data name="这个账户当前是官方默认皮肤，先上传一张自定义皮肤再改模型。" xml:space="preserve">
+    <value>这个账户当前是官方默认皮肤，先上传一张自定义皮肤再改模型。</value>
+  </data>
+  <data name="官方没有返回档案，无法确认恢复的结果，请稍后再试。" xml:space="preserve">
+    <value>官方没有返回档案，无法确认恢复的结果，请稍后再试。</value>
+  </data>
+  <data name="这个账户需要重新登录一次（刷新令牌已被作废）。" xml:space="preserve">
+    <value>这个账户需要重新登录一次（刷新令牌已被作废）。</value>
+  </data>
+  <data name="上传太频繁，官方要求冷却（429）。请等一分钟左右再试 —— 连续重试可能导致账户被临时限制。" xml:space="preserve">
+    <value>上传太频繁，官方要求冷却（429）。请等一分钟左右再试 —— 连续重试可能导致账户被临时限制。</value>
+  </data>
+  <data name="请求超时，请检查网络后重试。" xml:space="preserve">
+    <value>请求超时，请检查网络后重试。</value>
+  </data>
+  <data name="网络请求失败，请检查网络后重试。" xml:space="preserve">
+    <value>网络请求失败，请检查网络后重试。</value>
+  </data>
+  <data name="取不到这个账户的登录凭据，无法继续。" xml:space="preserve">
+    <value>取不到这个账户的登录凭据，无法继续。</value>
+  </data>
+  <data name="账户文件读不出来，已取消这次皮肤操作（原文件未改动）。" xml:space="preserve">
+    <value>账户文件读不出来，已取消这次皮肤操作（原文件未改动）。</value>
+  </data>
+  <data name="库里没有玩家「{0}」。" xml:space="preserve">
+    <value>库里没有玩家「{0}」。</value>
+  </data>
+  <data name="账户文件读不出来（{0}），无法确认这个账户的状态；原文件未改动。" xml:space="preserve">
+    <value>账户文件读不出来（{0}），无法确认这个账户的状态；原文件未改动。</value>
+  </data>
+  <data name="库里没有玩家「{0}」，请先在账户页登录。" xml:space="preserve">
+    <value>库里没有玩家「{0}」，请先在账户页登录。</value>
+  </data>
+  <data name="离线账户没有官方档案，不能上传皮肤（皮肤只属于正版账户）。" xml:space="preserve">
+    <value>离线账户没有官方档案，不能上传皮肤（皮肤只属于正版账户）。</value>
+  </data>
+  <data name="刚刚才改过皮肤，请等 {0} 秒再试（官方约 1 次/分钟）。" xml:space="preserve">
+    <value>刚刚才改过皮肤，请等 {0} 秒再试（官方约 1 次/分钟）。</value>
+  </data>
+  <data name="选中的图片读不出来（可能已被移动、删除，或没有读取权限）。" xml:space="preserve">
+    <value>选中的图片读不出来（可能已被移动、删除，或没有读取权限）。</value>
+  </data>
+  <data name="官方返回的档案读不出来。" xml:space="preserve">
+    <value>官方返回的档案读不出来。</value>
+  </data>
+  <data name="皮肤已经改好了，但账户文件写不进去，界面上的皮肤信息要等下次取档才会更新（原文件未改动）。" xml:space="preserve">
+    <value>皮肤已经改好了，但账户文件写不进去，界面上的皮肤信息要等下次取档才会更新（原文件未改动）。</value>
+  </data>
+  <data name="官方接口拒收了这个请求（400）。请确认这是一张 64×64 或 64×32 的 PNG 皮肤图。" xml:space="preserve">
+    <value>官方接口拒收了这个请求（400）。请确认这是一张 64×64 或 64×32 的 PNG 皮肤图。</value>
+  </data>
+  <data name="官方接口不接受上传的媒体类型（415）。这是启动器的缺陷（multipart 的 Content-Type 写错了），请反馈这条信息。" xml:space="preserve">
+    <value>官方接口不接受上传的媒体类型（415）。这是启动器的缺陷（multipart 的 Content-Type 写错了），请反馈这条信息。</value>
+  </data>
+  <data name="官方服务器返回了 {0} {1}，请稍后再试。" xml:space="preserve">
+    <value>官方服务器返回了 {0} {1}，请稍后再试。</value>
+  </data>
+  <data name="选中的文件是空的。" xml:space="preserve">
+    <value>选中的文件是空的。</value>
+  </data>
+  <data name="这张图片有 {0} KB，超过了本启动器的上限（{1} KB）。皮肤图通常只有几 KB，请确认选的是皮肤 PNG 而不是别的图片。" xml:space="preserve">
+    <value>这张图片有 {0} KB，超过了本启动器的上限（{1} KB）。皮肤图通常只有几 KB，请确认选的是皮肤 PNG 而不是别的图片。</value>
+  </data>
+  <data name="这不是一个 PNG 文件（皮肤必须是 PNG）。" xml:space="preserve">
+    <value>这不是一个 PNG 文件（皮肤必须是 PNG）。</value>
+  </data>
+  <data name="皮肤必须是 64×64 或 64×32 像素，这张是 {0}×{1}。" xml:space="preserve">
+    <value>皮肤必须是 64×64 或 64×32 像素，这张是 {0}×{1}。</value>
+  </data>
+  <data name="这张图片不可用。" xml:space="preserve">
+    <value>这张图片不可用。</value>
+  </data>
+  <data name="从未启动" xml:space="preserve">
+    <value>从未启动</value>
+  </data>
+  <data name="从未校验" xml:space="preserve">
+    <value>从未校验</value>
+  </data>
+  <data name="从未使用" xml:space="preserve">
+    <value>从未使用</value>
+  </data>
+  <data name="从未更新" xml:space="preserve">
+    <value>从未更新</value>
+  </data>
+  <data name="今天 {0}" xml:space="preserve">
+    <value>今天 {0}</value>
+  </data>
+  <data name="昨天 {0}" xml:space="preserve">
+    <value>昨天 {0}</value>
+  </data>
+  <data name="{0} · {1} 个模组 · 上次" xml:space="preserve">
+    <value>{0} · {1} 个模组 · 上次</value>
+  </data>
+  <data name="Microsoft 正版 · {0} · 上次使用" xml:space="preserve">
+    <value>Microsoft 正版 · {0} · 上次使用</value>
+  </data>
+  <data name="离线模式 · {0} · 上次使用" xml:space="preserve">
+    <value>离线模式 · {0} · 上次使用</value>
+  </data>
+  <data name="{0} 分" xml:space="preserve">
+    <value>{0} 分</value>
+  </data>
+  <data name="{0} 小时 {1} 分" xml:space="preserve">
+    <value>{0} 小时 {1} 分</value>
+  </data>
+  <data name="{0} × {1} 窗口化" xml:space="preserve">
+    <value>{0} × {1} 窗口化</value>
+  </data>
+  <data name="{0} × {1} 全屏" xml:space="preserve">
+    <value>{0} × {1} 全屏</value>
+  </data>
+  <data name="{0} × {1} 无边框全屏" xml:space="preserve">
+    <value>{0} × {1} 无边框全屏</value>
+  </data>
+  <data name="{0} (正常退出)" xml:space="preserve">
+    <value>{0} (正常退出)</value>
+  </data>
+  <data name="{0} (异常退出)" xml:space="preserve">
+    <value>{0} (异常退出)</value>
+  </data>
+  <data name="未启用" xml:space="preserve">
+    <value>未启用</value>
+  </data>
+  <data name="未指定" xml:space="preserve">
+    <value>未指定</value>
+  </data>
+  <data name="自动匹配" xml:space="preserve">
+    <value>自动匹配</value>
+  </data>
+  <data name="未绑定" xml:space="preserve">
+    <value>未绑定</value>
+  </data>
+  <data name="就绪" xml:space="preserve">
+    <value>就绪</value>
+  </data>
+  <data name="需要修复" xml:space="preserve">
+    <value>需要修复</value>
+  </data>
+  <data name="未安装" xml:space="preserve">
+    <value>未安装</value>
+  </data>
+  <data name="该实例没有模组" xml:space="preserve">
+    <value>该实例没有模组</value>
+  </data>
+  <data name="{0} 个模组" xml:space="preserve">
+    <value>{0} 个模组</value>
+  </data>
+  <data name="{0} 个资源包 · {1} 个存档" xml:space="preserve">
+    <value>{0} 个资源包 · {1} 个存档</value>
+  </data>
+  <data name="内存 {0} MB" xml:space="preserve">
+    <value>内存 {0} MB</value>
+  </data>
+  <data name="查看进行中的下载与校验任务" xml:space="preserve">
+    <value>查看进行中的下载与校验任务</value>
+  </data>
+  <data name="{0} 个 (已启用 {1})" xml:space="preserve">
+    <value>{0} 个 (已启用 {1})</value>
+  </data>
+  <data name="（没有实例）" xml:space="preserve">
+    <value>（没有实例）</value>
+  </data>
+  <data name="需补 Java 21" xml:space="preserve">
+    <value>需补 Java 21</value>
+  </data>
+  <data name="需补运行时" xml:space="preserve">
+    <value>需补运行时</value>
+  </data>
+  <data name="Java 8 未安装" xml:space="preserve">
+    <value>Java 8 未安装</value>
+  </data>
+  <data name="待确认安装" xml:space="preserve">
+    <value>待确认安装</value>
+  </data>
+  <data name="未检测到 Java {0}" xml:space="preserve">
+    <value>未检测到 Java {0}</value>
+  </data>
+  <data name="未检测到" xml:space="preserve">
+    <value>未检测到</value>
+  </data>
+  <data name="{0} ({1} 位 · {2})" xml:space="preserve">
+    <value>{0} ({1} 位 · {2})</value>
+  </data>
+  <data name="{0} ({1} 位)" xml:space="preserve">
+    <value>{0} ({1} 位)</value>
+  </data>
+  <data name="{0} 个模组 · 已启用 {1}" xml:space="preserve">
+    <value>{0} 个模组 · 已启用 {1}</value>
+  </data>
+  <data name="{0} 个资源包 · {1} 个存档 · {2} 个已备份" xml:space="preserve">
+    <value>{0} 个资源包 · {1} 个存档 · {2} 个已备份</value>
+  </data>
+  <data name="当前无活动任务" xml:space="preserve">
+    <value>当前无活动任务</value>
+  </data>
+  <data name="{0} 需要 {1}，当前未安装" xml:space="preserve">
+    <value>{0} 需要 {1}，当前未安装</value>
+  </data>
+  <data name="已同步" xml:space="preserve">
+    <value>已同步</value>
+  </data>
+  <data name="3 个模组可更新" xml:space="preserve">
+    <value>3 个模组可更新</value>
+  </data>
+  <data name="未获取" xml:space="preserve">
+    <value>未获取</value>
+  </data>
+  <data name="默认皮肤" xml:space="preserve">
+    <value>默认皮肤</value>
+  </data>
+  <data name="自定义皮肤 · {0}" xml:space="preserve">
+    <value>自定义皮肤 · {0}</value>
+  </data>
+  <data name="{0}（默认）" xml:space="preserve">
+    <value>{0}（默认）</value>
+  </data>
+  <data name="（未配置）" xml:space="preserve">
+    <value>（未配置）</value>
+  </data>
+  <data name="{0} · {1} 个模组 · {2} · 对应实例 {3}" xml:space="preserve">
+    <value>{0} · {1} 个模组 · {2} · 对应实例 {3}</value>
+  </data>
+  <data name="原版" xml:space="preserve">
+    <value>原版</value>
+  </data>
+  <data name="不安装任何加载器，纯净游戏" xml:space="preserve">
+    <value>不安装任何加载器，纯净游戏</value>
+  </data>
+  <data name="{0} · 轻量 · 更新快" xml:space="preserve">
+    <value>{0} · 轻量 · 更新快</value>
+  </data>
+  <data name="{0} · 生态兼容性最好" xml:space="preserve">
+    <value>{0} · 生态兼容性最好</value>
+  </data>
+  <data name="{0} · Forge 的新一代" xml:space="preserve">
+    <value>{0} · Forge 的新一代</value>
+  </data>
+  <data name="{0} · Fabric 的分支" xml:space="preserve">
+    <value>{0} · Fabric 的分支</value>
+  </data>
+  <data name="{0} · 光影与画质增强" xml:space="preserve">
+    <value>{0} · 光影与画质增强</value>
+  </data>
+  <data name="{0} · 光影与画质增强（另有 {1} 个预览版未列出）" xml:space="preserve">
+    <value>{0} · 光影与画质增强（另有 {1} 个预览版未列出）</value>
+  </data>
+  <data name="该游戏版本没有对应版本" xml:space="preserve">
+    <value>该游戏版本没有对应版本</value>
+  </data>
+  <data name="尚未检查" xml:space="preserve">
+    <value>尚未检查</value>
+  </data>
+  <data name="{0}（推荐）" xml:space="preserve">
+    <value>{0}（推荐）</value>
+  </data>
+  <data name="{0} {1}" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="名称与目录" xml:space="preserve">
+    <value>名称与目录</value>
+  </data>
+  <data name="已安装" xml:space="preserve">
+    <value>已安装</value>
+  </data>
+  <data name="缺少 Java {0}" xml:space="preserve">
+    <value>缺少 Java {0}</value>
+  </data>
+  <data name="{0} 位" xml:space="preserve">
+    <value>{0} 位</value>
+  </data>
+  <data name="需要 {0}" xml:space="preserve">
+    <value>需要 {0}</value>
+  </data>
+  <data name="最新 {0}" xml:space="preserve">
+    <value>最新 {0}</value>
+  </data>
+  <data name="与 {0} 冲突" xml:space="preserve">
+    <value>与 {0} 冲突</value>
+  </data>
+  <data name="不在 Modrinth 收录" xml:space="preserve">
+    <value>不在 Modrinth 收录</value>
+  </data>
+  <data name="由官网安装器放入" xml:space="preserve">
+    <value>由官网安装器放入</value>
+  </data>
+  <data name="{0}× · {1} · 优先级 {2}" xml:space="preserve">
+    <value>{0}× · {1} · 优先级 {2}</value>
+  </data>
+  <data name="生存" xml:space="preserve">
+    <value>生存</value>
+  </data>
+  <data name="创造" xml:space="preserve">
+    <value>创造</value>
+  </data>
+  <data name="实体动画 · {0} · 优先级 {1}" xml:space="preserve">
+    <value>实体动画 · {0} · 优先级 {1}</value>
+  </data>
+  <data name="启动器发生未处理的异常（{0} · {1}）：{2} 调用栈：{3}" xml:space="preserve">
+    <value>启动器发生未处理的异常（{0} · {1}）：{2} 调用栈：{3}</value>
+  </data>
+  <data name="启动器发生未处理的异常" xml:space="preserve">
+    <value>启动器发生未处理的异常</value>
+    <comment>M6-f 之前 CrashHandler 用的旧键（没有占位符）。用户的 log\events.jsonl 里已有的崩溃记录仍是这个键，保留它，那些历史行在英文界面下也读得懂；新写入一律走带占位符的那个键。</comment>
+  </data>
+  <data name="冒险" xml:space="preserve">
+    <value>冒险</value>
+  </data>
+  <data name="旁观" xml:space="preserve">
+    <value>旁观</value>
+  </data>
+  <data name="格式 {0} · {1} · 优先级 {2}" xml:space="preserve">
+    <value>格式 {0} · {1} · 优先级 {2}</value>
+  </data>
+  <data name="{0} · 优先级 {1}" xml:space="preserve">
+    <value>{0} · 优先级 {1}</value>
+  </data>
+  <data name="内容目录读取失败（{0}）：{1}" xml:space="preserve">
+    <value>内容目录读取失败（{0}）：{1}</value>
+  </data>
+  <data name="Modrinth 没有返回任何整合包。" xml:space="preserve">
+    <value>Modrinth 没有返回任何整合包。</value>
+  </data>
+  <data name="还没有取得 Modrinth 数据：联网后重新进入本页会自动获取。" xml:space="preserve">
+    <value>还没有取得 Modrinth 数据：联网后重新进入本页会自动获取。</value>
+  </data>
+  <data name="获取 Modrinth 数据失败（{0}）：{1}" xml:space="preserve">
+    <value>获取 Modrinth 数据失败（{0}）：{1}</value>
+  </data>
+  <data name="已更新 Modrinth 浏览列表（{0} 个整合包，{1}）" xml:space="preserve">
+    <value>已更新 Modrinth 浏览列表（{0} 个整合包，{1}）</value>
+  </data>
+  <data name="Modrinth 浏览列表返回了 0 条（匹配总数 {0}），已保留上一次的 {1} 条结果" xml:space="preserve">
+    <value>Modrinth 浏览列表返回了 0 条（匹配总数 {0}），已保留上一次的 {1} 条结果</value>
+  </data>
+  <data name="Modrinth 浏览缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）" xml:space="preserve">
+    <value>Modrinth 浏览缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）</value>
+  </data>
+  <data name="模组哈希缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）" xml:space="preserve">
+    <value>模组哈希缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）</value>
+  </data>
+  <data name="已完成本地模组与 Modrinth 的对账（{0} 个文件，{1} 个在 Modrinth 上，{2}）" xml:space="preserve">
+    <value>已完成本地模组与 Modrinth 的对账（{0} 个文件，{1} 个在 Modrinth 上，{2}）</value>
+  </data>
+  <data name="Modrinth 对账缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）" xml:space="preserve">
+    <value>Modrinth 对账缓存不可用（{0}，{1}），本次按无缓存处理（原文件未改动）</value>
+  </data>
+  <data name="更新 {0} 个模组 · {1}" xml:space="preserve">
+    <value>更新 {0} 个模组 · {1}</value>
+  </data>
+  <data name="正在解析必需依赖" xml:space="preserve">
+    <value>正在解析必需依赖</value>
+  </data>
+  <data name="1. 解析必需依赖" xml:space="preserve">
+    <value>1. 解析必需依赖</value>
+  </data>
+  <data name="读这些版本在 Modrinth 上声明的依赖" xml:space="preserve">
+    <value>读这些版本在 Modrinth 上声明的依赖</value>
+  </data>
+  <data name="2. 下载并校验模组文件" xml:space="preserve">
+    <value>2. 下载并校验模组文件</value>
+  </data>
+  <data name="这些版本的主文件（按 SHA-1 校验）" xml:space="preserve">
+    <value>这些版本的主文件（按 SHA-1 校验）</value>
+  </data>
+  <data name="3. 备份被替换的旧版本" xml:space="preserve">
+    <value>3. 备份被替换的旧版本</value>
+  </data>
+  <data name="移进备份目录，而不是直接删掉" xml:space="preserve">
+    <value>移进备份目录，而不是直接删掉</value>
+  </data>
+  <data name="内容下载任务已取消：{0}" xml:space="preserve">
+    <value>内容下载任务已取消：{0}</value>
+  </data>
+  <data name="内容下载任务异常结束（{0}，{1}）" xml:space="preserve">
+    <value>内容下载任务异常结束（{0}，{1}）</value>
+  </data>
+  <data name="模组下载任务开始：{0}（目标 {1} 个，含依赖共 {2} 个文件，跳过已装的依赖 {3} 个）" xml:space="preserve">
+    <value>模组下载任务开始：{0}（目标 {1} 个，含依赖共 {2} 个文件，跳过已装的依赖 {3} 个）</value>
+  </data>
+  <data name="模组下载完成：{0}（下载 {1} 个文件，跳过 {2} 个，替换旧版本 {3} 个）" xml:space="preserve">
+    <value>模组下载完成：{0}（下载 {1} 个文件，跳过 {2} 个，替换旧版本 {3} 个）</value>
+  </data>
+  <data name="模组下载没有完成（{0} 个文件失败，目标 {1}）" xml:space="preserve">
+    <value>模组下载没有完成（{0} 个文件失败，目标 {1}）</value>
+  </data>
+  <data name="模组下载任务已取消：{0}" xml:space="preserve">
+    <value>模组下载任务已取消：{0}</value>
+  </data>
+  <data name="模组内容解析失败（{0}）：{1}" xml:space="preserve">
+    <value>模组内容解析失败（{0}）：{1}</value>
+  </data>
+  <data name="模组内容解析异常结束（{0}，{1}）" xml:space="preserve">
+    <value>模组内容解析异常结束（{0}，{1}）</value>
+  </data>
+  <data name="替换旧版本文件失败（{0}）：{1}" xml:space="preserve">
+    <value>替换旧版本文件失败（{0}）：{1}</value>
+  </data>
+  <data name="被替换的旧版本已移进备份（{0} 个文件 → {1}）" xml:space="preserve">
+    <value>被替换的旧版本已移进备份（{0} 个文件 → {1}）</value>
+  </data>
+  <data name="实例 {0} 已经不在了，这次没有下载任何模组。" xml:space="preserve">
+    <value>实例 {0} 已经不在了，这次没有下载任何模组。</value>
+  </data>
+  <data name="读取 Modrinth 上的版本信息失败，这次没有下载任何文件。" xml:space="preserve">
+    <value>读取 Modrinth 上的版本信息失败，这次没有下载任何文件。</value>
+  </data>
+  <data name="解析要下载的模组时出错（{0}）。" xml:space="preserve">
+    <value>解析要下载的模组时出错（{0}）。</value>
+  </data>
+  <data name="依赖的层级超过了 {0} 层，这次没有下载任何文件。" xml:space="preserve">
+    <value>依赖的层级超过了 {0} 层，这次没有下载任何文件。</value>
+  </data>
+  <data name="Modrinth 上没有找到要装的那个版本（{0}）。" xml:space="preserve">
+    <value>Modrinth 上没有找到要装的那个版本（{0}）。</value>
+  </data>
+  <data name="Modrinth 上的这个版本没有可下载的文件（{0}）。" xml:space="preserve">
+    <value>Modrinth 上的这个版本没有可下载的文件（{0}）。</value>
+  </data>
+  <data name="Modrinth 给的文件名不能用（{0}）。" xml:space="preserve">
+    <value>Modrinth 给的文件名不能用（{0}）。</value>
+  </data>
+  <data name="这一批里有两个文件同名（{0}），装下去会互相覆盖。" xml:space="preserve">
+    <value>这一批里有两个文件同名（{0}），装下去会互相覆盖。</value>
+  </data>
+  <data name="要下载的文件超过 {0} 个，这次没有下载任何文件。" xml:space="preserve">
+    <value>要下载的文件超过 {0} 个，这次没有下载任何文件。</value>
+  </data>
+  <data name="已经下载了新版本，但旧的 {0} 没能移走（现在 mods 目录里会有同一个模组的两份）。" xml:space="preserve">
+    <value>已经下载了新版本，但旧的 {0} 没能移走（现在 mods 目录里会有同一个模组的两份）。</value>
+  </data>
+  <data name="要替换的旧版本不在这个实例的 mods 目录里（{0}），这次没有动它。" xml:space="preserve">
+    <value>要替换的旧版本不在这个实例的 mods 目录里（{0}），这次没有动它。</value>
+  </data>
+  <data name="先在「本地实例」里选一个实例。" xml:space="preserve">
+    <value>先在「本地实例」里选一个实例。</value>
+  </data>
+  <data name="把这一页里 {0} 个可更新的模组更新到最新版本（旧的会移进备份目录）。" xml:space="preserve">
+    <value>把这一页里 {0} 个可更新的模组更新到最新版本（旧的会移进备份目录）。</value>
+  </data>
+  <data name="当前没有可更新的模组。" xml:space="preserve">
+    <value>当前没有可更新的模组。</value>
+  </data>
+  <data name="整合包清单不是合法的 JSON。" xml:space="preserve">
+    <value>整合包清单不是合法的 JSON。</value>
+  </data>
+  <data name="整合包清单是空的。" xml:space="preserve">
+    <value>整合包清单是空的。</value>
+  </data>
+  <data name="这个整合包的格式版本是 {0}，本启动器只支持 {1}。" xml:space="preserve">
+    <value>这个整合包的格式版本是 {0}，本启动器只支持 {1}。</value>
+  </data>
+  <data name="这个整合包是给 {0} 做的，不是 Minecraft。" xml:space="preserve">
+    <value>这个整合包是给 {0} 做的，不是 Minecraft。</value>
+  </data>
+  <data name="清单里的文件路径越出了实例目录（{0}）。" xml:space="preserve">
+    <value>清单里的文件路径越出了实例目录（{0}）。</value>
+  </data>
+  <data name="清单里同一个路径出现了两次（{0}）。" xml:space="preserve">
+    <value>清单里同一个路径出现了两次（{0}）。</value>
+  </data>
+  <data name="清单里的 {0} 缺少 SHA-1 或 SHA-512 校验值，无法校验下载内容。" xml:space="preserve">
+    <value>清单里的 {0} 缺少 SHA-1 或 SHA-512 校验值，无法校验下载内容。</value>
+  </data>
+  <data name="这个整合包同时声明了多个加载器（{0}），无法安装。" xml:space="preserve">
+    <value>这个整合包同时声明了多个加载器（{0}），无法安装。</value>
+  </data>
+  <data name="整合包清单大得不像清单（超过 {0} KB），已拒绝。" xml:space="preserve">
+    <value>整合包清单大得不像清单（超过 {0} KB），已拒绝。</value>
+  </data>
+  <data name="找不到这个整合包文件。" xml:space="preserve">
+    <value>找不到这个整合包文件。</value>
+  </data>
+  <data name="整合包文件太大（{0} MB），超过 {1} MB 的上限。" xml:space="preserve">
+    <value>整合包文件太大（{0} MB），超过 {1} MB 的上限。</value>
+  </data>
+  <data name="压缩包里的文件超过 {0} 个，看起来像 zip 炸弹。" xml:space="preserve">
+    <value>压缩包里的文件超过 {0} 个，看起来像 zip 炸弹。</value>
+  </data>
+  <data name="压缩包解压后超过 {0} MB，看起来像 zip 炸弹。" xml:space="preserve">
+    <value>压缩包解压后超过 {0} MB，看起来像 zip 炸弹。</value>
+  </data>
+  <data name="压缩包里的 {0} 解压后超过 {1} MB。" xml:space="preserve">
+    <value>压缩包里的 {0} 解压后超过 {1} MB。</value>
+  </data>
+  <data name="压缩包里的 {0} 压缩比异常（{1}:1），看起来像 zip 炸弹。" xml:space="preserve">
+    <value>压缩包里的 {0} 压缩比异常（{1}:1），看起来像 zip 炸弹。</value>
+  </data>
+  <data name="压缩包里的条目路径越出了实例目录（{0}）。" xml:space="preserve">
+    <value>压缩包里的条目路径越出了实例目录（{0}）。</value>
+  </data>
+  <data name="压缩包里有不允许的文件类型（{0}：{1}）。" xml:space="preserve">
+    <value>压缩包里有不允许的文件类型（{0}：{1}）。</value>
+  </data>
+  <data name="这个压缩包已经损坏或不是 zip（{0}）。" xml:space="preserve">
+    <value>这个压缩包已经损坏或不是 zip（{0}）。</value>
+  </data>
+  <data name="清单里有不允许的文件类型（{0}：{1}）。" xml:space="preserve">
+    <value>清单里有不允许的文件类型（{0}：{1}）。</value>
+  </data>
+  <data name="清单里 {0} 的下载地址不是合法地址（{1}）。" xml:space="preserve">
+    <value>清单里 {0} 的下载地址不是合法地址（{1}）。</value>
+  </data>
+  <data name="清单里 {0} 的下载地址不是 https（{1}）。" xml:space="preserve">
+    <value>清单里 {0} 的下载地址不是 https（{1}）。</value>
+  </data>
+  <data name="清单里 {0} 的下载源不在允许的域名内（{1}）。" xml:space="preserve">
+    <value>清单里 {0} 的下载源不在允许的域名内（{1}）。</value>
+  </data>
+  <data name="这不是一个整合包：压缩包里没有 {0}。" xml:space="preserve">
+    <value>这不是一个整合包：压缩包里没有 {0}。</value>
+  </data>
+  <data name="读不到这个整合包（{0}）。" xml:space="preserve">
+    <value>读不到这个整合包（{0}）。</value>
+  </data>
+  <data name="整合包没有通过安全扫描（{0} 项）。" xml:space="preserve">
+    <value>整合包没有通过安全扫描（{0} 项）。</value>
+  </data>
+  <data name="展开整合包的覆盖层失败（{0}）：{1}" xml:space="preserve">
+    <value>展开整合包的覆盖层失败（{0}）：{1}</value>
+  </data>
+  <data name="清单里的 {0} 没有下载地址，覆盖层里也没有这个文件。" xml:space="preserve">
+    <value>清单里的 {0} 没有下载地址，覆盖层里也没有这个文件。</value>
+  </data>
+  <data name="整合包清单读不出来（{0}）：{1}" xml:space="preserve">
+    <value>整合包清单读不出来（{0}）：{1}</value>
+  </data>
+  <data name="整合包没有通过安全扫描（{0}）：{1}" xml:space="preserve">
+    <value>整合包没有通过安全扫描（{0}）：{1}</value>
+  </data>
+  <data name="整合包里有 {0} 个不在标准目录里的条目，已忽略。" xml:space="preserve">
+    <value>整合包里有 {0} 个不在标准目录里的条目，已忽略。</value>
+  </data>
+  <data name="整合包声明了本启动器不认识的依赖，已忽略：{0}" xml:space="preserve">
+    <value>整合包声明了本启动器不认识的依赖，已忽略：{0}</value>
+  </data>
+  <data name="整合包里有 {0} 个文件标明客户端不装，已跳过。" xml:space="preserve">
+    <value>整合包里有 {0} 个文件标明客户端不装，已跳过。</value>
+  </data>
+  <data name="整合包的文件没有下完（{0} 个失败，{1} 个已跳过）" xml:space="preserve">
+    <value>整合包的文件没有下完（{0} 个失败，{1} 个已跳过）</value>
+  </data>
+  <data name="整合包的覆盖层写入了 {0} 个文件（其中 {1} 个覆盖了清单里的文件）" xml:space="preserve">
+    <value>整合包的覆盖层写入了 {0} 个文件（其中 {1} 个覆盖了清单里的文件）</value>
+  </data>
+  <data name="整合包导入完成：{0}（下载 {1} 个文件，覆盖层 {2} 个文件）" xml:space="preserve">
+    <value>整合包导入完成：{0}（下载 {1} 个文件，覆盖层 {2} 个文件）</value>
+  </data>
+  <data name="导入整合包 {0}" xml:space="preserve">
+    <value>导入整合包 {0}</value>
+  </data>
+  <data name="1. 扫描整合包" xml:space="preserve">
+    <value>1. 扫描整合包</value>
+  </data>
+  <data name="zip 炸弹、路径穿越、危险扩展名与下载源白名单" xml:space="preserve">
+    <value>zip 炸弹、路径穿越、危险扩展名与下载源白名单</value>
+  </data>
+  <data name="2. 建实例并安装游戏与加载器" xml:space="preserve">
+    <value>2. 建实例并安装游戏与加载器</value>
+  </data>
+  <data name="用整合包声明的游戏版本与加载器" xml:space="preserve">
+    <value>用整合包声明的游戏版本与加载器</value>
+  </data>
+  <data name="3. 下载并校验整合包里的文件" xml:space="preserve">
+    <value>3. 下载并校验整合包里的文件</value>
+  </data>
+  <data name="清单里的每个文件（SHA-1 与 SHA-512 都校验）" xml:space="preserve">
+    <value>清单里的每个文件（SHA-1 与 SHA-512 都校验）</value>
+  </data>
+  <data name="4. 展开覆盖层" xml:space="preserve">
+    <value>4. 展开覆盖层</value>
+  </data>
+  <data name="overrides/ → client-overrides/ 依次铺进实例目录" xml:space="preserve">
+    <value>overrides/ → client-overrides/ 依次铺进实例目录</value>
+  </data>
+  <data name="正在扫描整合包" xml:space="preserve">
+    <value>正在扫描整合包</value>
+  </data>
+  <data name="这个整合包没有声明它用的 Minecraft 版本，本启动器无法决定要装哪一版游戏。" xml:space="preserve">
+    <value>这个整合包没有声明它用的 Minecraft 版本，本启动器无法决定要装哪一版游戏。</value>
+  </data>
+  <data name="整合包要用的实例建不出来（{0}），内容没有铺进去。" xml:space="preserve">
+    <value>整合包要用的实例建不出来（{0}），内容没有铺进去。</value>
+  </data>
+  <data name="这个整合包没有可用的清单。" xml:space="preserve">
+    <value>这个整合包没有可用的清单。</value>
+  </data>
+  <data name="整合包导入未开始（{0}）：安全扫描或清单没通过" xml:space="preserve">
+    <value>整合包导入未开始（{0}）：安全扫描或清单没通过</value>
+  </data>
+  <data name="整合包装游戏时异常结束（{0}，{1}）" xml:space="preserve">
+    <value>整合包装游戏时异常结束（{0}，{1}）</value>
+  </data>
+  <data name="整合包导入在装游戏这一步失败（{0}，未建实例）" xml:space="preserve">
+    <value>整合包导入在装游戏这一步失败（{0}，未建实例）</value>
+  </data>
+  <data name="整合包导入建实例失败（{0}）：{1}" xml:space="preserve">
+    <value>整合包导入建实例失败（{0}）：{1}</value>
+  </data>
+  <data name="选择整合包" xml:space="preserve">
+    <value>选择整合包</value>
+  </data>
+  <data name="Modrinth 整合包 (*.mrpack)|*.mrpack|所有文件 (*.*)|*.*" xml:space="preserve">
+    <value>Modrinth 整合包 (*.mrpack)|*.mrpack|所有文件 (*.*)|*.*</value>
+  </data>
+  <data name="选择一个 .mrpack 文件导入；导入前会先做安全扫描" xml:space="preserve">
+    <value>选择一个 .mrpack 文件导入；导入前会先做安全扫描</value>
+  </data>
+  <data name="存档目录名不可用（{0}），这次没有备份。" xml:space="preserve">
+    <value>存档目录名不可用（{0}），这次没有备份。</value>
+  </data>
+  <data name="找不到这个存档的目录（{0}）——它可能已经被删掉或改名了。" xml:space="preserve">
+    <value>找不到这个存档的目录（{0}）——它可能已经被删掉或改名了。</value>
+  </data>
+  <data name="读不到这个存档的文件（{0}）。游戏正在运行时存档会被占用，请先退出游戏再试。" xml:space="preserve">
+    <value>读不到这个存档的文件（{0}）。游戏正在运行时存档会被占用，请先退出游戏再试。</value>
+  </data>
+  <data name="写入备份失败（{0}：{1}）。" xml:space="preserve">
+    <value>写入备份失败（{0}：{1}）。</value>
+  </data>
+  <data name="备份写完之后复核没通过，这次没有替换掉旧的备份。" xml:space="preserve">
+    <value>备份写完之后复核没通过，这次没有替换掉旧的备份。</value>
+  </data>
+  <data name="存档目录名不可用（{0}），这次没有动你的存档。" xml:space="preserve">
+    <value>存档目录名不可用（{0}），这次没有动你的存档。</value>
+  </data>
+  <data name="这个存档还没有备份，先在「备份所选」里做一次。" xml:space="preserve">
+    <value>这个存档还没有备份，先在「备份所选」里做一次。</value>
+  </data>
+  <data name="这个备份里一个文件都没有，这次没有动你的存档。" xml:space="preserve">
+    <value>这个备份里一个文件都没有，这次没有动你的存档。</value>
+  </data>
+  <data name="备份里的条目越出了这个存档的目录（{0}）。" xml:space="preserve">
+    <value>备份里的条目越出了这个存档的目录（{0}）。</value>
+  </data>
+  <data name="这个备份里的文件超过 {0} 个，看起来不像一个存档备份。" xml:space="preserve">
+    <value>这个备份里的文件超过 {0} 个，看起来不像一个存档备份。</value>
+  </data>
+  <data name="这个备份解压后超过 {0} GB，看起来不像一个存档备份。" xml:space="preserve">
+    <value>这个备份解压后超过 {0} GB，看起来不像一个存档备份。</value>
+  </data>
+  <data name="恢复存档失败（{0}：{1}）。" xml:space="preserve">
+    <value>恢复存档失败（{0}：{1}）。</value>
+  </data>
+  <data name="这个备份已经损坏或不是 zip（{0}）。" xml:space="preserve">
+    <value>这个备份已经损坏或不是 zip（{0}）。</value>
+  </data>
+  <data name="备份存档未开始（{0}）：读不到文件（{1}）" xml:space="preserve">
+    <value>备份存档未开始（{0}）：读不到文件（{1}）</value>
+  </data>
+  <data name="备份存档失败（{0}，{1}）" xml:space="preserve">
+    <value>备份存档失败（{0}，{1}）</value>
+  </data>
+  <data name="备份复核没通过（{0}）：写出来的归档与源目录不一致" xml:space="preserve">
+    <value>备份复核没通过（{0}）：写出来的归档与源目录不一致</value>
+  </data>
+  <data name="备份存档完成：{0}（{1} 个文件，{2} 字节）" xml:space="preserve">
+    <value>备份存档完成：{0}（{1} 个文件，{2} 字节）</value>
+  </data>
+  <data name="恢复存档完成：{0}（{1} 个文件，{2} 字节）" xml:space="preserve">
+    <value>恢复存档完成：{0}（{1} 个文件，{2} 字节）</value>
+  </data>
+  <data name="恢复存档失败（{0}，{1}）" xml:space="preserve">
+    <value>恢复存档失败（{0}，{1}）</value>
+  </data>
+  <data name="恢复失败后没能把原来的存档放回原位（{0}，它还在备份目录的 saves 里）：{1}" xml:space="preserve">
+    <value>恢复失败后没能把原来的存档放回原位（{0}，它还在备份目录的 saves 里）：{1}</value>
+  </data>
+  <data name="备份存档 {0}" xml:space="preserve">
+    <value>备份存档 {0}</value>
+  </data>
+  <data name="恢复存档 {0}" xml:space="preserve">
+    <value>恢复存档 {0}</value>
+  </data>
+  <data name="正在统计存档文件" xml:space="preserve">
+    <value>正在统计存档文件</value>
+  </data>
+  <data name="正在解压备份" xml:space="preserve">
+    <value>正在解压备份</value>
+  </data>
+  <data name="1. 统计存档文件" xml:space="preserve">
+    <value>1. 统计存档文件</value>
+  </data>
+  <data name="数一下要打包多少文件、多少字节" xml:space="preserve">
+    <value>数一下要打包多少文件、多少字节</value>
+  </data>
+  <data name="2. 压缩存档" xml:space="preserve">
+    <value>2. 压缩存档</value>
+  </data>
+  <data name="写进备份目录里的一个 zip（先写 .part，复核通过才改名）" xml:space="preserve">
+    <value>写进备份目录里的一个 zip（先写 .part，复核通过才改名）</value>
+  </data>
+  <data name="3. 复核归档" xml:space="preserve">
+    <value>3. 复核归档</value>
+  </data>
+  <data name="重新打开刚写好的 zip，核对条目数与字节数" xml:space="preserve">
+    <value>重新打开刚写好的 zip，核对条目数与字节数</value>
+  </data>
+  <data name="1. 解压备份" xml:space="preserve">
+    <value>1. 解压备份</value>
+  </data>
+  <data name="先解到暂存目录，这一步还没有动你的存档" xml:space="preserve">
+    <value>先解到暂存目录，这一步还没有动你的存档</value>
+  </data>
+  <data name="2. 移走当前存档" xml:space="preserve">
+    <value>2. 移走当前存档</value>
+  </data>
+  <data name="整目录改名进备份目录，不是删掉" xml:space="preserve">
+    <value>整目录改名进备份目录，不是删掉</value>
+  </data>
+  <data name="3. 放回备份" xml:space="preserve">
+    <value>3. 放回备份</value>
+  </data>
+  <data name="把解压好的存档改名回 saves 目录" xml:space="preserve">
+    <value>把解压好的存档改名回 saves 目录</value>
+  </data>
+  <data name="找不到实例 {0}，这个任务没有执行。" xml:space="preserve">
+    <value>找不到实例 {0}，这个任务没有执行。</value>
+  </data>
+  <data name="备份存档任务已取消：{0}" xml:space="preserve">
+    <value>备份存档任务已取消：{0}</value>
+  </data>
+  <data name="备份存档任务异常结束（{0}，{1}）" xml:space="preserve">
+    <value>备份存档任务异常结束（{0}，{1}）</value>
+  </data>
+  <data name="恢复存档任务已取消：{0}" xml:space="preserve">
+    <value>恢复存档任务已取消：{0}</value>
+  </data>
+  <data name="恢复存档任务异常结束（{0}，{1}）" xml:space="preserve">
+    <value>恢复存档任务异常结束（{0}，{1}）</value>
+  </data>
+  <data name="把这个存档打包成备份目录里的一个 zip（先写临时文件、复核通过才替换旧备份）。" xml:space="preserve">
+    <value>把这个存档打包成备份目录里的一个 zip（先写临时文件、复核通过才替换旧备份）。</value>
+  </data>
+  <data name="把备份放回来：当前存档会先整目录移进备份目录（不是删掉），再放入备份里的内容。" xml:space="preserve">
+    <value>把备份放回来：当前存档会先整目录移进备份目录（不是删掉），再放入备份里的内容。</value>
+  </data>
+  <data name="把这一页里的每个存档各排一个备份任务（队列顺序执行，进度按存档分开看）。" xml:space="preserve">
+    <value>把这一页里的每个存档各排一个备份任务（队列顺序执行，进度按存档分开看）。</value>
+  </data>
+  <data name="取消全部" xml:space="preserve">
+    <value>取消全部</value>
+  </data>
+  <data name="重试" xml:space="preserve">
+    <value>重试</value>
+  </data>
+  <data name="排队中的任务已取消：{0}" xml:space="preserve">
+    <value>排队中的任务已取消：{0}</value>
+  </data>
+  <data name="把这一行原样再排一次队（已经校验通过的文件不会重新下载）。" xml:space="preserve">
+    <value>把这一行原样再排一次队（已经校验通过的文件不会重新下载）。</value>
+  </data>
+  <data name="停止这个任务；已经做了一半的事按它自己的规则善后（安装会回滚，内容保留）。" xml:space="preserve">
+    <value>停止这个任务；已经做了一半的事按它自己的规则善后（安装会回滚，内容保留）。</value>
+  </data>
+  <data name="没有当前实例，这次没有改动。" xml:space="preserve">
+    <value>没有当前实例，这次没有改动。</value>
+  </data>
+  <data name="文件名不可用（{0}），这次没有改动。" xml:space="preserve">
+    <value>文件名不可用（{0}），这次没有改动。</value>
+  </data>
+  <data name="找不到这个模组文件（{0}）——它可能已经被删掉或改名了。" xml:space="preserve">
+    <value>找不到这个模组文件（{0}）——它可能已经被删掉或改名了。</value>
+  </data>
+  <data name="mods 目录里同时存在 {0} 与 {1}，这次没有改名。" xml:space="preserve">
+    <value>mods 目录里同时存在 {0} 与 {1}，这次没有改名。</value>
+  </data>
+  <data name="改名失败（{0}）：文件可能被游戏占用，请先退出游戏。" xml:space="preserve">
+    <value>改名失败（{0}）：文件可能被游戏占用，请先退出游戏。</value>
+  </data>
+  <data name="删除失败（{0}）：文件可能被游戏占用，请先退出游戏。" xml:space="preserve">
+    <value>删除失败（{0}）：文件可能被游戏占用，请先退出游戏。</value>
+  </data>
+  <data name="已把它移进 {0}，可以从那里拿回来。" xml:space="preserve">
+    <value>已把它移进 {0}，可以从那里拿回来。</value>
+  </data>
+  <data name="已启用模组 {0}" xml:space="preserve">
+    <value>已启用模组 {0}</value>
+  </data>
+  <data name="已禁用模组 {0}" xml:space="preserve">
+    <value>已禁用模组 {0}</value>
+  </data>
+  <data name="已删除模组 {0}（移进 {1}）" xml:space="preserve">
+    <value>已删除模组 {0}（移进 {1}）</value>
+  </data>
+  <data name="启用或禁用模组失败（{0}）：{1}" xml:space="preserve">
+    <value>启用或禁用模组失败（{0}）：{1}</value>
+  </data>
+  <data name="删除模组失败（{0}）：{1}" xml:space="preserve">
+    <value>删除模组失败（{0}）：{1}</value>
+  </data>
+  <data name="把选中的模组改成启用（去掉文件名末尾的 .disabled 后缀）。" xml:space="preserve">
+    <value>把选中的模组改成启用（去掉文件名末尾的 .disabled 后缀）。</value>
+  </data>
+  <data name="把选中的模组改成禁用（给文件名加一个 .disabled 后缀，文件不删）。" xml:space="preserve">
+    <value>把选中的模组改成禁用（给文件名加一个 .disabled 后缀，文件不删）。</value>
+  </data>
+  <data name="把选中的模组移进备份目录（backups\mods 下按时间戳分目录），可以从那里拿回来。" xml:space="preserve">
+    <value>把选中的模组移进备份目录（backups\mods 下按时间戳分目录），可以从那里拿回来。</value>
+  </data>
+  <data name="读不出 options.txt（{0}），这次没有改动。" xml:space="preserve">
+    <value>读不出 options.txt（{0}），这次没有改动。</value>
+  </data>
+  <data name="options.txt 里的资源包清单不是合法的字符串数组，这次没有改动。" xml:space="preserve">
+    <value>options.txt 里的资源包清单不是合法的字符串数组，这次没有改动。</value>
+  </data>
+  <data name="写入 options.txt 失败（{0}），这次没有改动。" xml:space="preserve">
+    <value>写入 options.txt 失败（{0}），这次没有改动。</value>
+  </data>
+  <data name="这个资源包当前没有启用，不能调整优先级。" xml:space="preserve">
+    <value>这个资源包当前没有启用，不能调整优先级。</value>
+  </data>
+  <data name="找不到这个资源包（{0}）——它可能已经被删掉或改名了。" xml:space="preserve">
+    <value>找不到这个资源包（{0}）——它可能已经被删掉或改名了。</value>
+  </data>
+  <data name="已把它移进 {0}，但 options.txt 没能更新（启用列表里可能留着一条无效记录）。" xml:space="preserve">
+    <value>已把它移进 {0}，但 options.txt 没能更新（启用列表里可能留着一条无效记录）。</value>
+  </data>
+  <data name="已启用资源包 {0}" xml:space="preserve">
+    <value>已启用资源包 {0}</value>
+  </data>
+  <data name="已禁用资源包 {0}" xml:space="preserve">
+    <value>已禁用资源包 {0}</value>
+  </data>
+  <data name="已上移资源包优先级 {0}" xml:space="preserve">
+    <value>已上移资源包优先级 {0}</value>
+  </data>
+  <data name="已下移资源包优先级 {0}" xml:space="preserve">
+    <value>已下移资源包优先级 {0}</value>
+  </data>
+  <data name="已删除资源包 {0}（移进 {1}）" xml:space="preserve">
+    <value>已删除资源包 {0}（移进 {1}）</value>
+  </data>
+  <data name="删除资源包失败（{0}）：{1}" xml:space="preserve">
+    <value>删除资源包失败（{0}）：{1}</value>
+  </data>
+  <data name="资源包设置写入失败（{0}）" xml:space="preserve">
+    <value>资源包设置写入失败（{0}）</value>
+  </data>
+  <data name="把选中的资源包加进启用列表（options.txt 的 resourcePacks）。" xml:space="preserve">
+    <value>把选中的资源包加进启用列表（options.txt 的 resourcePacks）。</value>
+  </data>
+  <data name="把选中的资源包从启用列表里去掉（文件不删）。" xml:space="preserve">
+    <value>把选中的资源包从启用列表里去掉（文件不删）。</value>
+  </data>
+  <data name="让这个资源包压在上面一层（数字越小越优先，第 1 个就是最高的）。" xml:space="preserve">
+    <value>让这个资源包压在上面一层（数字越小越优先，第 1 个就是最高的）。</value>
+  </data>
+  <data name="让这个资源包往下让一层（不会挪到内置包下面）。" xml:space="preserve">
+    <value>让这个资源包往下让一层（不会挪到内置包下面）。</value>
+  </data>
+  <data name="把选中的资源包移进备份目录（backups\resourcepacks 下按时间戳分目录），可以从那里拿回来。" xml:space="preserve">
+    <value>把选中的资源包移进备份目录（backups\resourcepacks 下按时间戳分目录），可以从那里拿回来。</value>
+  </data>
+  <data name="{0} 个进行中 · {1} 个排队" xml:space="preserve">
+    <value>{0} 个进行中 · {1} 个排队</value>
+  </data>
+  <data name="打开页面" xml:space="preserve">
+    <value>打开页面</value>
+  </data>
+  <data name="当前没有下载任务" xml:space="preserve">
+    <value>当前没有下载任务</value>
+  </data>
+  <data name="打开下载与队列" xml:space="preserve">
+    <value>打开下载与队列</value>
+  </data>
+  <data name="已登录 {0} 个" xml:space="preserve">
+    <value>已登录 {0} 个</value>
+  </data>
+  <data name="管理账户" xml:space="preserve">
+    <value>管理账户</value>
+  </data>
+  <data name="还没有登录账户" xml:space="preserve">
+    <value>还没有登录账户</value>
+  </data>
+  <data name="默认" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="Microsoft 账户 · 上次使用 {0}" xml:space="preserve">
+    <value>Microsoft 账户 · 上次使用 {0}</value>
+  </data>
+  <data name="离线账户 · 上次使用 {0}" xml:space="preserve">
+    <value>离线账户 · 上次使用 {0}</value>
+  </data>
+  <data name="启动游戏时使用「默认」账户；管理账户可改名、移除或重新登录。" xml:space="preserve">
+    <value>启动游戏时使用「默认」账户；管理账户可改名、移除或重新登录。</value>
+  </data>
+  <data name="切换默认账户失败：账户文件无法读写，原文件未改动。" xml:space="preserve">
+    <value>切换默认账户失败：账户文件无法读写，原文件未改动。</value>
+  </data>
+  <data name="账户列表已经变化，请重新打开菜单。" xml:space="preserve">
+    <value>账户列表已经变化，请重新打开菜单。</value>
+  </data>
+  <data name="账户文件无法读取，请到「账户」页查看原因（原文件未改动）。" xml:space="preserve">
+    <value>账户文件无法读取，请到「账户」页查看原因（原文件未改动）。</value>
+  </data>
+  <data name="账户 — 当前为 {0}，点击展开账户菜单" xml:space="preserve">
+    <value>账户 — 当前为 {0}，点击展开账户菜单</value>
+  </data>
+  <data name="账户 — 尚未登录，点击展开账户菜单" xml:space="preserve">
+    <value>账户 — 尚未登录，点击展开账户菜单</value>
+  </data>
+  <data name="下载与队列 — {0} 个未完成任务。点击展开队列菜单，可就地取消或重试" xml:space="preserve">
+    <value>下载与队列 — {0} 个未完成任务。点击展开队列菜单，可就地取消或重试</value>
+  </data>
+  <data name="下载与队列 — 当前没有未完成任务。点击展开队列菜单查看历史" xml:space="preserve">
+    <value>下载与队列 — 当前没有未完成任务。点击展开队列菜单查看历史</value>
+  </data>
+  <data name="帮助与支持中心" xml:space="preserve">
+    <value>帮助与支持中心</value>
+  </data>
+  <data name="快速入门" xml:space="preserve">
+    <value>快速入门</value>
+  </data>
+  <data name="安装与下载" xml:space="preserve">
+    <value>安装与下载</value>
+  </data>
+  <data name="实例与启动" xml:space="preserve">
+    <value>实例与启动</value>
+  </data>
+  <data name="模组与资源" xml:space="preserve">
+    <value>模组与资源</value>
+  </data>
+  <data name="账户与登录" xml:space="preserve">
+    <value>账户与登录</value>
+  </data>
+  <data name="疑难解答" xml:space="preserve">
+    <value>疑难解答</value>
+  </data>
+  <data name="关于与诊断" xml:space="preserve">
+    <value>关于与诊断</value>
+  </data>
+  <data name="搜索帮助" xml:space="preserve">
+    <value>搜索帮助</value>
+  </data>
+  <data name="后退" xml:space="preserve">
+    <value>后退</value>
+  </data>
+  <data name="前进" xml:space="preserve">
+    <value>前进</value>
+  </data>
+  <data name="主页" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="关于 EiTRVO Core" xml:space="preserve">
+    <value>关于 EiTRVO Core</value>
+  </data>
+  <data name="打开主窗口的「关于」页（版本、许可与诊断）" xml:space="preserve">
+    <value>打开主窗口的「关于」页（版本、许可与诊断）</value>
+  </data>
+  <data name="「{0}」主题的详细内容正在整理；当前版本先提供窗口框架与主题导航。" xml:space="preserve">
+    <value>「{0}」主题的详细内容正在整理；当前版本先提供窗口框架与主题导航。</value>
+  </data>
+  <data name="没有找到匹配主题，试试更短的关键词。" xml:space="preserve">
+    <value>没有找到匹配主题，试试更短的关键词。</value>
+  </data>
+  <data name="主题" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="更多支持选项" xml:space="preserve">
+    <value>更多支持选项</value>
+  </data>
+  <data name="帮助内容随启动器离线提供" xml:space="preserve">
+    <value>帮助内容随启动器离线提供</value>
+  </data>
+  <data name="帮助与支持中心 — 打开独立窗口（帮助内容随启动器离线提供）" xml:space="preserve">
+    <value>帮助与支持中心 — 打开独立窗口（帮助内容随启动器离线提供）</value>
+  </data>
+  <data name="当前已在「下载与队列」页，任务显示在下方队列里。" xml:space="preserve">
+    <value>当前已在「下载与队列」页，任务显示在下方队列里。</value>
+  </data>
+  <data name="切换排序方向" xml:space="preserve">
+    <value>切换排序方向</value>
+  </data>
+  <data name="重新扫描实例目录" xml:space="preserve">
+    <value>重新扫描实例目录</value>
+  </data>
+  <data name="按模组名排序（升序 / 降序）" xml:space="preserve">
+    <value>按模组名排序（升序 / 降序）</value>
+  </data>
+  <data name="重新扫描并核对 Modrinth 来源" xml:space="preserve">
+    <value>重新扫描并核对 Modrinth 来源</value>
+  </data>
+  <data name="没有匹配的模组：调整筛选词或「来源」后再试。" xml:space="preserve">
+    <value>没有匹配的模组：调整筛选词或「来源」后再试。</value>
+  </data>
+  <data name="共 {0} 个实例 · 筛选出 {1} 个" xml:space="preserve">
+    <value>共 {0} 个实例 · 筛选出 {1} 个</value>
+  </data>
+  <data name="按上次启动排序（新 → 旧）" xml:space="preserve">
+    <value>按上次启动排序（新 → 旧）</value>
+  </data>
+  <data name="按上次启动排序（旧 → 新）" xml:space="preserve">
+    <value>按上次启动排序（旧 → 新）</value>
+  </data>
+  <data name="用于 {0} · 共 {1} 个 · 筛选出 {2} 个" xml:space="preserve">
+    <value>用于 {0} · 共 {1} 个 · 筛选出 {2} 个</value>
+  </data>
+  <data name="切换事件排序方向" xml:space="preserve">
+    <value>切换事件排序方向</value>
+  </data>
+  <data name="立即重读事件" xml:space="preserve">
+    <value>立即重读事件</value>
+  </data>
+  <data name="Modrinth 请求失败：保留了上一次的结果。" xml:space="preserve">
+    <value>Modrinth 请求失败：保留了上一次的结果。</value>
+  </data>
+  <data name="从 Modrinth 直接安装尚未接入：请先下载 .mrpack，再用「从文件导入 .mrpack」" xml:space="preserve">
+    <value>从 Modrinth 直接安装尚未接入：请先下载 .mrpack，再用「从文件导入 .mrpack」</value>
+  </data>
+  <data name="任意加载器" xml:space="preserve">
+    <value>任意加载器</value>
+  </data>
+  <data name="任意版本" xml:space="preserve">
+    <value>任意版本</value>
+  </data>
+  <data name="当前固定按相关性排序；排序方式切换尚未实现。" xml:space="preserve">
+    <value>当前固定按相关性排序；排序方式切换尚未实现。</value>
+  </data>
+  <data name="按加载器筛选" xml:space="preserve">
+    <value>按加载器筛选</value>
+  </data>
+  <data name="按游戏版本筛选；还没有版本清单时不可选。" xml:space="preserve">
+    <value>按游戏版本筛选；还没有版本清单时不可选。</value>
+  </data>
+  <data name="搜索（也可以按回车）" xml:space="preserve">
+    <value>搜索（也可以按回车）</value>
+  </data>
+  <data name="没有匹配的整合包：调整搜索词或筛选条件后再试。" xml:space="preserve">
+    <value>没有匹配的整合包：调整搜索词或筛选条件后再试。</value>
+  </data>
+  <data name="搜索 Modrinth 整合包失败（{0}）：{1}" xml:space="preserve">
+    <value>搜索 Modrinth 整合包失败（{0}）：{1}</value>
+  </data>
+  <data name="把这个存档整目录移进 backups\saves 下按时间戳分的目录，可以从那里拿回来。" xml:space="preserve">
+    <value>把这个存档整目录移进 backups\saves 下按时间戳分的目录，可以从那里拿回来。</value>
+  </data>
+  <data name="实例不存在（{0}）。" xml:space="preserve">
+    <value>实例不存在（{0}）。</value>
+  </data>
+  <data name="存档目录名不合法（{0}）。" xml:space="preserve">
+    <value>存档目录名不合法（{0}）。</value>
+  </data>
+  <data name="找不到这个存档（{0}）——它可能已经被删掉或改名了。" xml:space="preserve">
+    <value>找不到这个存档（{0}）——它可能已经被删掉或改名了。</value>
+  </data>
+  <data name="删除失败（{0}）：存档可能被游戏占用，请先退出游戏。" xml:space="preserve">
+    <value>删除失败（{0}）：存档可能被游戏占用，请先退出游戏。</value>
+  </data>
+  <data name="删除存档失败（{0}）：{1}" xml:space="preserve">
+    <value>删除存档失败（{0}）：{1}</value>
+  </data>
+  <data name="已删除存档 {0}（移进 {1}）" xml:space="preserve">
+    <value>已删除存档 {0}（移进 {1}）</value>
+  </data>
+  <data name="Java 覆盖（全局默认）" xml:space="preserve">
+    <value>Java 覆盖（全局默认）</value>
+  </data>
+  <data name="所有实例的默认 Java；单个实例可在「实例设置」页覆盖。" xml:space="preserve">
+    <value>所有实例的默认 Java；单个实例可在「实例设置」页覆盖。</value>
+  </data>
+  <data name="留空则按版本自动匹配；这里填的是所有实例的默认值，可被单个实例覆盖。" xml:space="preserve">
+    <value>留空则按版本自动匹配；这里填的是所有实例的默认值，可被单个实例覆盖。</value>
+  </data>
+  <data name="留空则继承全局默认；全局默认在「Java 与设置」页修改。" xml:space="preserve">
+    <value>留空则继承全局默认；全局默认在「Java 与设置」页修改。</value>
+  </data>
+  <data name="该版本需要 Java {0}；全局默认的 Java 不可用，也没有可自动匹配的运行时" xml:space="preserve">
+    <value>该版本需要 Java {0}；全局默认的 Java 不可用，也没有可自动匹配的运行时</value>
+  </data>
+  <data name="该版本需要 Java {0}；全局默认的 Java 不可用，已按版本自动匹配到 {1}" xml:space="preserve">
+    <value>该版本需要 Java {0}；全局默认的 Java 不可用，已按版本自动匹配到 {1}</value>
+  </data>
+  <data name="全局默认 Java 不可用（{0}），已回落到自动匹配（{1}）" xml:space="preserve">
+    <value>全局默认 Java 不可用（{0}），已回落到自动匹配（{1}）</value>
+  </data>
+  <data name="第三方组件许可清单尚未随安装包提供；当前依赖均为 NuGet 库（许可见包内），整理完成后在帮助正文里展示。" xml:space="preserve">
+    <value>第三方组件许可清单尚未随安装包提供；当前依赖均为 NuGet 库（许可见包内），整理完成后在帮助正文里展示。</value>
+  </data>
+  <data name="重置会清掉游戏目录、语言与 Java 默认等全部全局设置，当前没有事务化重置流程；收尾时再接入。" xml:space="preserve">
+    <value>重置会清掉游戏目录、语言与 Java 默认等全部全局设置，当前没有事务化重置流程；收尾时再接入。</value>
+  </data>
+  <data name="导出诊断日志尚未接入：当前请用「打开日志目录」取 log 文件。" xml:space="preserve">
+    <value>导出诊断日志尚未接入：当前请用「打开日志目录」取 log 文件。</value>
+  </data>
+  <data name="离线账户没有 Java 版皮肤档案，不能改皮肤模型。" xml:space="preserve">
+    <value>离线账户没有 Java 版皮肤档案，不能改皮肤模型。</value>
+  </data>
+  <data name="导出实例尚未接入（Q7 定为 P2）；当前请用资源管理器复制实例目录。" xml:space="preserve">
+    <value>导出实例尚未接入（Q7 定为 P2）；当前请用资源管理器复制实例目录。</value>
+  </data>
+  <data name="相关性" xml:space="preserve">
+    <value>相关性</value>
+  </data>
+  <data name="关注数" xml:space="preserve">
+    <value>关注数</value>
+  </data>
+  <data name="排序" xml:space="preserve">
+    <value>排序</value>
+  </data>
+  <data name="最新发布" xml:space="preserve">
+    <value>最新发布</value>
+  </data>
+  <data name="点击切换：相关性 → 下载量 → 关注数 → 最新发布 → 最近更新。" xml:space="preserve">
+    <value>点击切换：相关性 → 下载量 → 关注数 → 最新发布 → 最近更新。</value>
+  </data>
+  <data name="导出路径为空。" xml:space="preserve">
+    <value>导出路径为空。</value>
+  </data>
+  <data name="找不到这个实例（{0}）。" xml:space="preserve">
+    <value>找不到这个实例（{0}）。</value>
+  </data>
+  <data name="这个实例还没有指定游戏版本，无法导出成整合包。" xml:space="preserve">
+    <value>这个实例还没有指定游戏版本，无法导出成整合包。</value>
+  </data>
+  <data name="实例目录不存在（{0}）。" xml:space="preserve">
+    <value>实例目录不存在（{0}）。</value>
+  </data>
+  <data name="导出文件必须是 .mrpack。" xml:space="preserve">
+    <value>导出文件必须是 .mrpack。</value>
+  </data>
+  <data name="导出文件不能放在实例目录里。" xml:space="preserve">
+    <value>导出文件不能放在实例目录里。</value>
+  </data>
+  <data name="导出失败（{0}）：请确认目标文件没有被占用。" xml:space="preserve">
+    <value>导出失败（{0}）：请确认目标文件没有被占用。</value>
+  </data>
+  <data name="已导出到 {0}。" xml:space="preserve">
+    <value>已导出到 {0}。</value>
+  </data>
+  <data name="这个整合包缺少项目 id（旧缓存快照），请刷新页面后再试。" xml:space="preserve">
+    <value>这个整合包缺少项目 id（旧缓存快照），请刷新页面后再试。</value>
+  </data>
+  <data name="Modrinth 上没有适配当前游戏版本与加载器的整合包版本。" xml:space="preserve">
+    <value>Modrinth 上没有适配当前游戏版本与加载器的整合包版本。</value>
+  </data>
+  <data name="这个整合包版本没有可下载的主文件。" xml:space="preserve">
+    <value>这个整合包版本没有可下载的主文件。</value>
+  </data>
+  <data name="下载的整合包校验失败（SHA-1 不符），已丢弃。" xml:space="preserve">
+    <value>下载的整合包校验失败（SHA-1 不符），已丢弃。</value>
+  </data>
+  <data name="Modrinth 请求失败，稍后再试。" xml:space="preserve">
+    <value>Modrinth 请求失败，稍后再试。</value>
+  </data>
+  <data name="下载整合包失败（{0}）。" xml:space="preserve">
+    <value>下载整合包失败（{0}）。</value>
+  </data>
+  <data name="Modrinth 整合包 (*.mrpack)|*.mrpack" xml:space="preserve">
+    <value>Modrinth 整合包 (*.mrpack)|*.mrpack</value>
+  </data>
+  <data name="下载整合包失败。" xml:space="preserve">
+    <value>下载整合包失败。</value>
+  </data>
+  <data name="导出为 .mrpack：内容进 overrides，依赖写进清单；可再用「从文件导入」装回来。" xml:space="preserve">
+    <value>导出为 .mrpack：内容进 overrides，依赖写进清单；可再用「从文件导入」装回来。</value>
+  </data>
+  <data name="按当前筛选的游戏版本 / 加载器安装：会先下载 .mrpack 并做安全扫描。" xml:space="preserve">
+    <value>按当前筛选的游戏版本 / 加载器安装：会先下载 .mrpack 并做安全扫描。</value>
+  </data>
+  <data name="没有当前实例，无法导出。" xml:space="preserve">
+    <value>没有当前实例，无法导出。</value>
+  </data>
+  <data name="已导出实例 {0} 到 {1}" xml:space="preserve">
+    <value>已导出实例 {0} 到 {1}</value>
+  </data>
+  <data name="已准备好整合包 {0}（{1}）" xml:space="preserve">
+    <value>已准备好整合包 {0}（{1}）</value>
+  </data>
+  <data name="准备 Modrinth 整合包失败（{0}）：{1}" xml:space="preserve">
+    <value>准备 Modrinth 整合包失败（{0}）：{1}</value>
+  </data>
+  <data name="导出当前实例：{0}（内容全部放进 overrides，可再用「从文件导入」装回来）" xml:space="preserve">
+    <value>导出当前实例：{0}（内容全部放进 overrides，可再用「从文件导入」装回来）</value>
+  </data>
+  <data name="开始使用" xml:space="preserve">
+    <value>开始使用</value>
+  </data>
+  <data name="还没有实例" xml:space="preserve">
+    <value>还没有实例</value>
+  </data>
+  <data name="先新建一个实例：游戏、加载器与 Java 都会在向导里处理。" xml:space="preserve">
+    <value>先新建一个实例：游戏、加载器与 Java 都会在向导里处理。</value>
+  </data>
+  <data name="还没有账户" xml:space="preserve">
+    <value>还没有账户</value>
+  </data>
+  <data name="搜索事件" xml:space="preserve">
+    <value>搜索事件</value>
+  </data>
+  <data name="共 {0} 条" xml:space="preserve">
+    <value>共 {0} 条</value>
+  </data>
+  <data name="搜索事件消息、来源、实例或时间" xml:space="preserve">
+    <value>搜索事件消息、来源、实例或时间</value>
+  </data>
+  <data name="输入关键字会实时筛选当前页面的事件" xml:space="preserve">
+    <value>输入关键字会实时筛选当前页面的事件</value>
+  </data>
+  <data name="您需要登录一个有效的微软账号，否则启动器部分功能将受限" xml:space="preserve">
+    <value>您需要登录一个有效的微软账号，否则启动器部分功能将受限</value>
+  </data>
+  <data name="添加账户" xml:space="preserve">
+    <value>添加账户</value>
+  </data>
+  <data name="没有检测到 Java" xml:space="preserve">
+    <value>没有检测到 Java</value>
+  </data>
+  <data name="启动器可以按版本自动匹配，也可以在「Java 与设置」里安装官方 JRE 或指定路径。" xml:space="preserve">
+    <value>启动器可以按版本自动匹配，也可以在「Java 与设置」里安装官方 JRE 或指定路径。</value>
+  </data>
+  <data name="创建位置" xml:space="preserve">
+    <value>创建位置</value>
+  </data>
+  <data name="实例名不能为空。" xml:space="preserve">
+    <value>实例名不能为空。</value>
+  </data>
+  <data name="已经有同名实例，请换一个名字。" xml:space="preserve">
+    <value>已经有同名实例，请换一个名字。</value>
+  </data>
+  <data name="游戏版本已从「所有版本」选定。要换版本，请回到那一页重新选择。" xml:space="preserve">
+    <value>游戏版本已从「所有版本」选定。要换版本，请回到那一页重新选择。</value>
+  </data>
+  <data name="这个实例名不能用作目录名，请换一个。" xml:space="preserve">
+    <value>这个实例名不能用作目录名，请换一个。</value>
+  </data>
+  <data name="获取加载器版本失败（网络）" xml:space="preserve">
+    <value>获取加载器版本失败（网络）</value>
+  </data>
+  <data name="获取 {0} 的加载器列表失败（{1}），这一项本次不可用" xml:space="preserve">
+    <value>获取 {0} 的加载器列表失败（{1}），这一项本次不可用</value>
+  </data>
+  <data name="点击后获取版本" xml:space="preserve">
+    <value>点击后获取版本</value>
+  </data>
+  <data name="获取 {0} 的 OptiFine 列表失败（{1}），这一项本次不可用" xml:space="preserve">
+    <value>获取 {0} 的 OptiFine 列表失败（{1}），这一项本次不可用</value>
+  </data>
+  <data name="已把版本 {0} 写入实例目录：{1}" xml:space="preserve">
+    <value>已把版本 {0} 写入实例目录：{1}</value>
+  </data>
+  <data name="版本装好了但没能写进实例目录（{0}，{1}）" xml:space="preserve">
+    <value>版本装好了但没能写进实例目录（{0}，{1}）</value>
+  </data>
+  <data name="整合包的游戏装好了但没能写进实例目录（{0}，{1}）" xml:space="preserve">
+    <value>整合包的游戏装好了但没能写进实例目录（{0}，{1}）</value>
+  </data>
+  <data name="已把 {0} 个旧布局实例的元数据复制到游戏目录的 versions 目录（旧文件保留）" xml:space="preserve">
+    <value>已把 {0} 个旧布局实例的元数据复制到游戏目录的 versions 目录（旧文件保留）</value>
+  </data>
+  <data name="旧布局实例元数据迁移有 {0} 个失败（旧文件未改动，新目录可能不完整）" xml:space="preserve">
+    <value>旧布局实例元数据迁移有 {0} 个失败（旧文件未改动，新目录可能不完整）</value>
+  </data>
+  <data name="游戏文件装好了，但没能写进实例目录（{0}）。请重试安装，或在实例设置里检查目录权限。" xml:space="preserve">
+    <value>游戏文件装好了，但没能写进实例目录（{0}）。请重试安装，或在实例设置里检查目录权限。</value>
+  </data>
+  <data name="整合包的游戏文件装好了，但没能写进实例目录（{0}）。内容没有铺进去。" xml:space="preserve">
+    <value>整合包的游戏文件装好了，但没能写进实例目录（{0}）。内容没有铺进去。</value>
+  </data>
+  <data name="这个实例的 {0} 还没有安装到本地（实例目录里缺 version.json）。请先在「下载与队列」里安装这个加载器。" xml:space="preserve">
+    <value>这个实例的 {0} 还没有安装到本地（实例目录里缺 version.json）。请先在「下载与队列」里安装这个加载器。</value>
+  </data>  <data name="正在运行官方安装器" xml:space="preserve">
+    <value>正在运行官方安装器</value>
+  </data>  <data name="读不出旧版安装器里的安装描述：{0}" xml:space="preserve">
+    <value>读不出旧版安装器里的安装描述：{0}</value>
+  </data>
+  <data name="先安装原版 {0} 时失败。" xml:space="preserve">
+    <value>先安装原版 {0} 时失败。</value>
+  </data>
+  <data name="读不到原版 {0} 的版本 JSON：{1}" xml:space="preserve">
+    <value>读不到原版 {0} 的版本 JSON：{1}</value>
+  </data>  <data name="{0} {1} 安装完成（游戏 {2}，版本 {3}，旧版安装器：从安装器 jar 里取 universal jar 与版本 JSON）" xml:space="preserve">
+    <value>{0} {1} 安装完成（游戏 {2}，版本 {3}，旧版安装器：从安装器 jar 里取 universal jar 与版本 JSON）</value>
+  </data>
+  <data name="正在估算…" xml:space="preserve">
+    <value>正在估算…</value>
+  </data>
+  <data name="（库 {0} · 资源 {1} · natives {2}）。" xml:space="preserve">
+    <value>（库 {0} · 资源 {1} · natives {2}）。</value>
+  </data>
+  <data name="（库 {0} · 资源 {1} · natives {2}；不含加载器自身的库）。" xml:space="preserve">
+    <value>（库 {0} · 资源 {1} · natives {2}；不含加载器自身的库）。</value>
+  </data>
+  <data name="（暂时无法获取版本信息，安装时以实际大小为准）。" xml:space="preserve">
+    <value>（暂时无法获取版本信息，安装时以实际大小为准）。</value>
+  </data>
+  <data name="磁盘剩余 {0}，空间充足。" xml:space="preserve">
+    <value>磁盘剩余 {0}，空间充足。</value>
+  </data>
+  <data name="磁盘剩余 {0}，可能不够。" xml:space="preserve">
+    <value>磁盘剩余 {0}，可能不够。</value>
+  </data>  <data name="下载整合包时异常结束（{0}，{1}）" xml:space="preserve"><value>下载整合包时异常结束（{0}，{1}）</value></data>
+  <data name="搜索 Modrinth 内容失败（{0}）：{1}" xml:space="preserve"><value>搜索 Modrinth 内容失败（{0}）：{1}</value></data>
+  <data name="实例 {0} 已经不在了，这次没有下载任何内容。" xml:space="preserve"><value>实例 {0} 已经不在了，这次没有下载任何内容。</value></data>
+  <data name="安装整合包 {0}" xml:space="preserve"><value>安装整合包 {0}</value></data>
+  <data name="正在下载整合包" xml:space="preserve"><value>正在下载整合包</value></data>
+  <data name="下载整合包时出错（{0}）。" xml:space="preserve"><value>下载整合包时出错（{0}）。</value></data>
+  <data name="Modrinth 上没有适配当前实例的可用版本。" xml:space="preserve"><value>Modrinth 上没有适配当前实例的可用版本。</value></data>
+  <data name="下载失败，稍后再试。" xml:space="preserve"><value>下载失败，稍后再试。</value></data>
+  <data name="下载所选" xml:space="preserve"><value>下载所选</value></data>
+  <data name="从 Modrinth 下载" xml:space="preserve"><value>从 Modrinth 下载</value></data>
+  <data name="从 Modrinth 下载模组" xml:space="preserve"><value>从 Modrinth 下载模组</value></data>
+  <data name="从 Modrinth 下载资源包" xml:space="preserve"><value>从 Modrinth 下载资源包</value></data>
+  <data name="关闭" xml:space="preserve"><value>关闭</value></data>
+  <data name="名称" xml:space="preserve"><value>名称</value></data>
+  <data name="按当前实例的游戏版本与加载器挑选兼容版本；下载会排进「下载与队列」。" xml:space="preserve"><value>按当前实例的游戏版本与加载器挑选兼容版本；下载会排进「下载与队列」。</value></data>
+  <data name="搜索" xml:space="preserve"><value>搜索</value></data>
+  <data name="搜索 Modrinth 上的模组；下载会按当前实例的游戏版本与加载器排进「下载与队列」。" xml:space="preserve"><value>搜索 Modrinth 上的模组；下载会按当前实例的游戏版本与加载器排进「下载与队列」。</value></data>
+  <data name="原版实例不能安装模组；请先创建一个带加载器的实例。" xml:space="preserve"><value>原版实例不能安装模组；请先创建一个带加载器的实例。</value></data>
+  <data name="搜索失败，稍后再试。" xml:space="preserve"><value>搜索失败，稍后再试。</value></data>
+  <data name="搜索 Modrinth 上的资源包；下载会按当前实例的游戏版本排进「下载与队列」。" xml:space="preserve"><value>搜索 Modrinth 上的资源包；下载会按当前实例的游戏版本排进「下载与队列」。</value></data>  <data name="下载 {0} 个资源包 · {1}" xml:space="preserve"><value>下载 {0} 个资源包 · {1}</value></data>
+  <data name="下载 {0} 个模组 · {1}" xml:space="preserve"><value>下载 {0} 个模组 · {1}</value></data>  <data name="当前实例没有缺失依赖。" xml:space="preserve"><value>当前实例没有缺失依赖。</value></data>
+  <data name="Modrinth 上找不到依赖 {0}，这次没有下载任何文件。" xml:space="preserve"><value>Modrinth 上找不到依赖 {0}，这次没有下载任何文件。</value></data>
+  <data name="没有找到依赖 {0} 的兼容版本。" xml:space="preserve"><value>没有找到依赖 {0} 的兼容版本。</value></data>
+  <data name="修复依赖失败，稍后再试。" xml:space="preserve"><value>修复依赖失败，稍后再试。</value></data>  <data name="依赖 {0} 的官方校验值不完整（缺少 SHA-1 或 SHA-512），已拒绝下载。" xml:space="preserve"><value>依赖 {0} 的官方校验值不完整（缺少 SHA-1 或 SHA-512），已拒绝下载。</value></data>
+  <data name="一键更新" xml:space="preserve"><value>一键更新</value></data>
+  <data name="把这一页里 {0} 个非最新模组一键更新到最新版本（禁用的仍保持禁用，旧的会移进备份目录）。" xml:space="preserve"><value>把这一页里 {0} 个非最新模组一键更新到最新版本（禁用的仍保持禁用，旧的会移进备份目录）。</value></data>
+  <data name="解析 OptiFine 官方下载地址失败：{0}" xml:space="preserve"><value>解析 OptiFine 官方下载地址失败：{0}</value></data>
+  <data name="整理实例版本目录失败（{0}）" xml:space="preserve"><value>整理实例版本目录失败（{0}）</value></data>
+  <data name="写入版本 JSON 失败：{0}" xml:space="preserve"><value>写入版本 JSON 失败：{0}</value></data>
+  <data name="已校验 {0} 个文件，全部通过" xml:space="preserve"><value>已校验 {0} 个文件，全部通过</value></data>
+  <data name="已校验 {0} 个文件：缺失 {1} 个，损坏 {2} 个" xml:space="preserve"><value>已校验 {0} 个文件：缺失 {1} 个，损坏 {2} 个</value></data>
+  <data name="校验失败：{0}" xml:space="preserve"><value>校验失败：{0}</value></data>
+  <data name="添加 Microsoft 账户 — EiTRVO For Preview" xml:space="preserve"><value>添加 Microsoft 账户 — EiTRVO For Preview</value></data>
+  <data name="离线账户 — EiTRVO For Preview" xml:space="preserve"><value>离线账户 — EiTRVO For Preview</value></data>
+  <data name="同时安装 OptiFine（Forge 共存）" xml:space="preserve"><value>同时安装 OptiFine（Forge 共存）</value></data>
+  <data name="同时安装 Fabric API" xml:space="preserve"><value>同时安装 Fabric API</value></data>
+  <data name="可选组件 {0} 安装失败（{1}）：{2}" xml:space="preserve"><value>可选组件 {0} 安装失败（{1}）：{2}</value></data>
+  <data name="只修改实例目录名，实例内的游戏文件、模组与存档都保留；正在运行的游戏不会被改名。" xml:space="preserve"><value>只修改实例目录名，实例内的游戏文件、模组与存档都保留；正在运行的游戏不会被改名。</value></data>
+  <data name="实例名只能包含字母、数字、空格、下划线、短横线与点，且不能是保留名。" xml:space="preserve"><value>实例名只能包含字母、数字、空格、下划线、短横线与点，且不能是保留名。</value></data>
+  <data name="新名字不能与原名字相同。" xml:space="preserve"><value>新名字不能与原名字相同。</value></data>
+  <data name="重命名实例 — EiTRVO For Preview" xml:space="preserve"><value>重命名实例 — EiTRVO For Preview</value></data>
+  <data name="同名资源包已经存在：{0}。" xml:space="preserve"><value>同名资源包已经存在：{0}。</value></data>
+  <data name="资源包目标路径越出了 resourcepacks 目录。" xml:space="preserve"><value>资源包目标路径越出了 resourcepacks 目录。</value></data>
+  <data name="这不是资源包：根目录缺少 pack.mcmeta。" xml:space="preserve"><value>这不是资源包：根目录缺少 pack.mcmeta。</value></data>
+  <data name="pack.mcmeta 里没有有效的 pack.pack_format。" xml:space="preserve"><value>pack.mcmeta 里没有有效的 pack.pack_format。</value></data>
+  <data name="资源包里的解压数据超过安全上限，已拒绝（可能是压缩炸弹）。" xml:space="preserve"><value>资源包里的解压数据超过安全上限，已拒绝（可能是压缩炸弹）。</value></data>
+  <data name="资源包文件名不可用：{0}。" xml:space="preserve"><value>资源包文件名不可用：{0}。</value></data>
+  <data name="资源包里的路径不安全：{0}。" xml:space="preserve"><value>资源包里的路径不安全：{0}。</value></data>
+  <data name="资源包里有重复的条目：{0}。" xml:space="preserve"><value>资源包里有重复的条目：{0}。</value></data>
+  <data name="找不到要导入的文件：{0}。" xml:space="preserve"><value>找不到要导入的文件：{0}。</value></data>
+  <data name="资源包必须是 .zip 文件（当前是 {0}）。" xml:space="preserve"><value>资源包必须是 .zip 文件（当前是 {0}）。</value></data>
+  <data name="导入资源包失败（{0}）。" xml:space="preserve"><value>导入资源包失败（{0}）。</value></data>
+  <data name="pack.mcmeta 解析失败（{0}）。" xml:space="preserve"><value>pack.mcmeta 解析失败（{0}）。</value></data>
+  <data name="资源包 (*.zip)|*.zip" xml:space="preserve"><value>资源包 (*.zip)|*.zip</value></data>
+  <data name="选择一个本地资源包 .zip，导入当前实例的 resourcepacks 文件夹。" xml:space="preserve"><value>选择一个本地资源包 .zip，导入当前实例的 resourcepacks 文件夹。</value></data>
+  <data name="资源包不是有效的 zip 文件（{0}）。" xml:space="preserve"><value>资源包不是有效的 zip 文件（{0}）。</value></data>
+  <data name="资源包文件超过 {0} MB，已拒绝。" xml:space="preserve"><value>资源包文件超过 {0} MB，已拒绝。</value></data>
+  <data name="pack.mcmeta 缺失或过大。" xml:space="preserve"><value>pack.mcmeta 缺失或过大。</value></data>
+  <data name="资源包里有符号链接条目：{0}。" xml:space="preserve"><value>资源包里有符号链接条目：{0}。</value></data>
+  <data name="实例 {0} 已经不在了。" xml:space="preserve"><value>实例 {0} 已经不在了。</value></data>
+  <data name="已把资源包 {0} 导入到当前实例。" xml:space="preserve"><value>已把资源包 {0} 导入到当前实例。</value></data>
+  <data name="添加资源包" xml:space="preserve"><value>添加资源包</value></data>
+  <data name="事件类型：" xml:space="preserve"><value>事件类型：</value></data>
+  <data name="项" xml:space="preserve"><value>项</value></data>
+  <data name="版本 26.0.1" xml:space="preserve"><value>版本 26.0.1</value></data>
+  <data name="EiTRVO 长期支持" xml:space="preserve"><value>EiTRVO 长期支持</value></data>
+  <data name="打开第三方许可窗口：列出随启动器分发的开源组件与许可证全文。" xml:space="preserve"><value>打开第三方许可窗口：列出随启动器分发的开源组件与许可证全文。</value></data>
+  <data name="第三方许可" xml:space="preserve"><value>第三方许可</value></data>
+  <data name="版本 {0} · {1} 许可证" xml:space="preserve"><value>版本 {0} · {1} 许可证</value></data>
+  <data name="基于 MIT 协议开源" xml:space="preserve"><value>基于 MIT 协议开源</value></data>
+  <data name="查看 MIT 许可证" xml:space="preserve"><value>查看 MIT 许可证</value></data>
+  <data name="EiTRVO LTS 以 MIT License 发布。" xml:space="preserve"><value>EiTRVO LTS 以 MIT License 发布。</value></data>
+  <data name="选择游戏目录" xml:space="preserve"><value>选择游戏目录</value></data>
+  <data name="浏览" xml:space="preserve"><value>浏览</value></data>
+  <data name="感谢您选择EiTRVO" xml:space="preserve"><value>感谢您选择EiTRVO</value></data>
+  <data name="此教程将引导您入门EiTRVO LTS" xml:space="preserve"><value>此教程将引导您入门EiTRVO LTS</value></data>
+  <data name="为游戏文件首次下载做好准备" xml:space="preserve"><value>为游戏文件首次下载做好准备</value></data>
+  <data name="点击左边栏的所有版本，进入版本选择页面" xml:space="preserve"><value>点击左边栏的所有版本，进入版本选择页面</value></data>
+  <data name="选定版本后，点击右下角“用所选版本新建实例”按钮" xml:space="preserve"><value>选定版本后，点击右下角“用所选版本新建实例”按钮</value></data>
+  <data name="进入下载向导，选择要安装的模组加载器及版本" xml:space="preserve"><value>进入下载向导，选择要安装的模组加载器及版本</value></data>
+  <data name="选定后，点击右下角的“下一步”按钮" xml:space="preserve"><value>选定后，点击右下角的“下一步”按钮</value></data>
+  <data name="为准备下载的实例设定实例名" xml:space="preserve"><value>为准备下载的实例设定实例名</value></data>
+  <data name="实例名不会影响实际版本名称，安装后也可手动修改" xml:space="preserve"><value>实例名不会影响实际版本名称，安装后也可手动修改</value></data>
+  <data name="填写后，点击右下角的“下一步”按钮" xml:space="preserve"><value>填写后，点击右下角的“下一步”按钮</value></data>
+  <data name="确认安装信息无问题后" xml:space="preserve"><value>确认安装信息无问题后</value></data>
+  <data name="即可点击“确认并安装“按钮" xml:space="preserve"><value>即可点击“确认并安装“按钮</value></data>
+  <data name="安装过程将自动开始" xml:space="preserve"><value>安装过程将自动开始</value></data>
+  <data name="您也可以点击“取消”按钮以取消安装" xml:space="preserve"><value>您也可以点击“取消”按钮以取消安装</value></data>
+  <data name="点击左边栏的账户，进入账户管理页面" xml:space="preserve"><value>点击左边栏的账户，进入账户管理页面</value></data>
+  <data name="点击添加微软账户按钮，等待弹出登录引导窗口后" xml:space="preserve"><value>点击添加微软账户按钮，等待弹出登录引导窗口后</value></data>
+  <data name="复制八位代码，在浏览器打开对应网址后按步骤操作" xml:space="preserve"><value>复制八位代码，在浏览器打开对应网址后按步骤操作</value></data>
+  <data name="等待浏览器出现该页面后即代表登录成功" xml:space="preserve"><value>等待浏览器出现该页面后即代表登录成功</value></data>
+  <data name="启动器将自动获取账户信息" xml:space="preserve"><value>启动器将自动获取账户信息</value></data>
+  <data name="点击左边栏的本地实例，进入本地实例选择页面" xml:space="preserve"><value>点击左边栏的本地实例，进入本地实例选择页面</value></data>
+  <data name="选中将启动的实例后点击右下角的“启动游戏“按钮，将进入启动流程" xml:space="preserve"><value>选中将启动的实例后点击右下角的“启动游戏“按钮，将进入启动流程</value></data>
+  <data name="等待游戏启动完成即可" xml:space="preserve"><value>等待游戏启动完成即可</value></data>
+  <data name="还没有登录过 Microsoft 正版账号，离线账户不能启动游戏。请先到「账户」页登录正版账号。" xml:space="preserve"><value>还没有登录过 Microsoft 正版账号，离线账户不能启动游戏。请先到「账户」页登录正版账号。</value></data>
+  <data name="还没有可用的账户。请先到「账户」页登录 Microsoft 正版账号；没有登录过正版账号时，离线账户也不能启动游戏。" xml:space="preserve"><value>还没有可用的账户。请先到「账户」页登录 Microsoft 正版账号；没有登录过正版账号时，离线账户也不能启动游戏。</value></data>
+  <data name="还没有登录过 Microsoft 正版账号，暂不提供游戏文件、模组加载器和整合包下载。请先到「账户」页登录正版账号。" xml:space="preserve"><value>还没有登录过 Microsoft 正版账号，暂不提供游戏文件、模组加载器和整合包下载。请先到「账户」页登录正版账号。</value></data>
+  <data name="如果您未登录有效的微软账户，启动器部分功能将会受限" xml:space="preserve"><value>如果您未登录有效的微软账户，启动器部分功能将会受限</value></data>
+  <data name="选择 Java 可执行文件" xml:space="preserve"><value>选择 Java 可执行文件</value></data>
+  <data name="添加用户自有的 Java 可执行文件" xml:space="preserve"><value>添加用户自有的 Java 可执行文件</value></data>
+  <data name="Java 运行时安全提示" xml:space="preserve"><value>Java 运行时安全提示</value></data>
+  <data name="这个 Java 运行时可能存在风险" xml:space="preserve"><value>这个 Java 运行时可能存在风险</value></data>
+  <data name="无法读取这个文件的 Java 版本信息，它可能不是有效的 Java。" xml:space="preserve"><value>无法读取这个文件的 Java 版本信息，它可能不是有效的 Java。</value></data>
+  <data name="无法识别这个 Java 的供应商，它可能不是可信的发行版。" xml:space="preserve"><value>无法识别这个 Java 的供应商，它可能不是可信的发行版。</value></data>
+  <data name="该文件位于临时目录、下载目录或桌面等用户可写位置，可能被替换。" xml:space="preserve"><value>该文件位于临时目录、下载目录或桌面等用户可写位置，可能被替换。</value></data>
+  <data name="仍然添加" xml:space="preserve"><value>仍然添加</value></data>
+  <data name="Java 可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" xml:space="preserve"><value>Java 可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*</value></data>
+  <data name="强制以选定 Java 启动游戏" xml:space="preserve"><value>强制以选定 Java 启动游戏</value></data>
+  <data name="开启后忽略游戏版本与实例设置，始终使用表格中选中的 Java。" xml:space="preserve"><value>开启后忽略游戏版本与实例设置，始终使用表格中选中的 Java。</value></data>
+  <data name="强制使用的 Java 运行时不可用：{0}。请到「Java 与设置」页重新选择。" xml:space="preserve"><value>强制使用的 Java 运行时不可用：{0}。请到「Java 与设置」页重新选择。</value></data>
+</root>

@@ -1,0 +1,176 @@
+<!--
+  Theme.xaml — 可本地化的值集中在此处（AGENTS.md §5.2）。
+
+  取值来源：mockup/pages/assets/shell.css 的 :root 变量，逐条对应。
+  主色 Brush.Accent = #0078d7 是 Windows 10 系统色，可作为默认值整体替换；
+  但控件几何（22px 按钮、24px 行高、210px 导航、1px 分隔）不得改动。
+
+  C3 声明：这里的配色全部取自 Windows 系统色，未使用 EiTRVO Neo 的深蓝紫系
+  （#1E1E2E / #363752）或任何其它 Neo 视觉资产。
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+  <!-- ==================== 颜色 ==================== -->
+  <Color x:Key="Color.Accent">#FF0078D7</Color>
+  <Color x:Key="Color.AccentHover">#FFE5F1FB</Color>
+  <Color x:Key="Color.AccentSelected">#FFCCE8FF</Color>
+  <Color x:Key="Color.Text">#FF1A1A1A</Color>
+  <Color x:Key="Color.TextMuted">#FF6D6D6D</Color>
+  <Color x:Key="Color.ChromeBackground">#FFF0F0F0</Color>
+  <Color x:Key="Color.ChromeBorder">#FFD5D5D5</Color>
+  <Color x:Key="Color.Divider">#FFB8B8B8</Color>
+  <Color x:Key="Color.Line">#FFE6E6E6</Color>
+  <Color x:Key="Color.TableHead">#FFFAFAFA</Color>
+  <Color x:Key="Color.RowHover">#FFEAF3FB</Color>
+  <Color x:Key="Color.RowAlternate">#FFFCFCFC</Color>
+  <Color x:Key="Color.RowBorder">#FFF0F0F0</Color>
+  <Color x:Key="Color.TableBorder">#FFD9D9D9</Color>
+  <Color x:Key="Color.TableHeaderText">#FF333333</Color>
+  <Color x:Key="Color.CaretDark">#FF333333</Color>
+  <Color x:Key="Color.StateOk">#FF107C10</Color>
+  <Color x:Key="Color.StateWarn">#FFFF8C00</Color>
+  <Color x:Key="Color.StateErr">#FFC42B1C</Color>
+  <Color x:Key="Color.StateOff">#FF6D6D6D</Color>
+  <Color x:Key="Color.StateInfo">#FF0067B8</Color>
+  <Color x:Key="Color.PageHeadBackground">#FF2B2B2B</Color>
+  <Color x:Key="Color.PageHeadForeground">#FFF0F0F0</Color>
+  <Color x:Key="Color.PageHeadHover">#33FFFFFF</Color>
+  <Color x:Key="Color.ToolDivider">#FF5A5A5A</Color>
+  <!--
+    页头的横向渐变（2026-10-06，用户按 Sample2.png 里的进度对话框头指定）：
+    左 #1F4E79 → 右 #012C56。整条页头保持浅字统一 —— #F0F0F0 在最左端 7.6:1、最右端 12.3:1，都过 WCAG 4.5。
+    （参考图那条是 #DBE4F3 → #012C56，但它的字**只在左半边的浅区**；我们的面包屑在左、四个工具在右，
+    照抄会让左端浅字对比度掉到 1.12:1 —— 所以取了"深蓝区间"这一档，见 README §5 第 37 条。）
+    设计稿是平涂 #2B2B2B（Server Manager 基线），所以这是一处**有意的基线偏离**，不是回归。
+  -->
+  <Color x:Key="Color.PageHeadGradientStart">#FF1F4E79</Color>
+  <Color x:Key="Color.PageHeadGradientEnd">#FF012C56</Color>
+  <!-- 页头里那三个工具之间的竖分隔线：在深蓝上必须是半透明白，原来的 #5A5A5A 会糊掉 -->
+  <Color x:Key="Color.PageHeadDivider">#66FFFFFF</Color>
+  <!-- 忙碌时扫过页头的那道亮光（只在真的有任务时动，判据见 ShellViewModel.IsBusy）。
+       2026-10-06：用户反馈"太快了"→ 一轮从 1.8s 调到 5.4s；随后"更柔和"→
+       峰值从 25% (#40) 降到 17% (#2B)，并加一层 5% (#0D) 的过渡环，
+       配合 MainWindow.xaml 里的 6 个渐变停靠点做成"两头渐隐、中间一段平台"的柔和光带
+       （原来的"两头透明、中间一个尖峰"是三角形，看着偏硬）。 -->
+  <Color x:Key="Color.SweepClear">#00FFFFFF</Color>
+  <Color x:Key="Color.SweepHalo">#0DFFFFFF</Color>
+  <Color x:Key="Color.SweepHighlight">#2BFFFFFF</Color>
+  <Color x:Key="Color.CrumbSeparator">#FFA8C0D8</Color>
+  <Color x:Key="Color.SectionGlyph">#FF5A5A5A</Color>
+  <Color x:Key="Color.SectionSquare">#FFC8C8C8</Color>
+  <Color x:Key="Color.ControlBorder">#FFABABAB</Color>
+  <Color x:Key="Color.ControlBackground">#FFFDFDFD</Color>
+  <Color x:Key="Color.ControlDisabledText">#FFA0A0A0</Color>
+  <Color x:Key="Color.ControlDisabledBorder">#FFD0D0D0</Color>
+  <Color x:Key="Color.ControlDisabledBackground">#FFF7F7F7</Color>
+  <Color x:Key="Color.ButtonHoverBorder">#FF7EB4EA</Color>
+  <Color x:Key="Color.PrimaryHover">#FF106EBE</Color>
+  <Color x:Key="Color.PrimaryDisabled">#FFC6C6C6</Color>
+  <Color x:Key="Color.BannerBackground">#FFFBFBFB</Color>
+  <Color x:Key="Color.BannerBorder">#FFE0E0E0</Color>
+  <Color x:Key="Color.BannerWarnBackground">#FFFFF8EC</Color>
+  <Color x:Key="Color.BannerWarnBorder">#FFF0C98A</Color>
+  <Color x:Key="Color.BannerErrorBackground">#FFFDF3F2</Color>
+  <Color x:Key="Color.BannerErrorBorder">#FFE8B4AE</Color>
+  <Color x:Key="Color.CheckBoxBorder">#FF8A8A8A</Color>
+  <Color x:Key="Color.SliderTrack">#FFD9D9D9</Color>
+  <Color x:Key="Color.ProgressTrackBackground">#FFF5F5F5</Color>
+  <Color x:Key="Color.ProgressTrackBorder">#FFA9A9A9</Color>
+  <Color x:Key="Color.DialogBorder">#FF8A8A8A</Color>
+  <Color x:Key="Color.Danger">#FFC42B1C</Color>
+
+  <!-- ==================== 画刷 ==================== -->
+  <SolidColorBrush x:Key="Brush.Accent" Color="{StaticResource Color.Accent}" />
+  <SolidColorBrush x:Key="Brush.AccentHover" Color="{StaticResource Color.AccentHover}" />
+  <SolidColorBrush x:Key="Brush.AccentSelected" Color="{StaticResource Color.AccentSelected}" />
+  <SolidColorBrush x:Key="Brush.Text" Color="{StaticResource Color.Text}" />
+  <SolidColorBrush x:Key="Brush.TextMuted" Color="{StaticResource Color.TextMuted}" />
+  <SolidColorBrush x:Key="Brush.ChromeBackground" Color="{StaticResource Color.ChromeBackground}" />
+  <SolidColorBrush x:Key="Brush.ChromeBorder" Color="{StaticResource Color.ChromeBorder}" />
+  <SolidColorBrush x:Key="Brush.Divider" Color="{StaticResource Color.Divider}" />
+  <SolidColorBrush x:Key="Brush.Line" Color="{StaticResource Color.Line}" />
+  <SolidColorBrush x:Key="Brush.TableHead" Color="{StaticResource Color.TableHead}" />
+  <SolidColorBrush x:Key="Brush.RowHover" Color="{StaticResource Color.RowHover}" />
+  <SolidColorBrush x:Key="Brush.RowAlternate" Color="{StaticResource Color.RowAlternate}" />
+  <SolidColorBrush x:Key="Brush.RowBorder" Color="{StaticResource Color.RowBorder}" />
+  <SolidColorBrush x:Key="Brush.TableBorder" Color="{StaticResource Color.TableBorder}" />
+  <SolidColorBrush x:Key="Brush.TableHeaderText" Color="{StaticResource Color.TableHeaderText}" />
+  <SolidColorBrush x:Key="Brush.CaretDark" Color="{StaticResource Color.CaretDark}" />
+  <SolidColorBrush x:Key="Brush.StateOk" Color="{StaticResource Color.StateOk}" />
+  <SolidColorBrush x:Key="Brush.StateWarn" Color="{StaticResource Color.StateWarn}" />
+  <SolidColorBrush x:Key="Brush.StateErr" Color="{StaticResource Color.StateErr}" />
+  <SolidColorBrush x:Key="Brush.StateOff" Color="{StaticResource Color.StateOff}" />
+  <SolidColorBrush x:Key="Brush.StateInfo" Color="{StaticResource Color.StateInfo}" />
+  <SolidColorBrush x:Key="Brush.PageHeadBackground" Color="{StaticResource Color.PageHeadBackground}" />
+  <SolidColorBrush x:Key="Brush.PageHeadForeground" Color="{StaticResource Color.PageHeadForeground}" />
+  <SolidColorBrush x:Key="Brush.PageHeadHover" Color="{StaticResource Color.PageHeadHover}" />
+  <LinearGradientBrush x:Key="Brush.PageHeadGradient" StartPoint="0,0.5" EndPoint="1,0.5">
+    <GradientStop Color="{StaticResource Color.PageHeadGradientStart}" Offset="0" />
+    <GradientStop Color="{StaticResource Color.PageHeadGradientEnd}" Offset="1" />
+  </LinearGradientBrush>
+  <SolidColorBrush x:Key="Brush.PageHeadDivider" Color="{StaticResource Color.PageHeadDivider}" />
+  <SolidColorBrush x:Key="Brush.ToolDivider" Color="{StaticResource Color.ToolDivider}" />
+  <SolidColorBrush x:Key="Brush.CrumbSeparator" Color="{StaticResource Color.CrumbSeparator}" />
+  <SolidColorBrush x:Key="Brush.SectionGlyph" Color="{StaticResource Color.SectionGlyph}" />
+  <SolidColorBrush x:Key="Brush.SectionSquare" Color="{StaticResource Color.SectionSquare}" />
+  <SolidColorBrush x:Key="Brush.ControlBorder" Color="{StaticResource Color.ControlBorder}" />
+  <SolidColorBrush x:Key="Brush.ControlBackground" Color="{StaticResource Color.ControlBackground}" />
+  <SolidColorBrush x:Key="Brush.ControlDisabledText" Color="{StaticResource Color.ControlDisabledText}" />
+  <SolidColorBrush x:Key="Brush.ControlDisabledBorder" Color="{StaticResource Color.ControlDisabledBorder}" />
+  <SolidColorBrush x:Key="Brush.ControlDisabledBackground" Color="{StaticResource Color.ControlDisabledBackground}" />
+  <SolidColorBrush x:Key="Brush.ButtonHoverBorder" Color="{StaticResource Color.ButtonHoverBorder}" />
+  <SolidColorBrush x:Key="Brush.PrimaryHover" Color="{StaticResource Color.PrimaryHover}" />
+  <SolidColorBrush x:Key="Brush.PrimaryDisabled" Color="{StaticResource Color.PrimaryDisabled}" />
+  <SolidColorBrush x:Key="Brush.BannerBackground" Color="{StaticResource Color.BannerBackground}" />
+  <SolidColorBrush x:Key="Brush.BannerBorder" Color="{StaticResource Color.BannerBorder}" />
+  <SolidColorBrush x:Key="Brush.BannerWarnBackground" Color="{StaticResource Color.BannerWarnBackground}" />
+  <SolidColorBrush x:Key="Brush.BannerWarnBorder" Color="{StaticResource Color.BannerWarnBorder}" />
+  <SolidColorBrush x:Key="Brush.BannerErrorBackground" Color="{StaticResource Color.BannerErrorBackground}" />
+  <SolidColorBrush x:Key="Brush.BannerErrorBorder" Color="{StaticResource Color.BannerErrorBorder}" />
+  <SolidColorBrush x:Key="Brush.CheckBoxBorder" Color="{StaticResource Color.CheckBoxBorder}" />
+  <SolidColorBrush x:Key="Brush.SliderTrack" Color="{StaticResource Color.SliderTrack}" />
+  <SolidColorBrush x:Key="Brush.ProgressTrackBackground" Color="{StaticResource Color.ProgressTrackBackground}" />
+  <SolidColorBrush x:Key="Brush.ProgressTrackBorder" Color="{StaticResource Color.ProgressTrackBorder}" />
+  <SolidColorBrush x:Key="Brush.DialogBorder" Color="{StaticResource Color.DialogBorder}" />
+  <SolidColorBrush x:Key="Brush.Danger" Color="{StaticResource Color.Danger}" />
+  <SolidColorBrush x:Key="Brush.White" Color="#FFFFFFFF" />
+  <SolidColorBrush x:Key="Brush.Black" Color="#FF000000" />
+  <SolidColorBrush x:Key="Brush.PopupScrim" Color="#59000000" />
+
+  <!-- ==================== 字体 ==================== -->
+  <!-- 与 shell.css 里的字体变量保持一致（UI 字体栈 / 图标字体） -->
+  <FontFamily x:Key="Font.Ui">Segoe UI, Microsoft YaHei UI, Microsoft YaHei</FontFamily>
+  <FontFamily x:Key="Font.Icon">Segoe MDL2 Assets</FontFamily>
+  <FontFamily x:Key="Font.Mono">Consolas, Cascadia Mono, monospace</FontFamily>
+
+  <!-- ==================== 尺寸（几何不得改动，见 §5.2） ==================== -->
+  <sys:Double x:Key="Size.RowHeight">24</sys:Double>
+  <sys:Double x:Key="Size.NavWidth">210</sys:Double>
+  <sys:Double x:Key="Size.PageHeadHeight">50</sys:Double>
+  <sys:Double x:Key="Size.MenuBarHeight">22</sys:Double>
+  <sys:Double x:Key="Size.TitleBarHeight">31</sys:Double>
+  <sys:Double x:Key="Size.ContentPadding">18</sys:Double>
+  <sys:Double x:Key="Size.ControlHeight">22</sys:Double>
+  <!-- 属性表一行的行高（2026-10-06 实机反馈："combobox和textbox和勾选框上下贴得太近，影响美观度"）。
+       设计稿是 .props-grid .lab/.val{min-height:22px;padding:1px 8px 1px 0} = **24px**，
+       控件 22px 高 → 上下只留 2px，视觉上确实挤。用户点名这条影响美观，所以**有意偏离设计稿**：
+       24 → 28dip，控件之间留 6dip（150% 下 9px）。全部属性表的行都引用这一个值，要调只改这里。
+       登记：README §5 第 39 条。 -->
+  <sys:Double x:Key="Size.PropRowHeight">28</sys:Double>
+  <sys:Double x:Key="Size.ControlBorderThickness">1</sys:Double>
+  <sys:Double x:Key="Size.BodyFont">12</sys:Double>
+  <sys:Double x:Key="Size.SectionTitleFont">20</sys:Double>
+  <sys:Double x:Key="Size.SubTitleFont">14</sys:Double>
+  <sys:Double x:Key="Size.SmallFont">11</sys:Double>
+  <sys:Double x:Key="Size.WindowMinWidth">960</sys:Double>
+  <sys:Double x:Key="Size.WindowMinHeight">620</sys:Double>
+  <sys:Double x:Key="Size.WindowWidth">1059</sys:Double>
+  <sys:Double x:Key="Size.WindowHeight">830</sys:Double>
+
+  <Thickness x:Key="Thickness.PropsCell">1,0,8,0</Thickness>
+  <Thickness x:Key="Thickness.ControlPadding">6,0,6,0</Thickness>
+
+</ResourceDictionary>

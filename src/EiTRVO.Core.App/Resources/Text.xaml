@@ -1,0 +1,127 @@
+<!--
+  Text.xaml — 文本样式。
+
+  这里放了一个 **隐式** TextBlock 样式，把「Segoe UI / Microsoft YaHei UI、12px、#1a1a1a」
+  变成全局默认（对应 shell.css 的 body{font-family;font-size;color}）。
+  其它具名样式都 BasedOn 它，只覆盖需要变化的那几项。
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- 全局默认：正文 12px（9pt），与 shell.css 一致。
+       刻意 **不** 在这里设 Foreground：颜色要能从所在控件继承下来，
+       否则深色页头（白字）与禁用态（灰字）都会被这个 Setter 盖掉。
+       Style 的 Setter 优先级高于属性继承，所以颜色只能由具名样式或宿主控件给出。 -->
+  <Style TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+  </Style>
+
+  <!-- ==================== 页头（深色） ==================== -->
+  <!-- 面包屑：细体（Segoe UI Light / 300）。原图实测为无衬线细字，末级不加粗。
+       字号 20px 与内容区区块标题同号，但字重更轻（300 vs 600），形成层级对比。 -->
+  <Style x:Key="Text.Crumb" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="FontSize" Value="{StaticResource Size.SectionTitleFont}" />
+    <Setter Property="FontWeight" Value="Light" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.PageHeadForeground}" />
+  </Style>
+
+  <Style x:Key="Text.CrumbSeparator" TargetType="TextBlock" BasedOn="{StaticResource Text.Crumb}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.CrumbSeparator}" />
+    <Setter Property="Margin" Value="8,0,8,0" />
+  </Style>
+
+  <Style x:Key="Text.Caption" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.PageHeadForeground}" />
+  </Style>
+
+  <!-- ==================== 区块标题 ==================== -->
+  <!-- 20px 半粗（shell.css .section-head .t{font-size:20px;font-weight:600}） -->
+  <Style x:Key="Text.SectionTitle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="FontSize" Value="{StaticResource Size.SectionTitleFont}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <!-- 14px 半粗：二级区块标题（shell.css 里 style="font-size:14px" 的那些） -->
+  <Style x:Key="Text.SubTitle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="FontSize" Value="{StaticResource Size.SubTitleFont}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <Style x:Key="Text.Muted" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+  </Style>
+
+  <Style x:Key="Text.Small" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="FontSize" Value="{StaticResource Size.SmallFont}" />
+  </Style>
+
+  <Style x:Key="Text.SmallMuted" TargetType="TextBlock" BasedOn="{StaticResource Text.Small}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+  </Style>
+
+  <Style x:Key="Text.Link" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.Accent}" />
+  </Style>
+
+  <Style x:Key="Text.Bold" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <Style x:Key="Text.Mono" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Mono}" />
+  </Style>
+
+  <!-- ==================== 状态色 ==================== -->
+  <Style x:Key="Text.Ok" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.StateOk}" />
+  </Style>
+
+  <Style x:Key="Text.Warn" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+  </Style>
+
+  <Style x:Key="Text.Err" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+  </Style>
+
+  <Style x:Key="Text.Off" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.StateOff}" />
+  </Style>
+
+  <Style x:Key="Text.Info" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="Foreground" Value="{StaticResource Brush.StateInfo}" />
+  </Style>
+
+  <!-- ==================== 属性表（标签 / 值 双栏） ==================== -->
+  <!-- 对应 shell.css .props-grid .lab/.val{min-height:22px;padding:1px 8px 1px 0}
+       2026-10-06：`Padding="0,1,0,0"` 是**光学居中**用的 —— 文字的行盒上下并不对称（基线以下是 descent），
+       所以单纯把行盒居中，墨迹会显得比旁边的输入框高一截（实测高 2～2.5px @150%）。
+       往下压 1dip（150% 下 1.5px）之后偏差收敛到 1px 以内。见 README §5 第 39 条。 -->
+  <Style x:Key="Text.PropLabel" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="MinHeight" Value="22" />
+    <Setter Property="Padding" Value="0,1,0,0" />
+    <Setter Property="Margin" Value="0,0,8,0" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+  </Style>
+
+  <Style x:Key="Text.PropValue" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+    <Setter Property="MinHeight" Value="22" />
+    <Setter Property="Padding" Value="0,1,0,0" />
+    <Setter Property="Margin" Value="0,0,8,0" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+  </Style>
+
+  <!-- 属性表第 3 列（被 1px 竖线分隔的那一列）标签：左内边距 16px -->
+  <Style x:Key="Text.PropLabelSecond" TargetType="TextBlock" BasedOn="{StaticResource Text.PropLabel}">
+    <Setter Property="Padding" Value="16,1,0,0" />
+  </Style>
+
+  <!-- ==================== 表格 ==================== -->
+  <!-- 表格本身用 DataGrid：表头与单元格的左右 8px 内边距由 DataGridColumnHeader.Padding
+       与 DataGridCell 模板统一给出（见 Lists.xaml），所以这里不再为文本另设 Margin 样式。 -->
+
+</ResourceDictionary>

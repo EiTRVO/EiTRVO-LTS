@@ -1,0 +1,39 @@
+<Application x:Class="EiTRVO.Core.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnMainWindowClose">
+  <!--
+    注意：没有 StartupUri。
+    窗口由组合根（App.xaml.cs 的 OnStartup）从 DI 解析后创建，
+    这是本仓库唯一的组合根（AGENTS.md §2.2）。
+
+    合并顺序有讲究：Theme 必须最先，后面的字典都引用它的 Color/Brush/Font/Size；
+    Converters 要在被使用它的字典之前；PageTemplates 最后（它引用各页面的 View）。
+  -->
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary
+                Source="Resources/Theme.xaml" />
+        <ResourceDictionary
+                Source="Resources/Converters.xaml" />
+        <ResourceDictionary
+                Source="Resources/Text.xaml" />
+        <ResourceDictionary
+                Source="Resources/Buttons.xaml" />
+        <ResourceDictionary
+                Source="Resources/Inputs.xaml" />
+        <ResourceDictionary
+                Source="Resources/Lists.xaml" />
+        <ResourceDictionary
+                Source="Resources/Sections.xaml" />
+        <ResourceDictionary
+                Source="Resources/Chrome.xaml" />
+        <ResourceDictionary
+                Source="Resources/CellTemplates.xaml" />
+        <ResourceDictionary
+                Source="Resources/PageTemplates.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

@@ -1,0 +1,13 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" x:Class="EiTRVO.Core.App.Views.Pages.P03InstanceDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:EiTRVO.Core.App.Views.Parts">
+
+  <!--
+    p03 实例详情。对应 mockup/pages/p03-instance-detail.html。
+    内容与 p13（删除实例）完全相同，因此共用 InstanceOverviewPanel；
+    本页就是那个面板本身，p13 则是同一个面板加一个由外壳承载的模态层。
+  -->
+  <p:InstanceOverviewPanel />
+</UserControl>

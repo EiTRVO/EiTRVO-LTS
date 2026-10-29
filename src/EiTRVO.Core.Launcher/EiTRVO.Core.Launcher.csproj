@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    刻意使用 net8.0（不是 net8.0-windows）：
+    该程序集是本仓库的“非 UI”层，用目标框架从编译期保证
+    ViewModel / 服务不会误引用 System.Windows.Controls 等 WPF 类型（AGENTS.md §2.1 / §2.3）。
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>EiTRVO.Core.Launcher</RootNamespace>
+    <AssemblyName>EiTRVO.Core.Launcher</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 仅用于 IHttpClientFactory：内核服务一律构造注入它，不接收 HttpClient 参数。 -->
+    <PackageReference Include="Microsoft.Extensions.Http" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,350 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P07ModsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+             xmlns:lcc="clr-namespace:EiTRVO.Core.Launcher.Content;assembly=EiTRVO.Core.Launcher"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p07 模组管理。对应 mockup/pages/p07-mods.html。
+    结构：区块标题（从 Modrinth 添加 / 任务）→ 统计属性 → 缺失依赖横幅 →
+          筛选行 → 模组表格（固定 8 行视口）→ 贴底动作条。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <!-- M7-g-2：动作结果（失败原因 / 备份去向），为空时高度为 0。 -->
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <c:SectionHeader Grid.Row="0"
+                       Icon="&#xE7FC;"
+                       Title="{Binding SectionTitle}"
+                       Subtitle="{Binding SectionSubtitle}">
+        <c:IconButton Icon="&#xE896;"
+                      Text="{loc:Text 从 Modrinth 添加}"
+                      Margin="8,0,0,0"
+                      Command="{Binding OpenModrinthCommand}"
+                      ToolTip="{Binding OpenModrinthDetail}"
+                      ToolTipService.ShowOnDisabled="True" />
+      </c:SectionHeader>
+
+      <Grid Grid.Row="1" Style="{StaticResource PropsBox}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+          <RowDefinition Height="Auto" MinHeight="{StaticResource Size.PropRowHeight}" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Style="{StaticResource PropsDivider}" />
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 已启用}" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource Text.PropValue}" Text="{Binding Summary.Enabled, StringFormat={}{0}}" />
+        <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 已禁用}" />
+        <TextBlock Grid.Row="0" Grid.Column="3" Style="{StaticResource Text.PropValue}" Text="{Binding Summary.Disabled, StringFormat={}{0}}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 缺失依赖}" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Text.PropValue}" Foreground="{StaticResource Brush.StateErr}" Text="{Binding Summary.MissingDependency, StringFormat={}{0}}" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 可更新}" />
+        <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource Text.PropValue}" Foreground="{StaticResource Brush.StateWarn}" Text="{Binding Summary.Updatable, StringFormat={}{0}}" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource Text.PropLabel}" Text="{loc:Text 加载器匹配}" />
+        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource Text.PropValue}" Foreground="{StaticResource Brush.StateOk}" Text="{Binding Summary.LoaderMatch}" />
+        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource Text.PropLabelSecond}" Text="{loc:Text 游戏版本匹配}" />
+        <TextBlock Grid.Row="2" Grid.Column="3" Style="{StaticResource Text.PropValue}" Foreground="{StaticResource Brush.StateOk}" Text="{Binding Summary.GameVersionMatch}" />
+      </Grid>
+
+      <!--
+        缺失依赖横幅：数字与两个文件名都来自**真实扫描**（M7-a）。
+        设计稿这里写死成「1 个模组缺失依赖：create-0.5.1f.jar 需要 flywheel-0.6.10」，
+        那是设计稿画的那台机器的数据；接上真实内容目录之后必须换成实例自己的那一份，
+        否则横幅会在一台好机器上说假话、在一台坏机器上说得不准。
+      -->
+      <c:Banner Grid.Row="2" Icon="&#xE783;" Tone="Error" Visibility="{Binding HasMissingDependency, Converter={StaticResource BoolToVisibility}}">
+        <c:Banner.Extra>
+          <c:IconButton Text="{loc:Text 修复依赖}"
+                        Icon="&#xE90F;"
+                        Command="{Binding FixDependenciesCommand}" />
+        </c:Banner.Extra>
+        <TextBlock TextWrapping="Wrap" LineHeight="20">
+          <!--
+            两个 `Mode=OneWay` 是**必需的**，不是顺手写的：`Run.Text` 的绑定**默认是 TwoWay**
+            （与 `TextBlock.Text` 不同），而这两个属性是 ViewModel 上的只读属性 ——
+            不写 Mode 时 WPF 会在**页面加载时**抛 InvalidOperationException（"无法对只读属性进行 TwoWay 绑定"），
+            整个页面直接崩掉。仓库里其它 Run 都走本地化标记扩展，而那个扩展显式设了 OneWay，
+            所以这个坑一直没被踩到（2026-10-14 实机截图时才暴露，回归用例 `XamlRunBindingTests`）。
+            注：注释里别写花括号包起来的标记扩展写法，`LocalizationTests` 的扫描器会把它当成一个文案键。
+          -->
+          <Run FontWeight="SemiBold" Text="{Binding MissingDependencyCountText, Mode=OneWay}" /><Run Text="{loc:Text ：}" /><Run Text="{Binding MissingDependencyDetail, Mode=OneWay}" /><Run Text="{loc:Text 。可点击「修复依赖」自动补全。}" />
+        </TextBlock>
+      </c:Banner>
+
+      <Grid Grid.Row="3" Style="{StaticResource FilterRow}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Style="{StaticResource FilterBoxBorder}">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontFamily="{StaticResource Font.Icon}" FontSize="12" Text="&#xE71C;" />
+            <Grid Grid.Column="1">
+              <TextBlock Margin="6,0,6,0"
+                         VerticalAlignment="Center"
+                         IsHitTestVisible="False"
+                         Foreground="{StaticResource Brush.TextMuted}"
+                         Text="{loc:Text 筛选器}">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                      <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                          <Condition Binding="{Binding FilterText}" Value="" />
+                          <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=ModsFilterBox}" Value="False" />
+                        </MultiDataTrigger.Conditions>
+                        <Setter Property="Visibility" Value="Visible" />
+                      </MultiDataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+              <TextBox x:Name="ModsFilterBox"
+                       Margin="6,0,6,0"
+                       Padding="0"
+                       VerticalAlignment="Center"
+                       Background="Transparent"
+                       BorderThickness="0"
+                       Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+            <TextBlock Grid.Column="2" VerticalAlignment="Center" FontFamily="{StaticResource Font.Icon}" FontSize="12" Foreground="{StaticResource Brush.TextMuted}" Text="&#xE721;" />
+          </Grid>
+        </Border>
+        <c:IconButton Grid.Column="1" Style="{StaticResource IconButton.IconBox}" Icon="&#xE8CB;" Margin="8,0,0,0" ToolTip="{loc:Text 按模组名排序（升序 / 降序）}" Command="{Binding ToggleSortCommand}" />
+        <c:IconButton Grid.Column="2" Style="{StaticResource IconButton.IconBox}" Icon="&#xE72C;" Margin="8,0,0,0" ToolTip="{loc:Text 重新扫描并核对 Modrinth 来源}" Command="{Binding RefreshCommand}" />
+        <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
+          <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Brush.TextMuted}" Text="{loc:Text 来源：}" />
+          <Button Command="{Binding ShowAllSourcesCommand}" Content="{loc:Text 全部}">
+            <Button.Style>
+              <Style TargetType="Button" BasedOn="{StaticResource LinkButton}">
+                <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding IsSourceAll}" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource Brush.Accent}" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Button.Style>
+          </Button>
+          <TextBlock Margin="4,0,4,0" VerticalAlignment="Center" Foreground="{StaticResource Brush.TextMuted}" Text="|" />
+          <Button Command="{Binding ShowModrinthSourcesCommand}" Content="{loc:Text Modrinth}">
+            <Button.Style>
+              <Style TargetType="Button" BasedOn="{StaticResource LinkButton}">
+                <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding IsSourceModrinth}" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource Brush.Accent}" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Button.Style>
+          </Button>
+          <TextBlock Margin="4,0,4,0" VerticalAlignment="Center" Foreground="{StaticResource Brush.TextMuted}" Text="|" />
+          <Button Command="{Binding ShowLocalSourcesCommand}" Content="{loc:Text 本地文件}">
+            <Button.Style>
+              <Style TargetType="Button" BasedOn="{StaticResource LinkButton}">
+                <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding IsSourceLocal}" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource Brush.Accent}" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Button.Style>
+          </Button>
+        </StackPanel>
+      </Grid>
+
+      <Grid Grid.Row="4" Height="216" Margin="18,0,18,12">
+        <!--
+          空状态与表格**互斥显示**：两者共用同一个单元格，而 DataGrid 的背景是不透明的 ——
+          都显示的话，要么提示被整块盖住（原写法：先声明提示、后声明表格，于是"该实例还没有模组"
+          在有实例、没模组时一个字也看不见），要么提示压在表头上面。
+          M7-a 之前演示数据永远填满表格，所以这个毛病一直没露出来（2026-10-14 的实机截图才看见）。
+        -->
+        <DataGrid Height="216"
+                  Margin="0"
+                  Visibility="{Binding HasMods, Converter={StaticResource BoolToVisibility}}"
+                  ItemsSource="{Binding Mods}"
+                  SelectedItem="{Binding SelectedMod, Mode=TwoWay}">
+        <DataGrid.Columns>
+          <DataGridTemplateColumn Width="34" Header="">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock x:Name="Ico"
+                           VerticalAlignment="Center"
+                           FontFamily="{StaticResource Font.Icon}"
+                           FontSize="15"
+                           Foreground="{StaticResource Brush.StateOk}"
+                           Text="&#xE73E;" />
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding Enablement}" Value="{x:Static lcc:ModEnablement.Disabled}">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE739;" />
+                    <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateOff}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding Enablement}" Value="{x:Static lcc:ModEnablement.Unverified}">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE7BA;" />
+                    <Setter TargetName="Ico" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+
+          <DataGridTextColumn Width="210" Header="{loc:Text 模组名称}" Binding="{Binding Name}" />
+          <DataGridTextColumn Width="80" Header="{loc:Text 版本}" Binding="{Binding Version}" />
+
+          <DataGridTemplateColumn Width="110" Header="{loc:Text 来源}">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                  <TextBlock x:Name="Ico"
+                             Margin="0,0,4,0"
+                             VerticalAlignment="Center"
+                             FontFamily="{StaticResource Font.Icon}"
+                             FontSize="11"
+                             Foreground="{StaticResource Brush.TextMuted}"
+                             Text="&#xE8B7;" />
+                  <TextBlock x:Name="Txt" VerticalAlignment="Center" Text="{loc:Text 本地文件}" />
+                </StackPanel>
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding Source}" Value="{x:Static lcc:ContentSource.Modrinth}">
+                    <Setter TargetName="Ico" Property="Text" Value="&#xE896;" />
+                    <Setter TargetName="Txt" Property="Text" Value="Modrinth" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+
+          <DataGridTextColumn Width="90" Header="{loc:Text 游戏版本}" Binding="{Binding GameVersion}" />
+
+          <DataGridTemplateColumn Width="80" Header="{loc:Text 状态}">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock x:Name="Txt"
+                           VerticalAlignment="Center"
+                           Foreground="{StaticResource Brush.StateOk}"
+                           Text="{loc:Text 已启用}" />
+                <DataTemplate.Triggers>
+                  <!-- 顺序有意义：Enablement 的判定放在 State 之后，
+                       这样「未收录模组」不会因为「可更新」而被显示成正常项。 -->
+                  <DataTrigger Binding="{Binding State}" Value="{x:Static lcc:ModState.MissingDependency}">
+                    <Setter TargetName="Txt" Property="Text" Value="{loc:Text 缺失依赖}" />
+                    <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateErr}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding State}" Value="{x:Static lcc:ModState.Updatable}">
+                    <Setter TargetName="Txt" Property="Text" Value="{loc:Text 可更新}" />
+                    <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding Enablement}" Value="{x:Static lcc:ModEnablement.Disabled}">
+                    <Setter TargetName="Txt" Property="Text" Value="{loc:Text 已禁用}" />
+                    <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateOff}" />
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding Enablement}" Value="{x:Static lcc:ModEnablement.Unverified}">
+                    <Setter TargetName="Txt" Property="Text" Value="{loc:Text 未验证来源}" />
+                    <Setter TargetName="Txt" Property="Foreground" Value="{StaticResource Brush.StateWarn}" />
+                  </DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+
+          <DataGridTextColumn Width="*" Header="{loc:Text 备注}" Binding="{Binding Note}" />
+        </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock VerticalAlignment="Top"
+                   Margin="0,6,0,0"
+                   IsHitTestVisible="False"
+                   Foreground="{StaticResource Brush.TextMuted}"
+                   Visibility="{Binding HasNoMods, Converter={StaticResource BoolToVisibility}}"
+                   Text="{Binding EmptyStateText}" />      </Grid>
+
+      <!--
+        M7-g-2：内容动作的失败原因 / 成功去向（"文件被移到了哪个备份目录"）。
+        为空时整行不占高度 —— 与 p11 的 ActionError 同一手法：不新增固定控件，也不动 §5.2 的几何。
+      -->
+      <StackPanel Grid.Row="5" Margin="18,0,18,6">
+        <TextBlock Foreground="{StaticResource Brush.StateErr}"
+                   Text="{Binding ActionError}"
+                   Visibility="{Binding ActionError, Converter={StaticResource EmptyToCollapsed}}" />
+        <TextBlock Foreground="{StaticResource Brush.TextMuted}"
+                   Text="{Binding ActionNote}"
+                   Visibility="{Binding ActionNote, Converter={StaticResource EmptyToCollapsed}}" />
+      </StackPanel>
+    </Grid>
+
+    <Border Grid.Row="1" Style="{StaticResource ActionBarDocked}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+          <!-- M7-g-2：三颗按钮真的改磁盘上的文件（不再跳去别的页）：
+               启用 / 禁用 = 改名（去掉 / 加上 .disabled 后缀，文件不删），删除 = 移进 backups\mods\<时间戳>\。
+               可执行性跟着选中行的状态走：已经启用的行「启用所选」是灰的，反之亦然。 -->
+          <c:IconButton Icon="&#xE896;" Text="{loc:Text 启用所选}"
+                        ToolTip="{loc:Text 把选中的模组改成启用（去掉文件名末尾的 .disabled 后缀）。}"
+                        Command="{Binding EnableSelectedCommand}" />
+          <c:IconButton Icon="&#xE769;" Text="{loc:Text 禁用所选}" Margin="10,0,0,0"
+                        ToolTip="{loc:Text 把选中的模组改成禁用（给文件名加一个 .disabled 后缀，文件不删）。}"
+                        Command="{Binding DisableSelectedCommand}" />
+          <c:IconButton Icon="&#xE74D;" Text="{loc:Text 删除所选}" Margin="10,0,0,0"
+                        ToolTip="{loc:Text 把选中的模组移进备份目录（backups\mods 下按时间戳分目录），可以从那里拿回来。}"
+                        Command="{Binding DeleteSelectedCommand}" />
+          <!-- M7-d：这一颗按钮真的会排队下载（不是跳 p06 的假按钮）。
+               文案从设计稿的「更新所选（5）」缩短成「更新所选」：那个 5 是画稿里写死的数字，
+               真值（可更新数）放在 ToolTip 里按事实说，没有可更新的时候按钮直接是灰的。
+               改名登记在 tools\icon-label-renames.txt（图标门禁按文案对账）。 -->
+          <c:IconButton Icon="&#xE72C;" Text="{loc:Text 一键更新}" Margin="10,0,0,0"
+                        ToolTip="{Binding UpdateSelectedDetail}"
+                        Command="{Binding UpdateSelectedCommand}" />
+          <c:IconButton Icon="&#xE9D9;" Text="{loc:Text 打开 mods 目录}" Margin="10,0,0,0" Command="{Binding OpenModsFolderCommand}" />
+        </WrapPanel>
+        <c:IconButton Grid.Column="1" Icon="&#xE713;" Text="{loc:Text 实例设置}" HorizontalAlignment="Right"
+                      Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                      CommandParameter="{x:Static vm:PageId.InstanceSettings}" />
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

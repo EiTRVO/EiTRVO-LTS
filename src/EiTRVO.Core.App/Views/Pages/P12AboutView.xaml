@@ -1,0 +1,85 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P12AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p12 关于。2026-10-24 用户要求：
+    去掉原「产品与运行环境属性表」和四个维护入口，改成长期支持版本标识。
+    结构：区块标题 → EiTRVO 长期支持版本（英文 EiTRVO LTS）+ 版本/Build + 引擎信息 → 贴底动作条。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <c:SectionHeader Grid.Row="0" Icon="&#xE946;" Title="{Binding SectionTitle}" />
+
+      <Grid Grid.Row="1">
+        <!-- 2026-10-24 用户要求：信息块放左上角、左对齐，不再居中。 -->
+        <StackPanel Margin="18,4,18,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+          <TextBlock HorizontalAlignment="Left"
+                     FontFamily="{StaticResource Font.Ui}"
+                     FontSize="{StaticResource Size.SectionTitleFont}"
+                     FontWeight="Bold"
+                     Foreground="{StaticResource Brush.Text}"
+                     Text="{loc:Text EiTRVO 长期支持}" />
+          <StackPanel Margin="0,16,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock FontSize="16"
+                       Foreground="{StaticResource Brush.TextMuted}"
+                       Text="{loc:Text 版本 26.0.1}" />
+            <TextBlock Margin="12,0,0,0"
+                       FontSize="16"
+                       Foreground="{StaticResource Brush.TextMuted}"
+                       Text="Build 261026-1" />
+          </StackPanel>
+          <TextBlock Margin="0,8,0,0"
+                     HorizontalAlignment="Left"
+                     FontSize="13"
+                     Foreground="{StaticResource Brush.TextMuted}"
+                     Text="EiTRVO XEngine (Build 261024)" />
+
+          <!-- 2026-10-25：EiTRVO LTS 自身以 MIT License 开源。 -->
+          <Border Margin="0,22,0,0" Height="1" Background="{StaticResource Brush.Line}" />
+          <TextBlock Margin="0,12,0,0"
+                     HorizontalAlignment="Left"
+                     FontSize="16"
+                     FontWeight="SemiBold"
+                     Foreground="{StaticResource Brush.Text}"
+                     Text="{loc:Text 基于 MIT 协议开源}" />
+          <TextBlock Margin="0,6,0,0"
+                     HorizontalAlignment="Left"
+                     TextWrapping="Wrap"
+                     MaxWidth="620"
+                     Foreground="{StaticResource Brush.TextMuted}"
+                     Text="{loc:Text EiTRVO LTS 以 MIT License 发布。}" />
+          <c:IconButton Margin="0,10,0,0"
+                        HorizontalAlignment="Left"
+                        Icon="&#xE8A7;"
+                        Text="{loc:Text 查看 MIT 许可证}"
+                        Command="{Binding OpenMitLicenseCommand}" />
+        </StackPanel>
+      </Grid>
+    </Grid>
+
+    <Border Grid.Row="1" Style="{StaticResource ActionBarDocked}">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <c:IconButton Icon="&#xE8A7;" Text="{loc:Text 查看第三方许可}"
+                      Command="{Binding OpenLicensesCommand}"
+                      ToolTip="{loc:Text 打开第三方许可窗口：列出随启动器分发的开源组件与许可证全文。}" />
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

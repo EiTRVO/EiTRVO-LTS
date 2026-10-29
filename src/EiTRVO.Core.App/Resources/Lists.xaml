@@ -1,0 +1,263 @@
+<!--
+  Lists.xaml — 列表与表格。
+
+  · .picker .list / .opt      1px #d9d9d9 边、26px 行高、悬停 #eaf3fb、
+                              选中 #cce8ff + 4px 主色左竖条 + 加粗
+  · table / thead / tbody     24px 行高、表头 #fafafa、奇偶行 #fff / #fcfcfc、
+                              悬停 #eaf3fb、选中 #cce8ff、1px #f0f0f0 行分隔
+  表格用 WPF 自带的 DataGrid（平台能力，不算第三方依赖）：
+  它原生提供固定表头、原生滚动条、按比例列宽与行选中，正好对上设计稿的结构，
+  比自绘 ItemsControl + 网格更不容易出错。
+-->
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+                    xmlns:cv="clr-namespace:EiTRVO.Core.App.Converters">
+
+  <!-- ==================== 内容选择列表（.picker） ==================== -->
+  <!-- `.picker .list`：1px #d9d9d9 边 + 白底 + 自身滚动（MaxHeight 由各页面给出） -->
+  <Style x:Key="PickerListBorder" TargetType="Border">
+    <Setter Property="Background" Value="{StaticResource Brush.White}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.TableBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+  </Style>
+
+  <!-- PickerRowButton：`.picker .opt` —— 26px 行高、左右 10px、悬停 #eaf3fb、
+       高亮行 #cce8ff + 4px 主色左竖条 + 加粗。
+       “哪一行是高亮行”只由数据决定（行的 IsActive），不用 WPF 的选中态 ——
+       因为设计稿里高亮表达的是“当前实例 / 当前项”，不是“用户刚点了哪一行”。
+       不可交互的列表行（队列项、启动阶段）复用同一个样式并置 IsEnabled=false。 -->
+  <Style x:Key="PickerRowButton" TargetType="Button">
+    <Setter Property="Height" Value="26" />
+    <Setter Property="Padding" Value="10,0,10,0" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Bd"
+                  Background="Transparent"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <Grid>
+              <Border x:Name="Bar"
+                      Width="4"
+                      Margin="-10,0,0,0"
+                      HorizontalAlignment="Left"
+                      Background="{StaticResource Brush.Accent}"
+                      Visibility="Collapsed" />
+              <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.RowHover}" />
+            </Trigger>
+            <DataTrigger Binding="{Binding IsActive}" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.AccentSelected}" />
+              <Setter TargetName="Bar" Property="Visibility" Value="Visible" />
+              <Setter Property="FontWeight" Value="SemiBold" />
+            </DataTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- 非交互的列表行（队列项、启动阶段）复用同一个模板，只是把 IsEnabled 设为 false：
+       点它不会发生任何事，所以不给它悬停反馈以外的任何交互暗示。 -->
+
+  <!-- PickerRowItem：**可选**列表行（`ListBoxItem`），给账户列表这类"用户真的要点选"的列表用。
+       外观与 PickerRowButton 一致（26px 行高、左右 10px 内边距、悬停 #eaf3fb），
+       但高亮由 WPF 的**选中态**驱动：#cce8ff 底 + 4px 主色左竖条 + 加粗。
+       为什么账户列表改成这个：设计稿的 `.picker .opt` 本来就可选（`.opt.sel` 标出当前那一行），
+       而 2026-10-06 用户点出"离线账户也应该成为可选的账户" —— 当时那一页的行是
+       `IsEnabled="False"` 的死行，除了「设为默认」没有任何办法切到另一个账户。
+       好处还有一点：ListBox 自带上下键与键盘焦点，可达性是白捡的。 -->
+  <Style x:Key="PickerRowItem" TargetType="ListBoxItem">
+    <Setter Property="Height" Value="26" />
+    <Setter Property="Padding" Value="10,0,10,0" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ListBoxItem">
+          <Border x:Name="Bd"
+                  Background="Transparent"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <Grid>
+              <Border x:Name="Bar"
+                      Width="4"
+                      Margin="-10,0,0,0"
+                      HorizontalAlignment="Left"
+                      Background="{StaticResource Brush.Accent}"
+                      Visibility="Collapsed" />
+              <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.RowHover}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+              <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.AccentSelected}" />
+              <Setter TargetName="Bar" Property="Visibility" Value="Visible" />
+              <Setter Property="FontWeight" Value="SemiBold" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- ==================== DataGrid 的三个部件 ==================== -->
+  <Style x:Key="DataTableColumnHeader" TargetType="DataGridColumnHeader">
+    <Setter Property="Background" Value="{StaticResource Brush.TableHead}" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.TableHeaderText}" />
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Padding" Value="8,0,8,0" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="DataGridColumnHeader">
+          <Border Background="{TemplateBinding Background}"
+                  BorderBrush="{StaticResource Brush.TableBorder}"
+                  BorderThickness="0,0,0,1"
+                  Padding="{TemplateBinding Padding}"
+                  SnapsToDevicePixels="True">
+            <ContentPresenter VerticalAlignment="Center"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="DataTableCell" TargetType="DataGridCell">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="DataGridCell">
+          <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+            <!-- tbody td 的左右 8px 内边距在这里统一给出 -->
+            <ContentPresenter Margin="8,0,8,0"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Stretch" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <!-- 选中态由行背景表达（#cce8ff），单元格本身保持透明，
+           避免默认样式的系统高亮蓝盖住行底色。 -->
+      <Trigger Property="IsSelected" Value="True">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="DataTableRow" TargetType="DataGridRow">
+    <Setter Property="Background" Value="{StaticResource Brush.White}" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="Height" Value="{StaticResource Size.RowHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.RowHeight}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{StaticResource Brush.RowHover}" />
+      </Trigger>
+      <!-- tr.sel：高亮行 = 用户当前选中的行。
+           之前写成「跟随数据里的 IsActive」，结果是点别的行毫无反应；
+           「当前实例」这种语义改由首列的对勾图标表达（见各页面首列模板）。 -->
+      <Trigger Property="IsSelected" Value="True">
+        <Setter Property="Background" Value="{StaticResource Brush.AccentSelected}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style TargetType="DataGrid">
+    <Setter Property="AutoGenerateColumns" Value="False" />
+    <Setter Property="CanUserAddRows" Value="False" />
+    <Setter Property="CanUserDeleteRows" Value="False" />
+    <Setter Property="CanUserResizeRows" Value="False" />
+    <Setter Property="CanUserReorderColumns" Value="False" />
+    <Setter Property="CanUserSortColumns" Value="False" />
+    <Setter Property="CanUserResizeColumns" Value="False" />
+    <Setter Property="IsReadOnly" Value="True" />
+    <Setter Property="SelectionMode" Value="Single" />
+    <Setter Property="SelectionUnit" Value="FullRow" />
+    <Setter Property="HeadersVisibility" Value="Column" />
+    <Setter Property="GridLinesVisibility" Value="Horizontal" />
+    <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource Brush.RowBorder}" />
+    <Setter Property="Background" Value="{StaticResource Brush.White}" />
+    <Setter Property="RowBackground" Value="{StaticResource Brush.White}" />
+    <Setter Property="AlternatingRowBackground" Value="{StaticResource Brush.RowAlternate}" />
+    <Setter Property="BorderBrush" Value="{StaticResource Brush.TableBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="RowHeight" Value="{StaticResource Size.RowHeight}" />
+    <Setter Property="ColumnHeaderHeight" Value="{StaticResource Size.RowHeight}" />
+    <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+    <Setter Property="FontSize" Value="{StaticResource Size.BodyFont}" />
+    <Setter Property="Foreground" Value="{StaticResource Brush.Text}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="ColumnHeaderStyle" Value="{StaticResource DataTableColumnHeader}" />
+    <Setter Property="RowStyle" Value="{StaticResource DataTableRow}" />
+    <Setter Property="CellStyle" Value="{StaticResource DataTableCell}" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+  </Style>
+
+    <!-- ==================== 迷你进度条 ==================== -->
+  <Style TargetType="{x:Type c:MiniProgressBar}">
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:MiniProgressBar}">
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <ProgressBar Style="{StaticResource MiniProgressTrack}"
+                         Width="{Binding BarWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                         Height="10"
+                         IsIndeterminate="{Binding IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}"
+                         Value="{Binding Value, RelativeSource={RelativeSource TemplatedParent}}" />
+            <TextBlock x:Name="Percent"
+                       Margin="6,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="{StaticResource Size.SmallFont}"
+                       Foreground="{StaticResource Brush.TextMuted}"
+                       Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}%}" />
+          </StackPanel>
+          <ControlTemplate.Triggers>
+            <!-- 不确定进度没有有意义的百分比；ShowPercent=false 时也一样按设计稿不显示。 -->
+            <DataTrigger Binding="{Binding ShowPercent, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+              <Setter TargetName="Percent" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+              <Setter TargetName="Percent" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

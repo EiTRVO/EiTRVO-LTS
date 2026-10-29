@@ -1,0 +1,51 @@
+[*.cs]
+# 与 AGENTS.md §4 一致：EnforceCodeStyleInBuild + TreatWarningsAsErrors 下这些规则会阻断构建
+dotnet_diagnostic.IDE0005.severity = warning    # 多余的 using
+dotnet_diagnostic.IDE0011.severity = warning    # 必须使用大括号
+dotnet_diagnostic.IDE0007.severity = warning    # 用 var 代替显式类型
+dotnet_diagnostic.IDE0008.severity = none       # 不强制显式类型（与上一条二选一）
+dotnet_diagnostic.IDE0161.severity = warning    # 文件范围命名空间
+dotnet_diagnostic.IDE0290.severity = none       # 不强制主构造函数
+
+# 命名：分三类，因为"状态"与"常量"在 C# 里本就是两种东西
+#   · 私有**可变**字段（实例字段、可变的静态字段）→ _camelCase
+#   · 私有 const            → PascalCase
+#   · 私有 static readonly  → PascalCase（"常量表"性质：查表用的数组/TimeSpan/正则）
+#
+# 为什么不是"所有私有字段都 _camelCase"：全仓 65 处 const / static readonly 一律写成 PascalCase，
+# 那是常量该有的样子（Microsoft 的框架设计指南对常量也用 PascalCase），
+# 把它们改成 _sizeUnits / _productFolderName 反而是把常量写得像可变状态。
+# 这条规则要守的是**可变状态**一律带 _ 前缀（防 this.x = x 那类混淆），而不是管常量怎么拼。
+#
+# ⚠ 注意：命名规则**只在 IDE 与 dotnet format 里生效**，`dotnet build` 不检查它 ——
+# 实测 65 处违规时 `build -warnaserror` 依然 0 警告 0 错误。所以验收命令里必须显式跑
+# `dotnet format style --verify-no-changes --diagnostics IDE1006`（见 AGENTS.md §7）。
+dotnet_naming_rule.private_mutable_fields_underscore.severity = warning
+dotnet_naming_rule.private_mutable_fields_underscore.symbols = private_mutable_fields
+dotnet_naming_rule.private_mutable_fields_underscore.style = underscore_camel
+
+dotnet_naming_symbols.private_mutable_fields.applicable_kinds = field
+dotnet_naming_symbols.private_mutable_fields.applicable_accessibilities = private
+
+dotnet_naming_rule.private_const_fields_pascal.severity = warning
+dotnet_naming_rule.private_const_fields_pascal.symbols = private_const_fields
+dotnet_naming_rule.private_const_fields_pascal.style = pascal_case
+
+dotnet_naming_symbols.private_const_fields.applicable_kinds = field
+dotnet_naming_symbols.private_const_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_const_fields.required_modifiers = const
+
+dotnet_naming_rule.private_static_readonly_fields_pascal.severity = warning
+dotnet_naming_rule.private_static_readonly_fields_pascal.symbols = private_static_readonly_fields
+dotnet_naming_rule.private_static_readonly_fields_pascal.style = pascal_case
+
+dotnet_naming_symbols.private_static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_readonly_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_readonly_fields.required_modifiers = static, readonly
+
+dotnet_naming_style.underscore_camel.required_prefix = _
+dotnet_naming_style.underscore_camel.capitalization = camel_case
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+[*.xaml]
+indent_size = 2

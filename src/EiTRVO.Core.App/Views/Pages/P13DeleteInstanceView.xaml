@@ -1,0 +1,14 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" x:Class="EiTRVO.Core.App.Views.Pages.P13DeleteInstanceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:EiTRVO.Core.App.Views.Parts">
+
+  <!--
+    p13 删除实例。对应 mockup/pages/p13-dialog-delete-instance.html。
+    页面内容与 p03 完全一致（设计稿就是这么画的），所以直接用同一个面板；
+    上面那层遮罩与确认框由外壳承载 —— 这样做遮罩才能盖住整个窗口（含左导航与页头），
+    与设计稿 .modal-scrim{position:absolute;inset:0} 的行为一致。
+  -->
+  <p:InstanceOverviewPanel />
+</UserControl>

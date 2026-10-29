@@ -1,0 +1,34 @@
+<Project>
+
+  <!--
+    AGENTS.md §3.5：唯一允许声明 NuGet 版本号的地方。
+    禁止浮动版本（* / 1.*）。升级必须提交并可回滚。
+    包清单与资格依据见 AGENTS.md §3.2。
+  -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <ItemGroup Label="运行时（AGENTS.md §3.2 白名单）">
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <!--
+      账户令牌的 Windows DPAPI 保护（AGENTS.md §3.2 白名单；MIT，仓库 github.com/dotnet/runtime）。
+      .NET 8 起该 API 不在共享框架里，必须显式引包。
+    -->
+    <PackageVersion Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="测试（微软自有：MSTest / testfx，见 CHANGELOG.md）">
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageVersion Include="MSTest.TestFramework" Version="3.6.4" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="3.6.4" />
+  </ItemGroup>
+
+</Project>

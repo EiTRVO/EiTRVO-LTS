@@ -1,0 +1,24 @@
+<ResourceDictionary
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:cv="clr-namespace:EiTRVO.Core.App.Converters">
+
+  <!-- 色调 → 主题画刷（颜色仍只声明在 Theme.xaml，这里只做 key 的选择） -->
+  <cv:ToneBrushConverter x:Key="ToneBrush" />
+
+  <!-- 空字符串 → 折叠（界面上「没有内容就不占位」的统一做法） -->
+  <cv:EmptyStringToVisibilityConverter x:Key="EmptyToCollapsed" />
+
+  <!-- 空字符串 → 显示（用于「没有图标时回退成灰色方块」这种反过来的场景） -->
+  <cv:EmptyStringToVisibilityConverter x:Key="EmptyToVisible" VisibleWhenEmpty="True" />
+
+  <!-- bool → Visible / Collapsed -->
+  <cv:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+  <!-- bool → Collapsed / Visible（互斥显示，例如向导最后一步换按钮） -->
+  <cv:BooleanToVisibilityConverter x:Key="InverseBoolToVisibility" Invert="True" />
+
+  <!-- 页头下拉的定位：右侧工具组宽 → 右对齐 Margin（见 Converters.cs 里的说明） -->
+  <cv:MenuRightAlignConverter x:Key="MenuRightAlign" />
+
+</ResourceDictionary>

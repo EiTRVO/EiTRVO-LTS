@@ -1,0 +1,151 @@
+<UserControl
+        xmlns:loc="clr-namespace:EiTRVO.Core.App.Localization"
+         x:Class="EiTRVO.Core.App.Views.Pages.P08ModpacksView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:EiTRVO.Core.App.Controls"
+             xmlns:vm="clr-namespace:EiTRVO.Core.App.ViewModels"
+             Background="{StaticResource Brush.White}">
+
+  <!--
+    p08 整合包。对应 mockup/pages/p08-modpacks.html。
+    结构：区块标题（导入 / 导出）→ 「从 Modrinth 浏览」小标题 →
+          筛选行（搜索 / 游戏版本 / 加载器）→ 浏览表格（固定 6 行视口）。
+    2026-10-24 用户要求去掉导入安全扫描说明条。
+    2026-10-25 用户要求去掉「已安装的整合包」区块与标题旁的副标题。
+    模组页的「从 Modrinth 添加」也跳到这一页（复用同一个浏览界面）。
+  -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <c:SectionHeader Grid.Row="0"
+                     Icon="&#xE7B8;"
+                     Title="{Binding SectionTitle}">
+      <c:IconButton Icon="&#xE896;" Text="{loc:Text 从文件导入 .mrpack}" Margin="8,0,0,0"
+                    Command="{Binding ImportMrpackCommand}"
+                    ToolTip="{loc:Text 选择一个 .mrpack 文件导入；导入前会先做安全扫描}" />
+      <c:IconButton Icon="&#xE74E;" Text="{loc:Text 导出当前实例}" Margin="8,0,0,0"
+                    IsEnabled="{Binding CanExport}"
+                    Command="{Binding ExportInstanceCommand}"
+                    ToolTip="{Binding ExportToolTip}" />
+    </c:SectionHeader>
+
+    <c:SectionHeader Grid.Row="1" Icon="&#xE71C;" Title="{loc:Text 从 Modrinth 浏览}" TitleSize="14" Padding="18,12,18,6">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <c:IconButton Grid.Column="0" Icon="&#xE71C;" Text="{loc:Text 排序}" Command="{Binding CycleSortCommand}"
+                      ToolTip="{loc:Text 点击切换：相关性 → 下载量 → 关注数 → 最新发布 → 最近更新。}" />
+        <TextBlock Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Center" FontSize="11.5"
+                   Foreground="{StaticResource Brush.TextMuted}" Text="{Binding SortText}" />
+      </Grid>
+    </c:SectionHeader>
+
+    <Grid Grid.Row="2" Style="{StaticResource FilterRow}" Margin="18,2,18,8">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />      </Grid.ColumnDefinitions>
+      <Border Grid.Column="0" Width="220" Style="{StaticResource FilterBoxBorder}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <Grid Grid.Column="0">
+            <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" IsHitTestVisible="False"
+                       Foreground="{StaticResource Brush.TextMuted}" Text="{loc:Text 搜索整合包}">
+              <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                  <Setter Property="Visibility" Value="Collapsed" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding SearchText}" Value="" />
+                        <Condition Binding="{Binding IsKeyboardFocusWithin, ElementName=ModpacksSearchBox}" Value="False" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Visibility" Value="Visible" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+            <TextBox x:Name="ModpacksSearchBox"
+                     Margin="0,0,6,0" Padding="0" VerticalAlignment="Center" Background="Transparent" BorderThickness="0"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+              <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+              </TextBox.InputBindings>
+            </TextBox>
+          </Grid>
+          <Button Grid.Column="1" Style="{StaticResource LinkButton}" Command="{Binding SearchCommand}"
+                  ToolTip="{loc:Text 搜索（也可以按回车）}">
+            <TextBlock VerticalAlignment="Center" FontFamily="{StaticResource Font.Icon}" FontSize="12"
+                       Foreground="{StaticResource Brush.TextMuted}" Text="&#xE721;" />
+          </Button>
+        </Grid>
+      </Border>
+      <TextBlock Grid.Column="1" Margin="8,0,6,0" VerticalAlignment="Center"
+                 Foreground="{StaticResource Brush.TextMuted}" Text="{loc:Text 游戏版本}" />
+      <ComboBox Grid.Column="2" MinWidth="100" ItemsSource="{Binding GameVersionChoices}" ItemTemplate="{StaticResource ChoiceOptionText}" SelectedValuePath="Value" SelectedValue="{Binding SelectedGameVersion, Mode=TwoWay}" IsEnabled="{Binding HasGameVersionChoices}" ToolTip="{loc:Text 按游戏版本筛选；还没有版本清单时不可选。}" />
+      <TextBlock Grid.Column="3" Margin="12,0,6,0" VerticalAlignment="Center"
+                 Foreground="{StaticResource Brush.TextMuted}" Text="{loc:Text 加载器}" />
+      <ComboBox Grid.Column="4" MinWidth="100" HorizontalAlignment="Left" ItemsSource="{Binding LoaderChoices}" ItemTemplate="{StaticResource ChoiceOptionText}" SelectedValuePath="Value" SelectedValue="{Binding SelectedLoader, Mode=TwoWay}" ToolTip="{loc:Text 按加载器筛选}" />
+      <TextBlock Grid.Column="5" Margin="12,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource Brush.StateErr}" TextTrimming="CharacterEllipsis" Text="{Binding CatalogError}" Visibility="{Binding CatalogError, Converter={StaticResource EmptyToCollapsed}}" />
+    </Grid>
+
+    <!--
+      浏览表与空状态**互斥显示**（与 p07 同一处理）：两者共用同一个单元格，
+      而 DataGrid 的背景不透明 —— 都显示的话必然互相盖住。
+      空状态那句分两种（用 `CatalogEmptyText` 给）：**还没取到过**与**取到了但 0 条**不是一回事。
+    -->
+    <DataGrid Grid.Row="3"
+              Height="168"
+              Margin="18,0,18,0"
+              Visibility="{Binding HasCatalog, Converter={StaticResource BoolToVisibility}}"
+              ItemsSource="{Binding Catalog}">
+      <DataGrid.Columns>
+        <DataGridTextColumn Width="240" Header="{loc:Text 整合包}" Binding="{Binding Name}" />
+        <DataGridTextColumn Width="*" Header="{loc:Text 简介}" Binding="{Binding Summary}" />
+        <DataGridTextColumn Width="110" Header="{loc:Text 下载量}" Binding="{Binding Downloads}" />
+        <DataGridTextColumn Width="90" Header="{loc:Text 版本}" Binding="{Binding Version}" />
+        <DataGridTemplateColumn Width="100" Header="{loc:Text 操作}">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Button Style="{StaticResource LinkButton}" Content="{loc:Text 安装}"
+                              IsEnabled="{Binding CanInstall}"
+                              Command="{Binding DataContext.InstallFromModrinthCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                              CommandParameter="{Binding}"
+                              ToolTip="{loc:Text 按当前筛选的游戏版本 / 加载器安装：会先下载 .mrpack 并做安全扫描。}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+
+    <TextBlock Grid.Row="3"
+               VerticalAlignment="Top"
+               Margin="18,6,18,0"
+               IsHitTestVisible="False"
+               Foreground="{StaticResource Brush.TextMuted}"
+               TextWrapping="Wrap"
+               Visibility="{Binding IsCatalogEmpty, Converter={StaticResource BoolToVisibility}}"
+               Text="{Binding CatalogEmptyText}" />
+
+    <StackPanel Grid.Row="4">
+      <TextBlock Margin="18,8,18,0" Foreground="{StaticResource Brush.StateOk}" TextWrapping="Wrap"
+                 Text="{Binding ExportNote}" Visibility="{Binding ExportNote, Converter={StaticResource EmptyToCollapsed}}" />
+    </StackPanel>
+  </Grid>
+</UserControl>
